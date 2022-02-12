@@ -6,7 +6,7 @@
     <?php
       include("assets/links.php");
     ?>
-    <title>Hello, world!</title>
+    <title>Muebleria San Antonio</title>
   </head>
   <body>
     <div class="d-flex">
@@ -23,7 +23,7 @@
             <a href='#' class="d-block text-light p-3"><ion-icon name="bag-outline" class="mr-2 lead"></ion-icon> Ventas</a>
             <a href='#' class="d-block text-light p-3"><ion-icon name="person-circle-outline" class="mr-2 lead"></ion-icon> Usuarios</a>
             <a href='#' class="d-block text-light p-3"><ion-icon name="document-text-outline" class="mr-2 lead"></ion-icon> Informes</a>
-            <a href='#' class="d-block text-light p-3"><ion-icon name="document-text-outline" class="mr-2 lead"></ion-icon> Configuraciones</a>
+            <a href='#' class="d-block text-light p-3"><ion-icon name="cog-outline" class="mr-2 lead"></ion-icon> Configuraciones</a>
         </div>
       </div>
       <div class="w-100">
