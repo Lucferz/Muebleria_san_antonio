@@ -9,11 +9,6 @@
         private $conn;
         protected $query;
 
-        abstract protected function create();
-        abstract protected function read();
-        abstract protected function update();
-        abstract protected function delete();
-
 
         private function db_open(){
             $this->conn = new mysqli(
