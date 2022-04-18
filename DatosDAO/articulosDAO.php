@@ -16,8 +16,9 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO articulos (descripcion,precio_compra,precio_venta,existencias,estado,fecha_alta, fecha_modificacion,fk_categoria) VALUES ('$descripcion', $precio_compra, $precio_venta, $existencias,
-                true, CURRENT_TIMESTAMP, null, $fk_categoria)";
+            $this->query = "INSERT INTO articulos (descripcion,precio_compra,precio_venta,existencias,estado,
+                fecha_alta, fecha_modificacion,fk_categoria) VALUES ('$descripcion', $precio_compra, $precio_venta,
+                $existencias,true, CURRENT_TIMESTAMP, null, $fk_categoria)";
             $this->set_query();
         }
 
@@ -49,7 +50,16 @@
             foreach ($articulo as $key => $value) {
                 $$key = $value;
             }
-            $this->query = "UPDATE articulos SET estado = false, fecha_modificacion = CURRENT_TIMESTAMP WHERE id_articulo =$id_articulo";
+            $this->query = "UPDATE articulos SET estado = false, fecha_modificacion = CURRENT_TIMESTAMP
+            WHERE id_articulo =$id_articulo";
+            $this->set_query();
+        }
+
+        public function delete( $articulos = array()){
+            foreach ($cliente as $key => $value) {
+                $$key = $value;
+            }
+            $this->query = "UPDATE articulos a SET estado = true, fecha_modificacion = CURRENT_TIMESTAMP WHERE a.id_articulo =$id_articulo";
             $this->set_query();
         }
     }
