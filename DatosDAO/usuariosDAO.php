@@ -50,7 +50,6 @@
                 $$key = $value;
             }
             $this->query = "UPDATE usuarios SET estado = false, fecha_modificacion = CURRENT_TIMESTAMP WHERE id_usuario =$id_usuario";
-<<<<<<< HEAD
             $this->set_query();
         }
 
@@ -59,8 +58,6 @@
                 $$key = $value;
             }
             $this->query = "UPDATE usuarios SET estado = true, fecha_modificacion = CURRENT_TIMESTAMP WHERE id_usuario =$id_usuario";
-=======
->>>>>>> 67f782c51da6b3089434ab6429640801d3f42c1d
             $this->set_query();
         }
     }
