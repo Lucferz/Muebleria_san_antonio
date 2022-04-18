@@ -1,5 +1,5 @@
 <?php
-    class usuarios{
+    class Usuarios{
         private $id_usuario;
         private $nombre;
         private $usuario;
@@ -81,6 +81,20 @@
 
         public function setFkTipoUsuario($fk_tusu){
             $this->$fk_tipo_usuario = $fk_tusu;
+        }
+
+        public function toArray(){
+            $data = array(
+                'id_usuario' => $this->id_usuario ,
+                'nombre' => $this->nombre,
+                'usuario' => $this->usuario,
+                'password' => $this->password,
+                'estado' => $this->estado,
+                'fecha_alta' => $this->fecha_alta,
+                'fecha_mod' => $this->fecha_mod,
+                'fk_tipo_usuario' => $this->fk_tipo_usuario
+            );
+            return $data;
         }
 
     }

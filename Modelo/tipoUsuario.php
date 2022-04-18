@@ -1,5 +1,5 @@
-+<?php
-    class tipousuario()
+<?php
+    class TipoUsuario
     {
         private $id_tipo_user;
         private $tipo;

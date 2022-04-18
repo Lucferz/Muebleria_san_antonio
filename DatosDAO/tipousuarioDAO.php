@@ -1,12 +1,12 @@
 <?php
-	/**
-	 *
-	 */
-	require_once("Base.php");
-	require_once("../Modelo/tipousuario.php");
+    /**
+     *
+     */
+    require_once("Base.php");
+    require_once("../Modelo/tipousuario.php");
 
-	class tipousuarioDAO extends Base
-	{
+    class TipoUsuarioDAO extends Base
+    {
         public function __construct(){
 
         }
@@ -35,7 +35,7 @@
             return $data;
         }
         public function update( $tipo = array()){
-            foreach ($cat as $key => $value) {
+            foreach ($tipo as $key => $value) {
                 $$key = $value;
             }
             $this->query = "UPDATE tipo_usuario SET tipo = '$tipo' WHERE id_tipo_user =$id_tipo_user";
@@ -43,15 +43,26 @@
             ;
         }
         public function delete($tipo = array()){
-            foreach ($cat as $key => $value) {
+            foreach ($tipo as $key => $value) {
                 $$key = $value;
             }
 
-            $this->query = "DELETE FROM tipo_usuario WHERE id_tipo_user =$id_tipo_user;
+            $this->query = "DELETE FROM tipo_usuario WHERE id_tipo_user =$id_tipo_user";
             $this->set_query();
         }
-	}
 
+        public function reactivar(){
+            return "Esta clase no permite reactivacion";
+        }
+    }
 
+    $tDAO= new TipoUsuarioDAO();
+    $tipo = new TipoUsuario(2, "Yudith_2");
+    var_dump($tipo);
+    $tDAO->delete($tipo->toArray());
 
+echo"<pre>";
+    var_dump($tDAO->read());
+    echo "</pre>";
 ?>
+

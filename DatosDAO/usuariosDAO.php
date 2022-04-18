@@ -16,7 +16,7 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO articulos (nombre,usuario,password,estado,fecha_alta, fecha_modificacion,fk_tipo_usuario) VALUES ('$nombre', $usuario, $password,
+            $this->query = "INSERT INTO usuarios (id_usuario, Nombre,usuario,password,estado,fecha_alta, fecha_mod,fk_tipo_usuario) VALUES ($id_usuario,'$nombre', '$usuario', '$password',
                 true, CURRENT_TIMESTAMP, null, $fk_tipo_usuario)";
             $this->set_query();
         }
@@ -39,8 +39,8 @@
                 $$key = $value;
             }
 
-            $this->query = "UPDATE usuarios SET nombre ='$nombre', usuario =$usuario,
-            password = $password,fecha_modificacion = CURRENT_TIMESTAMP,
+            $this->query = "UPDATE usuarios SET Nombre ='$nombre', usuario ='$usuario',
+            password = '$password',fecha_mod = CURRENT_TIMESTAMP,
             fk_tipo_usuario =$fk_tipo_usuario WHERE id_usuario =$id_usuario";
             $this->set_query();
         }
@@ -49,7 +49,7 @@
             foreach ($usuario as $key => $value) {
                 $$key = $value;
             }
-            $this->query = "UPDATE usuarios SET estado = false, fecha_modificacion = CURRENT_TIMESTAMP WHERE id_usuario =$id_usuario";
+            $this->query = "UPDATE usuarios SET estado = false, fecha_mod = CURRENT_TIMESTAMP WHERE id_usuario =$id_usuario";
             $this->set_query();
         }
 
@@ -57,8 +57,16 @@
             foreach ($usuario as $key => $value) {
                 $$key = $value;
             }
-            $this->query = "UPDATE usuarios SET estado = true, fecha_modificacion = CURRENT_TIMESTAMP WHERE id_usuario =$id_usuario";
+            $this->query = "UPDATE usuarios SET estado = true, fecha_mod = CURRENT_TIMESTAMP WHERE id_usuario =$id_usuario";
             $this->set_query();
         }
     }
+
+    $usDAO = new UsuariosDAO();
+    $usu = new Usuarios(2,"Lucas", "Luc", "Luk12345", null, null, null, 1);
+
+    $usDAO->reactivar($usu->toArray());
+    echo"<pre>";
+    var_dump($usDAO->read());
+    echo "</pre>";
 ?>
