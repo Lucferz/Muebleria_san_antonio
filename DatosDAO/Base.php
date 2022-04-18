@@ -13,6 +13,7 @@
         abstract protected function read();
         abstract protected function update();
         abstract protected function delete();
+        abstract protected function reactivar();
 
 
         private function db_open(){
