@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?php
-      include("assets/links.php");
+      include("public/assets/links.php");
     ?>
     <title>Muebleria San Antonio</title>
   </head>
@@ -35,7 +35,7 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle rigth-menu-navbar" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="img/Perfil.png" class="img-fluid rounded-circle avatar">
+                  <img src="public/img/Perfil.png" class="img-fluid rounded-circle avatar">
                   Lucas Frutos
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -57,7 +57,7 @@
 
     </main>
     <?php
-      include("assets/scripts.php");
+      include("public/assets/scripts.php");
     ?>
   </body>
 </html>
