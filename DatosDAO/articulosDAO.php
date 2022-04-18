@@ -23,7 +23,8 @@
         }
 
         public function read($id_articulo = ''){
-            $this->query = ($id_articulo == '')? "SELECT * FROM articulos a WHERE a.estado = true"
+            $this->query = ($id_articulo == '')?
+             "SELECT a.id_articulo, a.descripcion , a.precio_compra, a.precio_compra, a.existencias, a.estado, c.categoria, a.fecha_alta, a.fecha_modificacion FROM articulos a join categorias c on a.fk_categoria = c.id_categoria WHERE a.estado = true"
             :"SELECT * FROM articulos a WHERE a.id_articulo = $id_articulo";
             $this->get_query();
             //$num_rows = count($this->rows);
@@ -55,7 +56,7 @@
             $this->set_query();
         }
 
-        public function delete( $articulos = array()){
+        public function reactivar( $articulos = array()){
             foreach ($cliente as $key => $value) {
                 $$key = $value;
             }
@@ -63,4 +64,9 @@
             $this->set_query();
         }
     }
+
+    $dato = new ArticulosDAO();
+    echo "<pre>";
+    var_dump($dato->read());
+    echo "</pre>";
 ?>

@@ -9,7 +9,7 @@
         private $fecha_mod;
         private $fk_tipo_usuario;
 
-        public function __construct(){
+        public function __destruct(){
 
         }
 

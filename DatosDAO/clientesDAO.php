@@ -68,6 +68,8 @@
     var_dump($cliente->toArray());
     echo "</pre>";
 
+    $clienteDAO->reactivar($cliente->toArray());
+
     $res = $clienteDAO->read();
 echo "LISTARs<pre>";
     var_dump($res);
