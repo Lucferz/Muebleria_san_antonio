@@ -1,5 +1,5 @@
 <?php
-    class Base{
+    abstract class Base{
         private static $servidor = '127.0.0.1';
         private static $nombre_user = 'root';
         private static $pass = 'mysql';

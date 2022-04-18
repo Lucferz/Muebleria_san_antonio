@@ -9,20 +9,12 @@
             $this->categoria = $cat;
         }
 
-        public function getId(){
-            return $this->id_categoria;
-        }
-
-        public function setId($id){
-            $this->id_categoria = $id;
-        }
-
-        public function getCategoria(){
-            return $this->categoria;
-        }
-
-        public function setCategoria($cat){
-            $this->categoria = $cat;
+        public function toArray() {
+            $data = array(
+                'id_categoria'=> $this->id_categoria,
+                'categoria' => $this->categoria
+            );
+            return $data;
         }
 
         public function toString(){

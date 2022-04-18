@@ -22,69 +22,19 @@
             $this->fk_categoria = $fk_cat;
         }
 
-        public function getId(){
-            return $this->id_articulo;
-        }
-
-        public function setId($id){
-            $this->id_articulo = $id;
-        }
-
-        public function getDescripcion(){
-            return $this->descripcion;
-        }
-
-        public function setDescripcion($desc){
-            $this->id_articulo = $desc;
-        }
-        public function getPrecioCompra(){
-            return $this->precio_compra;
-        }
-
-        public function setPrecioCompra($p_compra){
-            $this->precio_compra = $p_compra;
-        }
-        public function getPrecioVenta(){
-            return $this->precio_venta;
-        }
-
-        public function setPrecioVenta($p_venta){
-            $this->precio_venta = $p_venta;
-        }
-        public function getExistencias(){
-            return $this->existencias;
-        }
-
-        public function setExistencias($stock){
-            $this->existencias = $stock;
-        }
-        public function getEstado(){
-            return $this->estado;
-        }
-
-        public function setEstado($estado){
-            $this->estado = $estado;
-        }
-        public function getFechaAlta(){
-            return $this->fecha_alta;
-        }
-
-        public function setFachaAlta($f_alta){
-            $this->fecha_alta = $f_alta;
-        }
-        public function getFechaMod(){
-            return $this->fecha_mod;
-        }
-
-        public function setFechaMod($f_mod){
-            $this->fecha_mod = $f_mod;
-        }
-        public function getFkCategoria(){
-            return $this->fk_categoria;
-        }
-
-        public function setFkCategoria($fk_cat){
-            $this->fk_categoria = $fk_cat;
+        public function toArray(){
+            $data = array(
+                'id_articulo' => $this->id_articulo,
+                'descripcion' => $this->descripcion,
+                'precio_compra' => $this->precio_compra,
+                'precio_venta' => $this->precio_venta,
+                'existencias' => $this->existencias,
+                'estado' => $this->estado,
+                'fecha_alta' => $this->fecha_alta,
+                'fecha_modificacion' => $this->fecha_mod,
+                'fk_categoria' => $this->fk_categoria
+            );
+            return $data;
         }
 
         public function toString(){
