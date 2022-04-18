@@ -24,7 +24,7 @@
         }
         public function read($id_tipo_user = ''){
             $this->query = ($id_tipo_user == '')? "SELECT * FROM tipo_usuario"
-            :"SELECT * FROM tipo_usuario c WHERE c.id_tipo_user = $id_tipo_user";
+            :"SELECT * FROM tipo_usuario t WHERE t.id_tipo_user = $id_tipo_user";
             $this->get_query();
             //$num_rows = count($this->rows);
             $data = array();
