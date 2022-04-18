@@ -22,8 +22,10 @@
         }
 
         public function read($id_usuario = ''){
-            $this->query = ($id_usuario == '')? "SELECT * FROM usuarios u WHERE u.estado = true"
-            :"SELECT * FROM usuarios a WHERE u.id_usuario = $id_usuario";
+            $this->query = ($id_usuario == '')? "SELECT u.id_usuario, u.Nombre,u.usuario,u.password,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
+            on u.fk_tipo_usuario  = t.id_tipo_user WHERE u.estado = true"
+            :"SELECT u.id_usuario, u.Nombre,u.usuario,u.password,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
+            on u.fk_tipo_usuario  = t.id_tipo_user WHERE u.estado = true and u.id_usuario = $id_usuario";
             $this->get_query();
             //$num_rows = count($this->rows);
             $data = array();
@@ -65,8 +67,7 @@
     $usDAO = new UsuariosDAO();
     $usu = new Usuarios(2,"Lucas", "Luc", "Luk12345", null, null, null, 1);
 
-    $usDAO->reactivar($usu->toArray());
     echo"<pre>";
-    var_dump($usDAO->read());
+    var_dump($usDAO->read(2));
     echo "</pre>";
 ?>
