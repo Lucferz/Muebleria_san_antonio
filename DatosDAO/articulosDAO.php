@@ -49,7 +49,7 @@
             foreach ($articulo as $key => $value) {
                 $$key = $value;
             }
-            $this->query = "UPDATE articulos SET estado = false WHERE id_articulo =$id_articulo";
+            $this->query = "UPDATE articulos SET estado = false, fecha_modificacion = CURRENT_TIMESTAMP WHERE id_articulo =$id_articulo";
             $this->set_query();
         }
     }

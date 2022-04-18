@@ -1,5 +1,5 @@
 <?php
-    class Base{
+    abstract class Base{
         private static $servidor = '127.0.0.1';
         private static $nombre_user = 'root';
         private static $pass = 'mysql';
@@ -8,6 +8,11 @@
         protected $rows = array();
         private $conn;
         protected $query;
+
+        abstract protected function create();
+        abstract protected function read();
+        abstract protected function update();
+        abstract protected function delete();
 
 
         private function db_open(){
