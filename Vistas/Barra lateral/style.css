@@ -1,0 +1,56 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family: "Roboto", sans-serif;
+}
+
+
+
+.sidebar{
+	background: rgb(72, 76, 235, .2);
+	position: fixed;
+	left: 0;
+	width: 65px;
+	height: 100%;
+}
+
+
+.sidebar .foto{
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.sidebar h4{
+	color: #4C48EB;
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+#inicio{
+	border-top: 1px solid rgba(100, 100, 100, .3);
+
+
+}
+
+.sidebar a{ 
+	color: #000;
+	display: block;
+	width: 100%;
+	line-height: 40px;
+	text-decoration: none;
+	box-sizing: border-box;
+	transition: 0.5s;
+	padding: 5px 5px;
+	border-bottom: 1px solid rgba(100, 100, 100, .3);
+	text-align: center;
+	transition-property: background;
+	padding-top: 15px;
+}
+
+.sidebar a:hover{
+	background: rgb(72, 76, 235);
+}
+
+
