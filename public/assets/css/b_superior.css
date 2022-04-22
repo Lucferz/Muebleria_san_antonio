@@ -1,11 +1,13 @@
 /* BARRA SUPERIOR */
 .barra_superior{
+	margin-left: 57px;
 	background: #4C48EB;
 	color: #fff;
 	padding-top: 15px;
-	padding-left: 100px;
+	padding-left: 20px;
 	padding-bottom: 15px;
-	padding-right: 0 px
+	padding-right: 0 px;
+	position: relative
 }
 
 .dropdown{
@@ -139,6 +141,7 @@ input:-moz-placeholder {
   color: #888
 }
 
+/* BOTONES */
 
 #articulos-buttons-container{
 	display: inline-block;
