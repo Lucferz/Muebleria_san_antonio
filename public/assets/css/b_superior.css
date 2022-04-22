@@ -1,4 +1,5 @@
 /* BARRA SUPERIOR */
+
 .barra_superior{
 	margin-left: 57px;
 	background: #4C48EB;
@@ -177,7 +178,7 @@ input:-moz-placeholder {
 	justify-content: space-between;
 }
 
-/*barra lateral*/
+/*BARRA LATERAL*/
 
 .sidebar{
 	background: rgb(72, 76, 235, .2);
