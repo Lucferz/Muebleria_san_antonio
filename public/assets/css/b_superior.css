@@ -176,7 +176,6 @@ input:-moz-placeholder {
 
 /*barra lateral*/
 
-
 .sidebar{
 	background: rgb(72, 76, 235, .2);
 	position: fixed;
@@ -202,14 +201,13 @@ input:-moz-placeholder {
 #inicio{
 	border-top: 1px solid rgba(100, 100, 100, .3);
 
-
 }
 
 .sidebar a{ 
 	color: #000;
 	display: block;
 	width: 100%;
-	line-height: 40px;
+	line-height: 20px;
 	text-decoration: none;
 	box-sizing: border-box;
 	transition: 0.5s;
