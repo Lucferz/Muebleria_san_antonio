@@ -1,15 +1,27 @@
-<!DOCTYPE html>
+<?php include("includes/header.html"); ?>
+   <div id="cuerpo">
+      <div id="cabecera-botones">
+         <div class="flexsearch">
+               <div class="flexsearch--wrapper">
+                  <form class="flexsearch--form" action="" method="post">
+                     <div class="flexsearch--input-wrapper">
+                        <input class="flexsearch--input" type="search" placeholder="search">
+                     </div>
+                     <input class="flexsearch--submit" type="submit" value="&#10140;"/>
+                  </form>
+               </div>
+         </div>
+         <div id="articulos-buttons-container">
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Formulario</title>
 	<link rel="stylesheet" type="text/css" href="../public/assets/css/estiloform.css">
-	<link rel="stylesheet" type="text/css" href="../public/assets/css/b_superior.css">
-	
 </head>
 <body>
 			<!-- Trigger/Open The Modal -->
-			<button id="myBtn">Nuevo Cliente</button>
+			<button id="myBtn" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Cliente</button>
 
 		<!-- The Modal -->
 		<div id="myModal" class="modal">
@@ -37,7 +49,7 @@
 						<input type="text" class="field"> <br/>
 
 						<p class="center-content">
-						<input type="submit" class="btn btn-azul" value="GUARDAR">
+						<input type="submit" class="btn-azul" value="GUARDAR">
 						</p>
 
 					</form>
@@ -74,4 +86,46 @@
 	</script>
 <?php
 	include("includes/footer.html");
-?>
+?>          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
+
+
+
+
+
+
+         </div>
+      </div>
+      <div id="tabla">
+      </div>
+   </div>
+   
+<?php include("includes/footer.html"); ?>
+
+
+
