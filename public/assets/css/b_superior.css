@@ -1,14 +1,18 @@
+/* CLASE HYDRATED DEL HTML QUE NO SE PQ APARECE */
+.hydrated{
+	line-height:0;
+}
+
 /* BARRA SUPERIOR */
 
 .barra_superior{
 	margin-left: 57px;
 	background: #4C48EB;
 	color: #fff;
-	padding-top: 15px;
+	padding-top: 20px;
 	padding-left: 20px;
-	padding-bottom: 15px;
+	padding-bottom: 20px;
 	padding-right: 0 px;
-	position: relative
 }
 
 .dropdown{
@@ -155,6 +159,7 @@ input:-moz-placeholder {
 	font-family: 'Helvetica', sans-serif, monospace;
 	border-color: #E5E5E5;
 	border-radius: 25px;
+	text-align: center;
 }
 
 .btn-pretty{
@@ -227,3 +232,59 @@ input:-moz-placeholder {
 }
 
 
+/* MODAL */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* The Close Button */
+  .close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+  }
+
+/* FORM OF MODAL */
+  .modal-form{
+	background-color: white;
+	border-radius: 3px;
+	color: #0D0D0D;
+	font-size: 0.8em;
+	padding: 20px;
+	margin: 0 auto;
+	width: 400px;
+}
+
+.field{
+	border: solid 1px #AFAFAF;
+	padding: 10px;
+	margin-left: 50px;
+	outline: none;
+	width: 300px;	
+}
+
+.field:focus{
+	border-color: #4C48EB;
+}
+
+.center-content{
+	text-align: center;
+	/*align-content: center;*/
+}
+
+.titulo-modal{
+	text-align: center;
+	color: #4C48EB;
+	
+}
