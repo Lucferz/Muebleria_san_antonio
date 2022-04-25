@@ -1,7 +1,4 @@
-		body{font-family: Arial; background-color:#CACACA; box-sizing: border-box;}
-
-		
-		form{
+	form{
 			background-color: white;
 			border-radius: 3px;
 			color: #0D0D0D;
@@ -18,7 +15,9 @@
 		}
 
 		p{
-			margin-left: 50px;}
+			margin-left: 50px;
+			font-size: 16px;
+		}
 
 		.field{
 			border: solid 1px #AFAFAF;
@@ -36,26 +35,15 @@
 			text-align: center;
 		}
 
-
-.btn{
-	border-radius: 3px;
-	display: inline-block;
-	padding: 20px 15px;
-	text-decoration: none;
-	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
-	box-shadow: 0 1px 1px rgba(0,0,0,0.3); 
-}
-
 .btn-azul{
 	color: white;
 	background-color: #4C48EB;
+	padding: 15px 5px;
+	margin: 20px;
+	margin-right: 50px;
+
 }
-.btn-azul:hover{
-	background-color: #4C48EB;	
-}
-.btn-azul:active{
-	background-color: #4C48EB;
-}
+
 
 h1 {
 	text-align: center;
@@ -67,7 +55,7 @@ h1 {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  padding-top: 20px; /* Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
