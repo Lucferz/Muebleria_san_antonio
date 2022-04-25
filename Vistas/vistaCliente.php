@@ -1,4 +1,7 @@
-<?php include("includes/header.html"); ?>
+<?php include("includes/header.html"); 
+include("../Controlador/ClientesControl.php");
+$clientes_control = new ClientesControl();
+?>
    <div id="cuerpo">
       <div id="cabecera-botones">
          <div class="flexsearch">
@@ -53,6 +56,46 @@
   			</div>
 
 		</div>
+
+<div id="table">
+      <table class="content-table">
+         <thead>
+            <tr>
+               <th>Id Cliente</th>
+               <th>Cedula</th>
+               <th>Cliente</th>
+               <th>Direccion</th>
+               <th>Telefono</th>
+               <th>RUC</th>
+               <th>Estado</th>
+               <th colspan="2">ACCIONES</th>
+            </tr>
+         </thead>
+         <tbody>
+            <?php
+               $data_clientes = $clientes_control->read();
+               foreach ($data_clientes as $key => $value) {
+                  echo "<tr>";
+                  foreach ($value as $key2 => $value2) {
+                     $$key2 = $value2;
+                  }
+                  $status = $estado?'Activo':'Inactivo';
+                  echo "<td>$id_cliente</td>
+                  <td>$cliente</td>
+                  <td>$direccion</td>
+                  <td>$tel</td>
+                  <td>$ruc</td>
+                  <td>$estado</td>
+                 
+
+                  <td><a href='"./*$articulos_control->update()*/"'>Modificar</a></td>
+                  <td><a href='"./*$articulos_control->delete()*/"'></a>Desactivar</td>";
+                  echo "</tr>";
+               }
+            ?>
+         </tbody>
+      </table>
+   </div>
 
 		
 <?php
