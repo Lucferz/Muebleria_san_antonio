@@ -12,36 +12,23 @@
                </div>
          </div>
          <div id="articulos-buttons-container">
- <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Formulario</title>
-	<link rel="stylesheet" type="text/css" href="../public/assets/css/estiloform.css">
-<<<<<<< HEAD:Vistas/clientes.php
-</head>
-<body>
-			<!-- Trigger/Open The Modal -->
-			<button id="myBtn" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Cliente</button>
-=======
-	<link rel="stylesheet" type="text/css" href="../public/assets/css/b_superior.css">
-	<script type="text/javascript" src="../public/assets/js/main.js"></script>
-	
-</head>
-<body>
-			<!-- Trigger/Open The Modal -->
-			<button id="addNew">Nuevo Cliente</button>
->>>>>>> 49ce9093354d2d9cc30d7daccb890349b02896d6:Vistas/form.php
-
+         	<!-- aca deben ir los botones-->
+         	<!-- Trigger/Open The Modal -->
+			<button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Cliente</button>
+         </div>
+      </div>
+      <div id="tabla">
+      </div>
+   </div>
 		<!-- The Modal -->
 		<div id="myModal" class="modal">
 
   			<!-- Modal content -->
   			<div class="modal-content">
    				 
-					<form action="" method="POST">
+					<form action="" class= "modal-form" method="POST">
 						<span class="close"><ion-icon name="close-outline"></ion-icon></span>
-						<h1>Nuevo Cliente</h1>
+						<h1 class="titulo-modal">Nuevo Cliente</h1>
 						
 						<p>Cliente:</p>
 						<input type="text" class="field"> <br/>
@@ -70,46 +57,7 @@
 		
 <?php
 	include("includes/footer.html");
-?>          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-           
-
-
-
-
-
-
-
-
-
-         </div>
-      </div>
-      <div id="tabla">
-      </div>
-   </div>
-   
-<?php include("includes/footer.html"); ?>
+?>
 
 
 

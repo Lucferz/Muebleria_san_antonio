@@ -284,6 +284,16 @@ input:-moz-placeholder {
 	
 }
 
+/* BOTON MODAL */
+.btn-azul{
+	color: white;
+	background-color: #4C48EB;
+	padding: 15px 5px;
+	/*margin: 20px;
+	margin-right: 50px;*/
+
+}
+
 /* TABLA */
 
 #table{
