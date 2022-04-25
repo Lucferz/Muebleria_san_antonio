@@ -1,8 +1,3 @@
-/* CLASE HYDRATED DEL HTML QUE NO SE PQ APARECE */
-.hydrated{
-	line-height:0;
-}
-
 /* BARRA SUPERIOR */
 
 .barra_superior{
@@ -237,7 +232,7 @@ input:-moz-placeholder {
 	display: none; /* Hidden by default */
 	position: fixed; /* Stay in place */
 	z-index: 1; /* Sit on top */
-	padding-top: 100px; /* Location of the box */
+	padding-top: 100px;/* Location of the box */
 	left: 0;
 	top: 0;
 	width: 100%; /* Full width */
@@ -287,4 +282,35 @@ input:-moz-placeholder {
 	text-align: center;
 	color: #4C48EB;
 	
+}
+
+/* TABLA */
+
+#table{
+	margin-top: 50px;
+	margin-left: 80px;
+	height: 100%;
+	overflow:auto;
+	}
+
+.content-table{
+	border: black 2px solid;
+	width: 100%
+}
+
+td, th {
+	border:  blue 1px solid;
+}
+
+
+
+
+
+
+/* Atributos @media para la adaptabilidad */
+
+@media(max-height: 630px){
+	.modal{
+		padding-top: 33px;
+	}
 }
