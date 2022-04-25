@@ -14,7 +14,7 @@
       <div id="sidebar-container" class="bg-primary">
         <div  class="logo">
           <br/>
-          <h3 class="text-light">Muebleria San Antonio</h3>
+          <h3 class="text-light"></h3>
           <br/><br/>
         </div>
         <div class="menu">

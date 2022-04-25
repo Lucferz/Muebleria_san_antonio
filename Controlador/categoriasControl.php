@@ -27,10 +27,4 @@
 
 	}
 
-	$prueba = new CategoriasControl();
-	$res = $prueba->read();
-	echo "<pre>";
-	var_dump($res);
-	echo "</pre>";
-
 ?>

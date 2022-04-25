@@ -35,3 +35,14 @@ a{
 #sidebar-container .menu{
 	width: 18rem;
 }
+
+. encabezado {
+    color : #36A0FF; 
+tamaño de     fuente : 27px ; 
+    relleno : 10px ; 
+}
+
+. icono grande {
+tamaño de     fuente : 35px ; 
+    color : #36A0FF; 
+}

@@ -50,15 +50,9 @@
             $this->query = "DELETE FROM categorias WHERE id_categoria =$id_categoria";
             $this->set_query();
         }
+
+        public function reactivar(){
+
+        }
 	}
-
-
-    $catDAO = new CategoriasDAO();
-    $cat = new Categorias(0, "Categoria_Prueba_3");
-    var_dump($cat->toArray());
-
-    $res = $catDAO->read(3);
-    echo "<pre>";
-    var_dump($res);
-    echo "</pre>";
 ?>
