@@ -4,7 +4,7 @@
         private static $nombre_user = 'root';
         private static $pass = 'mysql';
         private static $bd = "muebleria_san_antonio";
-        private static $charset ='utf8md4';
+        private static $charset ='utf8mb4';
         protected $rows = array();
         private $conn;
         protected $query;
