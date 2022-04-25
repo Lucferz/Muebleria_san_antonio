@@ -1,5 +1,6 @@
 /* BARRA SUPERIOR */
 .barra_superior{
+	margin: 0;
 	background: #4C48EB;
 	color: #fff;
 	padding-top: 15px;
