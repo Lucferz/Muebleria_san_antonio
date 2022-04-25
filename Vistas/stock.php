@@ -50,7 +50,7 @@ $articulos_control = new ArticulosControl();
             <input type="text" name="id_articulo" hidden>
 
             <p class="center-content">
-            <input type="submit" class="btn-pretty" value="GUARDAR"/>
+            <input type="submit" class="btn-azul" value="GUARDAR"/>
             </p>
 
          </form>
