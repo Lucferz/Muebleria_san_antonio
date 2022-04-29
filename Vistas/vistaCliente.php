@@ -1,4 +1,5 @@
 <?php include("includes/header.html"); 
+include("../Controlador/CLientesControl.php");
     $conn = conectar();
     $sql = "SELECT * from clientes";
     $query = mysqli_query($conn, $sql); 
