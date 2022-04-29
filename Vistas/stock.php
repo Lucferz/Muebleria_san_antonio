@@ -29,24 +29,24 @@ $categoriasControl = new CategoriasControl();
       <!-- Modal content -->
       <div class="modal-content">
          
-         <form method="POST" class="modal-form">
+         <form method="POST" class="modal-form" action="stock_acciones.php" id="dataform">
             <span class="close"><ion-icon name="close-outline"></ion-icon></span>
             <h1 class="titulo-modal">Nuevo Articulo</h1>
             
             <p>DESCRIPCION:</p>
-            <input type="text" name="descripcion" class="field"> <br/>
+            <input type="text" name="descripcion" class="field" required> <br/>
 
             <p>PRECIO DE COMPRA:</p>
-            <input type="text" name="precio_compra" class="field"> <br/>
+            <input type="text" name="precio_compra" class="field" required> <br/>
 
             <p>PRECIO DE VENTA:</p>
-            <input type="text" name="precio_venta" class="field"> <br/>
+            <input type="text" name="precio_venta" class="field" required> <br/>
 
             <p>EXISTENCIAS:</p>
-            <input type="text" name="existencias" class="field"> <br/><br/><br/>
+            <input type="text" name="existencias" class="field" required> <br/><br/><br/>
 
             <span>CATEGORIA:</span>
-            <select id="categorias-select" name="categoria"><!--Aca hacer el read de Categorias-->
+            <select id="categorias-select" name="categoria" ><!--Aca hacer el read de Categorias-->
                <option value="no_select">Seleccione una Categoria</option>
                <?php
                   $data_categorias = $categoriasControl->read();
@@ -59,7 +59,14 @@ $categoriasControl = new CategoriasControl();
                ?>
             </select>
             <br/>
-            <input type="text" name="id_articulo" hidden>
+            <input type="text" name="id_articulo" 
+            <?php 
+               if(isset($_POST)){
+                  $id = $_POST['id_articulo'];
+                  echo "value='$id' ";
+               }
+            ?>
+            hidden>
 
             <p class="center-content">
             <input type="submit" class="btn-azul" value="GUARDAR"/>
@@ -101,8 +108,18 @@ $categoriasControl = new CategoriasControl();
                   <td>$status</td>
                   </div>
                   <div id='row-actions'>
-                  <td><a href='"./*$articulos_control->update()*/"'>Modificar</a></td>
-                  <td><a href='"./*$articulos_control->delete() para esto ver videos 36, 37 y 38 de jonmircha php*/"'></a>Desactivar</td>
+                  <td>
+                     <form method='POST' >
+                        <input type='text' name='id_articulo' value='$id_articulo' hidden>
+                        <input type='submit' class='btn-table' value='Editar'>
+                     </form>
+                  </td>
+                  <td>
+                     <form method='POST' >
+                        <input type='text' name='id_articulo' value='$id_articulo' hidden>
+                        <input type='submit' class='btn-table' value='Desactivar'>
+                     </form>
+                  </td>
                   </div>";
                   echo "</tr>";
                }
