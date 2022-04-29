@@ -62,7 +62,7 @@
         }
     }
 
-    $clienteDAO = new clientesDAO();
+  /*  $clienteDAO = new clientesDAO();
     $cliente = new Clientes(1, "lucas", "un numero", "Mi casa", "un ci", "un ruc", null, null, null);
     echo "<pre>";
     var_dump($cliente->toArray());
@@ -71,9 +71,9 @@
     $clienteDAO->reactivar($cliente->toArray());
 
     $res = $clienteDAO->read();
-echo "LISTARs<pre>";
+    echo "LISTARs<pre>";
     var_dump($res);
-    echo "</pre>";
+    echo "</pre>";*/
 
 
 
