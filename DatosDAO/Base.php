@@ -46,17 +46,4 @@
             return array_pop($this->rows);
         }
     }
-    
-    function conectar(){
-            $servidor = "localhost";
-            $user = "root";
-            $password = "mysql";
-            $bd = "muebleria_san_antonio";
-        
-            $conexion = mysqli_connect($servidor, $user, $password, $bd); // para que el servidor encuentre las BD existentes
-
-            mysqli_select_db($conexion,$bd); // ingresar a una BD especifica
-
-            return $conexion;
-    }
 ?>

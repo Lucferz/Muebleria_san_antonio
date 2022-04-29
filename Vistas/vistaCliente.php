@@ -1,8 +1,6 @@
-<?php include("includes/header.html"); 
-include("../Controlador/CLientesControl.php");
-    $conn = conectar();
-    $sql = "SELECT * from clientes";
-    $query = mysqli_query($conn, $sql); 
+<?php include("includes/header.html");
+include("../Controlador/ClientesControl.php");
+$clientes_control = new ClientesControl();
 ?>
 
    <div id="cuerpo">
@@ -37,19 +35,22 @@ include("../Controlador/CLientesControl.php");
 						<h1 class="titulo-modal">Nuevo Cliente</h1>
 						
 						<p>Cliente:</p>
-						<input type="text" class="field"> <br/>
+						<input type="text" name="cliente" class="field"> <br/>
 
 						<p>CI:</p>
-						<input type="text" class="field"> <br/>
+						<input type="text" name="ci" class="field"> <br/>
 
 						<p>RUC:</p>
-						<input type="text" class="field"> <br/>
+						<input type="text" name="ruc" class="field"> <br/>
 
 						<p>Telefono:</p>
-						<input type="text" class="field"> <br/>
+						<input type="text" name="tel" class="field"> <br/>
 		
 						<p>Direccion:</p>
-						<input type="text" class="field"> <br/>
+						<input type="text" name="direccion" class="field"> <br/>
+
+                  <br/>
+                  <input type="text" name="id_cliente" hidden>
 
 						<p class="center-content">
 						<input type="submit" class="btn-azul" value="GUARDAR">
@@ -57,46 +58,49 @@ include("../Controlador/CLientesControl.php");
 
 					</form>
   			</div>
-
 		</div>
-
 <div id="table">
       <table class="content-table">
          <thead>
             <tr>
-               <th>Id Cliente</th>
-               <th>Cedula</th>
-               <th>Cliente</th>
-               <th>Direccion</th>
-               <th>Telefono</th>
+               <th>ID CLIENTE</th>
+               <th>CI</th>
+               <th>CLIENTE</th>
+               <th>DIRECCION</th>
+               <th>TELEFONO</th>
                <th>RUC</th>
-               <th>Estado</th>
+               <th>ESTADO</th>
                <th colspan="2">ACCIONES</th>
             </tr>
          </thead>
-         <tbody>
-                  <?php
-                   while($row=mysqli_fetch_array($query)){
-                  ?>
-                     <tr>
-                           <th><?php  echo $row['id_cliente']?></th>
-                           <th><?php  echo $row['ci']?></th>
-                           <th><?php  echo $row['cliente']?></th>
-                           <th><?php  echo $row['direccion']?></th>
-                           <th><?php  echo $row['telefono']?></th>
-                           <th><?php  echo $row['ruc']?></th>
-                           <th><?php  echo $row['estado']?></th>
-                           <th><a href="actualizar.php?id=<?php echo $row['id_cliente'] ?>">Editar</a></th>
-                           <th><a href="eliminar.php?id=<?php echo $row['id_cliente'] ?>" >Eliminar</a></th>                       
-                      </tr>
-                  <?php 
-                      }
-                   ?>             
+         <tbody align="center">
+             <?php
+               $data_clientes = $clientes_control->read();
+               foreach ($data_clientes as $key => $value) {
+                  echo "<tr>";
+                  foreach ($value as $key2 => $value2) {
+                     $$key2 = $value2;
+                  }
+                  $status = $estado?'Activo':'Inactivo';
+                  echo "<div id='row-content'>
+                  <td>$id_cliente</td>
+                  <td>$ci</td>
+                  <td>$cliente</td>
+                  <td>$direccion</td>
+                  <td>$telefono</td>
+                  <td>$ruc</td>
+                  <td>$estado</td>
+                  </div>
+                  <div id='row-actions'>
+                  <td><a href='"./*$clientes_control->update()*/"'>Modificar</a></td>
+                  <td><a href='"./*$cliente_control->delete()*/"'></a>Desactivar</td>
+                  </div>";
+                  echo "</tr>";
+               }
+            ?>    
          </tbody>
       </table>
-   </div>
-
-		
+</div>		
 <?php
 	include("includes/footer.html");
 ?>
