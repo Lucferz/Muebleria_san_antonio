@@ -1,7 +1,10 @@
 <?php include("includes/header.html"); 
-include("../Controlador/ClientesControl.php");
-$clientes_control = new ClientesControl();
+include("../Controlador/CLientesControl.php");
+    $conn = conectar();
+    $sql = "SELECT * from clientes";
+    $query = mysqli_query($conn, $sql); 
 ?>
+
    <div id="cuerpo">
       <div id="cabecera-botones">
          <div class="flexsearch">
@@ -72,27 +75,23 @@ $clientes_control = new ClientesControl();
             </tr>
          </thead>
          <tbody>
-            <?php
-               $data_clientes = $clientes_control->read();
-               foreach ($data_clientes as $key => $value) {
-                  echo "<tr>";
-                  foreach ($value as $key2 => $value2) {
-                     $$key2 = $value2;
-                  }
-                  $status = $estado?'Activo':'Inactivo';
-                  echo "<td>$id_cliente</td>
-                  <td>$cliente</td>
-                  <td>$direccion</td>
-                  <td>$tel</td>
-                  <td>$ruc</td>
-                  <td>$estado</td>
-                 
-
-                  <td><a href='"./*$articulos_control->update()*/"'>Modificar</a></td>
-                  <td><a href='"./*$articulos_control->delete()*/"'></a>Desactivar</td>";
-                  echo "</tr>";
-               }
-            ?>
+                  <?php
+                   while($row=mysqli_fetch_array($query)){
+                  ?>
+                     <tr>
+                           <th><?php  echo $row['id_cliente']?></th>
+                           <th><?php  echo $row['ci']?></th>
+                           <th><?php  echo $row['cliente']?></th>
+                           <th><?php  echo $row['direccion']?></th>
+                           <th><?php  echo $row['telefono']?></th>
+                           <th><?php  echo $row['ruc']?></th>
+                           <th><?php  echo $row['estado']?></th>
+                           <th><a href="actualizar.php?id=<?php echo $row['id_cliente'] ?>">Editar</a></th>
+                           <th><a href="eliminar.php?id=<?php echo $row['id_cliente'] ?>" >Eliminar</a></th>                       
+                      </tr>
+                  <?php 
+                      }
+                   ?>             
          </tbody>
       </table>
    </div>
