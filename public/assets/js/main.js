@@ -35,3 +35,11 @@ function reloadPage(identifier){
         window.location.href = "Vistas/"+ +".php"
     }, 2000)
 }*/
+
+
+document.addEventListener('DOMContentLoading', function(){
+    let formulario = document.getElementById('dataform');
+    formulario.addEventListener('submit', function() {
+      formulario.reset();
+    });
+  });
