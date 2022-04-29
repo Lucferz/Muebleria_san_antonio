@@ -2,6 +2,7 @@
 include("../Controlador/ArticulosControl.php");
 include("../Controlador/categoriasControl.php") ;
 $articulos_control = new ArticulosControl();
+$categoriasControl = new CategoriasControl();
 ?>
    <div id="cuerpo">
       <div id="cabecera-botones">
@@ -28,25 +29,36 @@ $articulos_control = new ArticulosControl();
       <!-- Modal content -->
       <div class="modal-content">
          
-         <form action="" method="POST" class="modal-form">
+         <form method="POST" class="modal-form">
             <span class="close"><ion-icon name="close-outline"></ion-icon></span>
             <h1 class="titulo-modal">Nuevo Articulo</h1>
             
-            <p>Descripcion:</p>
+            <p>DESCRIPCION:</p>
             <input type="text" name="descripcion" class="field"> <br/>
 
-            <p>CI:</p>
-            <input type="text" name="" class="field"> <br/>
+            <p>PRECIO DE COMPRA:</p>
+            <input type="text" name="precio_compra" class="field"> <br/>
 
-            <p>RUC:</p>
-            <input type="text" name="" class="field"> <br/>
+            <p>PRECIO DE VENTA:</p>
+            <input type="text" name="precio_venta" class="field"> <br/>
 
-            <p>Telefono:</p>
-            <input type="text" name="" class="field"> <br/>
+            <p>EXISTENCIAS:</p>
+            <input type="text" name="existencias" class="field"> <br/><br/><br/>
 
-            <p>Direccion:</p>
-            <input type="text" name="" class="field"> <br/>
-
+            <span>CATEGORIA:</span>
+            <select id="categorias-select" name="categoria"><!--Aca hacer el read de Categorias-->
+               <option value="no_select">Seleccione una Categoria</option>
+               <?php
+                  $data_categorias = $categoriasControl->read();
+                  foreach ($data_categorias as $key => $value) {
+                     foreach ($value as $key2 => $value2) {
+                        $$key2 = $value2;
+                     }
+                     echo "<option value='$id_categoria'>$categoria</option>";
+                  }
+               ?>
+            </select>
+            <br/>
             <input type="text" name="id_articulo" hidden>
 
             <p class="center-content">
@@ -79,16 +91,19 @@ $articulos_control = new ArticulosControl();
                      $$key2 = $value2;
                   }
                   $status = $estado?'Activo':'Inactivo';
-                  echo "<td>$id_articulo</td>
+                  echo "<div id='row-content'>
+                  <td>$id_articulo</td>
                   <td>$descripcion</td>
                   <td>$precio_compra</td>
                   <td>$precio_venta</td>
                   <td>$existencias</td>
                   <td>$categoria</td>
                   <td>$status</td>
-
+                  </div>
+                  <div id='row-actions'>
                   <td><a href='"./*$articulos_control->update()*/"'>Modificar</a></td>
-                  <td><a href='"./*$articulos_control->delete()*/"'></a>Desactivar</td>";
+                  <td><a href='"./*$articulos_control->delete() para esto ver videos 36, 37 y 38 de jonmircha php*/"'></a>Desactivar</td>
+                  </div>";
                   echo "</tr>";
                }
             ?>

@@ -25,3 +25,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 });
+
+/* Ver si es necesario. Funcion para ir a una pagina dsp de
+determinados segundos
+
+function reloadPage(identifier){
+    setTimeout(function(){
+
+        window.location.href = "Vistas/"+ +".php"
+    }, 2000)
+}*/

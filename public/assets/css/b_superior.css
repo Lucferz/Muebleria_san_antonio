@@ -269,7 +269,13 @@ input:-moz-placeholder {
 	width: 300px;	
 }
 
-.field:focus{
+#categorias-select{
+	margin-left: 25px;
+	width: 250px;
+	height: 40px;
+}
+
+.field:focus,  #categorias-select:focus{
 	border-color: #4C48EB;
 }
 
