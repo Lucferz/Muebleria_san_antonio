@@ -24,8 +24,8 @@
 
         public function read($id_articulo = ''){
             $this->query = ($id_articulo == '')?
-             "SELECT a.id_articulo, a.descripcion , a.precio_compra, a.precio_compra, a.precio_venta, a.existencias, a.estado, c.categoria, a.fecha_alta, a.fecha_modificacion FROM articulos a join categorias c on a.fk_categoria = c.id_categoria WHERE a.estado = true"
-            :"SELECT a.id_articulo, a.descripcion , a.precio_compra, a.precio_compra, a.existencias, a.estado, c.categoria, a.fecha_alta, a.fecha_modificacion FROM articulos a join categorias c on a.fk_categoria = c.id_categoria WHERE a.id_articulo = $id_articulo";
+             "SELECT a.id_articulo, a.descripcion , a.precio_compra, a.precio_venta, a.existencias, a.estado, c.categoria, a.fecha_alta, a.fecha_modificacion FROM articulos a join categorias c on a.fk_categoria = c.id_categoria WHERE a.estado = true"
+            :"SELECT a.id_articulo, a.descripcion , a.precio_compra, a.precio_venta, a.existencias, a.estado, c.categoria, a.fecha_alta, a.fecha_modificacion FROM articulos a join categorias c on a.fk_categoria = c.id_categoria WHERE a.id_articulo = $id_articulo";
             $this->get_query();
             //$num_rows = count($this->rows);
             $data = array();

@@ -28,25 +28,36 @@ $categoriasControl = new CategoriasControl();
 	<div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-         
          <form method="POST" class="modal-form" action="stock_acciones.php" id="dataform">
+            <?php 
+               $dataToMod;
+               if (isset($_POST) && isset($_POST['id_articulo'])){
+                  $dataToMod = $articulos_control->read($_POST['id_articulo']);
+                  echo '<script type="text/javascript"> document.all.myModal.style.display = "block"</script>';
+               }
+            ?>
             <span class="close"><ion-icon name="close-outline"></ion-icon></span>
             <h1 class="titulo-modal">Nuevo Articulo</h1>
             
             <p>DESCRIPCION:</p>
-            <input type="text" name="descripcion" class="field" required> <br/>
+            <input type="text" name="descripcion" value="<?php echo isset($dataToMod[0]['descripcion'])? $dataToMod[0]['descripcion']:'' ?>" 
+            class="field" required> <br/>
 
             <p>PRECIO DE COMPRA:</p>
-            <input type="text" name="precio_compra" class="field" required> <br/>
+            <input type="text" name="precio_compra" value="<?php echo isset($dataToMod[0]['precio_compra'])? $dataToMod[0]['precio_compra']:'' ?>"
+            class="field" required> <br/>
 
             <p>PRECIO DE VENTA:</p>
-            <input type="text" name="precio_venta" class="field" required> <br/>
+            <input type="text" name="precio_venta" value="<?php echo isset($dataToMod[0]['precio_venta'])? $dataToMod[0]['precio_venta']:'' ?>" 
+            class="field" required> <br/>
 
             <p>EXISTENCIAS:</p>
-            <input type="text" name="existencias" class="field" required> <br/><br/><br/>
-
+            <input type="text" name="existencias" value="<?php echo isset($dataToMod[0]['existencias'])? $dataToMod[0]['existencias']:'' ?>" 
+            class="field" required> <br/><br/><br/>
+            <input type="text" name="id_articulo" 
+            value="<?php echo isset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>" hidden>
             <span>CATEGORIA:</span>
-            <select id="categorias-select" name="categoria" ><!--Aca hacer el read de Categorias-->
+            <select id="categorias-select" name="fk_categoria" ><!--Aca hacer el read de Categorias-->
                <option value="no_select">Seleccione una Categoria</option>
                <?php
                   $data_categorias = $categoriasControl->read();
@@ -54,20 +65,13 @@ $categoriasControl = new CategoriasControl();
                      foreach ($value as $key2 => $value2) {
                         $$key2 = $value2;
                      }
-                     echo "<option value='$id_categoria'>$categoria</option>";
+                     $selected = (isset($dataToMod[0]['categoria']) && 
+                     $categoria == $dataToMod[0]['categoria'])? 'selected':'';
+                     echo "<option value='$id_categoria' $selected>$categoria</option>";
                   }
                ?>
             </select>
             <br/>
-            <input type="text" name="id_articulo" 
-            <?php 
-               if(isset($_POST)){
-                  $id = $_POST['id_articulo'];
-                  echo "value='$id' ";
-               }
-            ?>
-            hidden>
-
             <p class="center-content">
             <input type="submit" class="btn-azul" value="GUARDAR"/>
             </p>
@@ -109,16 +113,16 @@ $categoriasControl = new CategoriasControl();
                   </div>
                   <div id='row-actions'>
                   <td>
-                     <form method='POST' >
+                     <form method='POST' id='editForm'>
                         <input type='text' name='id_articulo' value='$id_articulo' hidden>
-                        <input type='submit' class='btn-table' value='Editar'>
+                        <input type='submit' class='btn-table' value='Editar' id='btn-editar'>
                      </form>
                   </td>
                   <td>
-                     <form method='POST' >
+                     <form method='POST' action='stock_acciones.php' id='deleteForm' >
                         <input type='text' name='id_articulo' value='$id_articulo' hidden>
-                        <input type='submit' class='btn-table' value='Desactivar'>
                      </form>
+                     <button id='btn-desactivar' class='btn-table'>Desactivar</button>
                   </td>
                   </div>";
                   echo "</tr>";

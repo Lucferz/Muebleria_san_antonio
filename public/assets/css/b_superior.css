@@ -20,7 +20,6 @@
 	color: white;
 	font-size: 20px;
 	border: none;
-	align-content: ;
 }
 
 .dropdown-content{
@@ -315,13 +314,15 @@ input:-moz-placeholder {
 td, th {
 	border:  blue 1px solid;
 }
+td{
+	text-align: center;
+}
 
 .btn-table{
 	color: #4C48EB;
+	border: none;
 	background: transparent;
 }
-
-
 
 
 

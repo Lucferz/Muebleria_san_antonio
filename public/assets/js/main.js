@@ -1,3 +1,4 @@
+/*Modal de Insertar*/
 document.addEventListener("DOMContentLoaded", function(event) {
     // Get the modal
     var modal = document.getElementById("myModal");
@@ -36,10 +37,30 @@ function reloadPage(identifier){
     }, 2000)
 }*/
 
-
-document.addEventListener('DOMContentLoading', function(){
+/*Limpiar campos del formulario*/
+document.addEventListener('unload', function(){
     let formulario = document.getElementById('dataform');
     formulario.addEventListener('submit', function() {
       formulario.reset();
     });
   });
+
+/*Preguntar si realmente quiere eliminar el elemento */
+document.addEventListener('DOMContentLoaded', function(){
+    var btn_del = document.getElementById("btn-desactivar");
+
+    btn_del.onclick = function(event){
+        if (window.confirm("¿Esta seguro de querer desactivar el elemento?")) {
+            form = document.getElementById('deleteForm');
+
+            formField = document.createElement('input');
+            formField.type = 'hidden';
+            formField.name = 'del';
+            formField.value = 'si';
+        
+            form.appendChild(formField);
+            form.submit();
+        }
+    }
+});
+    
