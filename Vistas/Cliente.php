@@ -92,6 +92,7 @@ $clientes_control = new ClientesControl();
                   echo "<div id='row-content'>
                   <td>$id_cliente</td>
                   <td>$ci</td>
+                  <td>$cliente</td>
                   <td>$direccion</td>
                   <td>$telefono</td>
                   <td>$ruc</td>

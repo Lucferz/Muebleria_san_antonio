@@ -34,5 +34,5 @@
         
     }
 
-    echo "<br/><br/><br/><a href='vistaCliente.php'>Ir a Cliente</a>"
+    echo "<br/><br/><br/><a href='Cliente.php'>Ir a Cliente</a>"
 ?>
