@@ -2,7 +2,6 @@
 include("../Controlador/ClientesControl.php");
 $clientes_control = new ClientesControl();
 ?>
-
    <div id="cuerpo">
       <div id="cabecera-botones">
          <div class="flexsearch">
@@ -16,9 +15,7 @@ $clientes_control = new ClientesControl();
                </div>
          </div>
          <div id="articulos-buttons-container">
-         	<!-- aca deben ir los botones-->
-         	<!-- Trigger/Open The Modal -->
-			<button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Cliente</button>
+         	<button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Cliente</button>
          </div>
       </div>
       <div id="tabla">
@@ -26,36 +23,46 @@ $clientes_control = new ClientesControl();
    </div>
 		<!-- The Modal -->
 		<div id="myModal" class="modal">
-
   			<!-- Modal content -->
-  			<div class="modal-content">
-   				 
-					<form action="" class= "modal-form" method="POST">
+  			<div class="modal-content"> 
+					<form method="POST" class= "modal-form" action="clientes_acciones.php" id="dataform">
+            <?php 
+               $dataToMod;
+               if (isset($_POST) && isset($_POST['id_cliente'])){
+                  $dataToMod = $clientes_control->read($_POST['id_cliente']);
+                  echo '<script type="text/javascript"> document.all.myModal.style.display = "block"</script>';
+               }
+            ?>
 						<span class="close"><ion-icon name="close-outline"></ion-icon></span>
 						<h1 class="titulo-modal">Nuevo Cliente</h1>
 						
 						<p>Cliente:</p>
-						<input type="text" name="cliente" class="field"> <br/>
+						<input type="text" name="cliente" value="<?php echo isset($dataToMod[0]['cliente'])? $dataToMod[0]['cliente']:'' ?>" 
+                  class="field" required> <br/>
 
 						<p>CI:</p>
-						<input type="text" name="ci" class="field"> <br/>
+						<input type="text" name="ci" value="<?php echo isset($dataToMod[0]['ci'])? $dataToMod[0]['ci']:'' ?>" 
+                  class="field" required> <br/>
 
 						<p>RUC:</p>
-						<input type="text" name="ruc" class="field"> <br/>
+						<input type="text" name="ruc" value="<?php echo isset($dataToMod[0]['ruc'])? $dataToMod[0]['ruc']:'' ?>" 
+                  class="field" required> <br/>
 
 						<p>Telefono:</p>
-						<input type="text" name="tel" class="field"> <br/>
+						<input type="text" name="telefono" value="<?php echo isset($dataToMod[0]['telefono'])? $dataToMod[0]['telefono']:'' ?>" 
+                  class="field" required> <br/>
 		
 						<p>Direccion:</p>
-						<input type="text" name="direccion" class="field"> <br/>
+						<input type="text" name="direccion" value="<?php echo isset($dataToMod[0]['direccion'])? $dataToMod[0]['direccion']:'' ?>" 
+                  class="field" required> <br/>
 
                   <br/>
-                  <input type="text" name="id_cliente" hidden>
+                    <input type="text" name="id_cliente" 
+                     value="<?php echo isset($dataToMod[0]['id_cliente'])? $dataToMod[0]['id_cliente']:'' ?>" hidden>
 
 						<p class="center-content">
 						<input type="submit" class="btn-azul" value="GUARDAR">
 						</p>
-
 					</form>
   			</div>
 		</div>
@@ -85,19 +92,28 @@ $clientes_control = new ClientesControl();
                   echo "<div id='row-content'>
                   <td>$id_cliente</td>
                   <td>$ci</td>
-                  <td>$cliente</td>
                   <td>$direccion</td>
                   <td>$telefono</td>
                   <td>$ruc</td>
                   <td>$estado</td>
                   </div>
                   <div id='row-actions'>
-                  <td><a href='"./*$clientes_control->update()*/"'>Modificar</a></td>
-                  <td><a href='"./*$cliente_control->delete()*/"'></a>Desactivar</td>
+                  <td>
+                     <form method='POST' id='editForm'>
+                        <input type='text' name='id_cliente' value='$id_cliente' hidden>
+                        <input type='submit' class='btn-table' value='Editar' id='btn-editar'>
+                     </form>
+                  </td>
+                  <td>
+                     <form method='POST' action='clientes_acciones.php' id='deleteForm' >
+                        <input type='text' name='id_cliente' value='$id_cliente' hidden>
+                     </form>
+                     <button id='btn-desactivar' class='btn-table'>Desactivar</button>
+                  </td>
                   </div>";
                   echo "</tr>";
                }
-            ?>    
+            ?>
          </tbody>
       </table>
 </div>		
