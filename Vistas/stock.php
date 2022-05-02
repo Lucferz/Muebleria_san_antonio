@@ -54,6 +54,7 @@ $categoriasControl = new CategoriasControl();
             <p>EXISTENCIAS:</p>
             <input type="text" name="existencias" value="<?php echo isset($dataToMod[0]['existencias'])? $dataToMod[0]['existencias']:'' ?>" 
             class="field" required> <br/><br/><br/>
+            
             <input type="text" name="id_articulo" 
             value="<?php echo isset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>" hidden>
             <span>CATEGORIA:</span>

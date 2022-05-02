@@ -22,7 +22,7 @@
 			return $this->usuaDAO->read($id_usuario);
 		}
 		public function update( $usuario = array()){
-			return $this->usuaDAO->update($articulo);
+			return $this->usuaDAO->update($usuario);
 		}
 		public function delete($usuario = array()){
 			return $this->usuaDAO->delete($usuario);
