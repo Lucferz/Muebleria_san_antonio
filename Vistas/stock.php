@@ -119,10 +119,10 @@ $categoriasControl = new CategoriasControl();
                      </form>
                   </td>
                   <td>
-                     <form method='POST' action='stock_acciones.php' id='deleteForm' >
+                     <form method='POST' action='stock_acciones.php' id='deleteForm$id_articulo' >
                         <input type='text' name='id_articulo' value='$id_articulo' hidden>
                      </form>
-                     <button id='btn-desactivar' class='btn-table'>Desactivar</button>
+                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_articulo);\" >Desactivar</button>
                   </td>
                   </div>";
                   echo "</tr>";

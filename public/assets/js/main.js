@@ -46,21 +46,18 @@ document.addEventListener('unload', function(){
   });
 
 /*Preguntar si realmente quiere eliminar el elemento */
-document.addEventListener('DOMContentLoaded', function(){
-    var btn_del = document.getElementById("btn-desactivar");
+function desactivar(numero){
+    if (window.confirm("¿Esta seguro de querer desactivar el elemento?")) {
+        var idForm = 'deleteForm' + numero.toString(); 
+        form = document.getElementById(idForm);
 
-    btn_del.onclick = function(event){
-        if (window.confirm("¿Esta seguro de querer desactivar el elemento?")) {
-            form = document.getElementById('deleteForm');
-
-            formField = document.createElement('input');
-            formField.type = 'hidden';
-            formField.name = 'del';
-            formField.value = 'si';
-        
-            form.appendChild(formField);
-            form.submit();
-        }
+        formField = document.createElement('input');
+        formField.type = 'hidden';
+        formField.name = 'del';
+        formField.value = 'si';
+    
+        form.appendChild(formField);
+        form.submit();
     }
-});
+}
     
