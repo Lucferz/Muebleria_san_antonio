@@ -2,7 +2,7 @@
     class Clientes{
         private $id_cliente;
 		private $cliente;
-		private $tel;
+		private $telefono;
 		private $direccion;
 		private $ci;
 		private $ruc;
@@ -10,10 +10,10 @@
 		private $fecha_alta;
 		private $fecha_mod;
 
-        public function __construct($id_cliente, $cliente, $tel, $direccion, $ci, $ruc, $estado, $f_alta, $f_mod){
+        public function __construct($id_cliente, $cliente, $telefono, $direccion, $ci, $ruc, $estado, $f_alta, $f_mod){
             $this->id_cliente = $id_cliente;
             $this->cliente = $cliente;
-            $this->tel = $tel;
+            $this->telefono = $telefono;
             $this->direccion = $direccion;
             $this->ci = $ci;
             $this->ruc = $ruc;
@@ -27,7 +27,7 @@
             $data = array(
             	'id_cliente' => $this->id_cliente,
             	'cliente' => $this->cliente,
-            	'telefono' => $this->tel,
+            	'telefono' => $this->telefono,
            	 	'direccion' => $this->direccion,
             	'ci' => $this->ci,
             	'ruc' => $this->ruc,
