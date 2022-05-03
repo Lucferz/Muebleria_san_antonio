@@ -46,7 +46,7 @@ $clientes_control = new ClientesControl();
 
 						<p>RUC:</p>
 						<input type="text" name="ruc" value="<?php echo isset($dataToMod[0]['ruc'])? $dataToMod[0]['ruc']:'' ?>" 
-                  class="field" required> <br/>
+                  class="field"> <br/>
 
 						<p>Telefono:</p>
 						<input type="text" name="telefono" value="<?php echo isset($dataToMod[0]['telefono'])? $dataToMod[0]['telefono']:'' ?>" 
