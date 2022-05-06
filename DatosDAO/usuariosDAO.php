@@ -16,7 +16,7 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO usuarios (id_usuario, Nombre,usuario,password,estado,fecha_alta, fecha_mod,fk_tipo_usuario) VALUES ($id_usuario,'$Nombre', '$usuario', '$password',
+            $this->query = "INSERT INTO usuarios (Nombre,usuario,password,estado,fecha_alta, fecha_mod,fk_tipo_usuario) VALUES (    '$Nombre', '$usuario', '$password',
                 true, CURRENT_TIMESTAMP, null, $fk_tipo_usuario)";
             $this->set_query();
         }

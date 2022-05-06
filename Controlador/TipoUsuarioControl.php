@@ -19,7 +19,7 @@
 			return $this->tipusuaDAO->create($tipo);
 		}
 		public function read($id_usuario = ''){
-			return $this->tipusuaDAO->read($id_tipo_user);
+			return $this->tipusuaDAO->read($id_usuario);
 		}
 		public function update( $usuario = array()){
 			return $this->tipusuaDAO->update($tipo);

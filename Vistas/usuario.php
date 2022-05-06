@@ -64,7 +64,7 @@ $tipousuarioControl = new tipousuarioControl();
                         $$key2 = $value2;
                      }
                      $selected = (isset($dataToMod[0]['tipo']) && 
-                     $tipousuario == $dataToMod[0]['tipo'])? 'selected':'';
+                     $tipo == $dataToMod[0]['tipo'])? 'selected':'';
                      echo "<option value='$id_tipo_usuario' $selected>$tipo</option>";
                   }
                ?>
@@ -115,10 +115,10 @@ $tipousuarioControl = new tipousuarioControl();
                      </form>
                   </td>
                   <td>
-                     <form method='POST' action='usuario_acciones.php' id='deleteForm' >
+                     <form method='POST' action='usuario_acciones.php' id='deleteForm$id_usuario' >
                         <input type='text' name='id_usuario' value='$id_usuario' hidden>
                      </form>
-                     <button id='btn-desactivar' class='btn-table'>Desactivar</button>
+                      <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_usuario);\" >Desactivar</button>
                   </td>
                   </div>";
                   echo "</tr>";

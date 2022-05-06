@@ -13,7 +13,6 @@ $tipousuarioControl = new tipousuarioControl();
     if(isset($_POST)){
         $data = $_POST;
         echo "<br>Entro en el primer if";
-                echo "<br>Entro en eliminar";
         if ($data['id_usuario']!= null && $data['id_usuario'] != '' && !isset($data['del'])){
             echo "<br>Entro en editar";
             $usuarios_control->update($data);

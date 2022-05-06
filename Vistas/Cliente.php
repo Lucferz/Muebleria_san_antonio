@@ -106,10 +106,10 @@ $clientes_control = new ClientesControl();
                      </form>
                   </td>
                   <td>
-                     <form method='POST' action='clientes_acciones.php' id='deleteForm' >
+                     <form method='POST' action='clientes_acciones.php' id='deleteForm$id_cliente' >
                         <input type='text' name='id_cliente' value='$id_cliente' hidden>
                      </form>
-                     <button id='btn-desactivar' class='btn-table'>Desactivar</button>
+                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_cliente);\" >Desactivar</button>
                   </td>
                   </div>";
                   echo "</tr>";
