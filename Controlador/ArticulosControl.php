@@ -27,5 +27,9 @@
 		public function delete($articulo = array()){
 			return $this->artiDAO->delete($articulo);
 		}
+
+		public function reactivar($articulo = array()){
+			return $this->artiDAO->reactivar($articulo);
+		}
 	}
 ?>
