@@ -57,7 +57,7 @@
         }
 
         public function reactivar( $articulos = array()){
-            foreach ($cliente as $key => $value) {
+            foreach ($articulos as $key => $value) {
                 $$key = $value;
             }
             $this->query = "UPDATE articulos a SET estado = true, fecha_modificacion = CURRENT_TIMESTAMP WHERE a.id_articulo =$id_articulo";
