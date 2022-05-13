@@ -62,10 +62,10 @@
         }
     }
 
-  /*  $clienteDAO = new clientesDAO();
-    $cliente = new Clientes(1, "lucas", "un numero", "Mi casa", "un ci", "un ruc", null, null, null);
+    /*$clienteDAO = new clientesDAO();
+    $cliente = new Clientes(5, "lucas", "un numero", "Mi casa", "un ci", "un ruc", null, null, null);
     echo "<pre>";
-    var_dump($cliente->toArray());
+    var_dump($cliente->toArray(5));
     echo "</pre>";
 
     $clienteDAO->reactivar($cliente->toArray());

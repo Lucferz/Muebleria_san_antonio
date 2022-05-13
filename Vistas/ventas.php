@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +5,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <title>Ventas</title>
 
-   <link rel="stylesheet" type="text/css" href="../public/assets/css/b_superior.css">
+   <link rel="stylesheet" type="text/css" href="../public/assets/css/estiloventas.css">
+   <link rel="stylesheet" type="text/css" href="../public/assets/css/styles.css">
 
 </head>
 <body>
