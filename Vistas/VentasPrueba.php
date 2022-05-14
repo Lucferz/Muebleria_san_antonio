@@ -32,9 +32,10 @@
         <label for="clname">Cliente</label>
       </div>
       <div class="col-75"> 
-              <input class="flexsearch--input" type="search" id="clname" placeholder="Cliente" >
-      <!--  <input type="text" id="fname" name="firstname" placeholder="Your name.."> -->
-
+             <input type="search" class="flexsearch--input" placeholder="Cliente">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icono" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+  </svg>
       </div>
           <button class="nuevo-cliente"><ion-icon name="add-outline"></ion-icon></button>
     </div>
@@ -43,8 +44,10 @@
         <label for="arname">Articulo</label>
       </div>
       <div class="col-75">
-      <input class="flexsearch--input" type="search" id="arname" placeholder="Articulo"> 
-    <!--    <input type="text" id="lname" name="lastname" placeholder="Your last name.."> -->
+        <input class="flexsearch--input" type="search" id="arname" placeholder="Articulo" autocomplete="on"> 
+        <svg xmlns="http://www.w3.org/2000/svg" class="icono" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+  </svg>
       </div>
     </div>
     

@@ -32,6 +32,27 @@ input[type=text]{
   resize: vertical;
 }
 
+.flexsearch--input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  resize: vertical;
+  box-sizing: border-box;
+  color: #191919;
+}
+
+.icono {
+  color: #191919;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
 	#cuotas {
   padding: 12px;
   border: 1px solid #ccc;
@@ -52,13 +73,7 @@ label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
-.flexsearch--input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  resize: vertical;
-}
+
 
 .confirmar{
     background-color:  rgb(72, 76, 235);
@@ -90,7 +105,7 @@ input[type=submit]:hover {
 .col-25 {
   float: left;
   /* margin-left: 150px; */
-   width: 7%; 
+  width: 7%; 
   margin-top: 6px;
   text-align: left;
 }
@@ -99,6 +114,7 @@ input[type=submit]:hover {
   float: left;
   width: 70%;
   margin-top: 6px;
+  position: relative;
 }
 
 .nuevo-cliente{
@@ -108,8 +124,7 @@ input[type=submit]:hover {
   margin-left: 8px;
   border-radius: 50%;
   background-color: white;
-  border-color: rgb(72, 76, 235); 
-  
+  border-color: rgb(72, 76, 235);  
 }
 
 
