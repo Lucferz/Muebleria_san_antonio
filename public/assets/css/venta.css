@@ -69,6 +69,11 @@ input[type=text]{
   background-color:  rgb(72, 76, 235, .8);
   color: white;
 }
+
+ option {
+  background-color: white;
+  color: black;
+ }
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
