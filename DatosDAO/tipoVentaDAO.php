@@ -21,9 +21,9 @@
             $this->set_query();
         }
 
-        public function read($id_tipo_venta = ''){
-            $this->query = ($id_tipo_venta == '')? "SELECT * FROM tipo_venta t"
-            :"SELECT * FROM tipo_venta t WHERE t.id_tipo_venta = $id_tipo_venta";
+        public function read($id = ''){
+            $this->query = ($id == '')? "SELECT * FROM tipo_venta t"
+            :"SELECT * FROM tipo_venta t WHERE t.id = $id";
             $this->get_query();
 
             $data = array();
@@ -40,7 +40,7 @@
             }
 
             $this->query = "UPDATE tipo_venta SET tipo_venta ='$tipo', cuotas = '$cuotas'
-            WHERE id_tipo_venta =$id_tipo_venta";
+            WHERE id =$id";
             $this->set_query();
         }
 
@@ -48,7 +48,7 @@
             foreach ($tipo as $key => $value) {
                 $$key = $value;
             }
-            $this->query = "UPDATE tipo_venta SET estado = false WHERE id_tipo_venta =$id_tipo_venta";
+            $this->query = "UPDATE tipo_venta SET estado = false WHERE id =$id";
             $this->set_query();
         }
 
@@ -56,7 +56,7 @@
             foreach ($tipo as $key => $value) {
                 $$key = $value;
             }
-            $this->query = "UPDATE tipo_venta t SET estado = true WHERE t.id_tipo_venta =$id_tipo_venta";
+            $this->query = "UPDATE tipo_venta t SET estado = true WHERE t.id =$id";
             $this->set_query();
         }
     }

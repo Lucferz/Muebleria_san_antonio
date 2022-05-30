@@ -16,8 +16,8 @@
 		public function create($tipo = array()){
 			return $this->tipoVentaDAO->create($tipo);
 		}
-		public function read($id_tipo_venta = ''){
-			return $this->tipoVentaDAO->read($id_tipo_venta);
+		public function read($id = ''){
+			return $this->tipoVentaDAO->read($id);
 		}
 		public function update( $tipo = array()){
 			return $this->tipoVentaDAO->update($tipo);
