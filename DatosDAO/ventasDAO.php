@@ -24,18 +24,15 @@
         }
 
         public function read($id_venta = ''){
-            $this->query = ($id_venta == '')?
-             "SELECT 
+            $this->query = ($id_venta == '')? "SELECT 
                 v.id_venta,
                 c.cliente, 
-                c.ci,
-                c.ruc,
-                u.Nombre,
-                tv.tipo, 
+                u.Nombre as vendedor,
+                tv.tipo as tipo_venta, 
                 tc.comprobante,
                 v.num_factura,
                 v.num_ticket, 
-                a.descripcion, 
+                a.descripcion as articulo, 
                 v.cantidad, 
                 v.descuento, 
                 v.total, 
@@ -46,18 +43,16 @@
                 join tipo_venta tv on v.fk_tipo_venta = tv.id 
                 join clientes c on v.fk_cliente = c.id_cliente 
                 join usuarios u on v.fk_usuario = u.id_usuario 
-                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante;"
+                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante"
             :"SELECT 
                 v.id_venta,
                 c.cliente, 
-                c.ci,
-                c.ruc,
-                u.Nombre,
-                tv.tipo, 
+                u.Nombre as vendedor,
+                tv.tipo as tipo_venta, 
                 tc.comprobante,
                 v.num_factura,
                 v.num_ticket, 
-                a.descripcion, 
+                a.descripcion as articulo, 
                 v.cantidad, 
                 v.descuento, 
                 v.total, 
@@ -68,7 +63,7 @@
                 join tipo_venta tv on v.fk_tipo_venta = tv.id 
                 join clientes c on v.fk_cliente = c.id_cliente 
                 join usuarios u on v.fk_usuario = u.id_usuario 
-                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante; 
+                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante 
             WHERE 
                 v.id_venta = $id_venta";
             $this->get_query();
