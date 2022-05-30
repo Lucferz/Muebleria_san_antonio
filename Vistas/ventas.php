@@ -15,7 +15,7 @@ $ventas_control = new VentasControl();
                </div>
          </div>
          <div id="articulos-buttons-container">
-            <a href="VentasPrueba.php"><button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nueva Venta</button></a>
+            <a href="NuevaVenta.php"><button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nueva Venta</button></a>
             <button class="btn-informe"><ion-icon name="document-text-outline"></ion-icon> Informe de Inventario</button>
          </div>
       </div>

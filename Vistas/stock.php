@@ -102,7 +102,13 @@ $categoriasControl = new CategoriasControl();
                   foreach ($value as $key2 => $value2) {
                      $$key2 = $value2;
                   }
-                  $status = $estado?'Activo':'Inactivo';
+                  if($estado){
+                     $status = 'Activo';
+                     $btnDelLabel = 'Desactivar';
+                  }else{
+                     $status = 'Inactivo';
+                     $btnDelLabel = 'Reactivar';
+                  }
                   echo "<div id='row-content'>
                   <td>$id_articulo</td>
                   <td>$descripcion</td>
@@ -123,7 +129,7 @@ $categoriasControl = new CategoriasControl();
                      <form method='POST' action='stock_acciones.php' id='deleteForm$id_articulo' >
                         <input type='text' name='id_articulo' value='$id_articulo' hidden>
                      </form>
-                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_articulo);\" >Desactivar</button>
+                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_articulo);\" >$btnDelLabel</button>
                   </td>
                   </div>";
                   echo "</tr>";
