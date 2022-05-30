@@ -15,7 +15,7 @@ $clientes_control = new ClientesControl();
                </div>
          </div>
          <div id="articulos-buttons-container">
-         	<button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Cliente</button>
+         	<button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nueva Venta</button>
          </div>
       </div>
       <div id="tabla">
@@ -71,12 +71,14 @@ $clientes_control = new ClientesControl();
          <thead>
             <tr>
                <th>ID</th>
-               <th>CI</th>
                <th>CLIENTE</th>
-               <th>DIRECCION</th>
-               <th>TELEFONO</th>
-               <th>RUC</th>
-               <th>ESTADO</th>
+               <th>ARTICULO</th>
+               <th>VENDEDOR</th>
+               <th>FECHA VENTA</th>
+               <th>TIPO VENTA</th>
+               <th>PRECIO VENTA</th>
+               <th>ENTREGA</th>
+               <th>FACTURA</th>
                <th colspan="2">ACCIONES</th>
             </tr>
          </thead>
@@ -121,6 +123,3 @@ $clientes_control = new ClientesControl();
 <?php
 	include("includes/footer.html");
 ?>
-
-
-
