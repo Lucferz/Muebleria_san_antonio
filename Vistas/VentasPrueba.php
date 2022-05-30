@@ -35,19 +35,19 @@
              <input type="search" class="flexsearch--input" placeholder="Cliente">
             <svg xmlns="http://www.w3.org/2000/svg" class="icono" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-  </svg>
-      </div>
-          <button class="nuevo-cliente"><ion-icon name="add-outline"></ion-icon></button>
-    </div>
-    <div class="row">
-      <div class="col-25">
-        <label for="arname">Articulo</label>
-      </div>
-      <div class="col-75">
-        <input class="flexsearch--input" type="search" id="arname" placeholder="Articulo" autocomplete="on"> 
-        <svg xmlns="http://www.w3.org/2000/svg" class="icono" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-  </svg>
+        </svg>
+            </div>
+                <button class="nuevo-cliente"><ion-icon name="add-outline"></ion-icon></button>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="arname">Articulo</label>
+            </div>
+            <div class="col-75">
+              <input class="flexsearch--input" type="search" id="arname" placeholder="Articulo" autocomplete="on"> 
+              <svg xmlns="http://www.w3.org/2000/svg" class="icono" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+        </svg>
       </div>
     </div>
     
@@ -57,7 +57,7 @@
       </div>
       <div class="col-75">
                <!-- <input class="flexsearch--input" type="search" placeholder="Cliente"> -->
-      <input type="text" id="fname" name="firstname" placeholder="Entrega"> 
+        <input type="text" id="fname" name="firstname" placeholder="Entrega"> 
       </div>
     </div>
     
@@ -84,13 +84,13 @@
       <input type="text" id="aname" name="firstname" placeholder="Descuento"> 
       </div>
     </div>
-<br>
- <label class="container">Generar Factura
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-  </label>
+    <br>
+    <label class="container">Generar Factura
+      <input type="checkbox" checked="checked">
+      <span class="checkmark"></span>
+    </label>
 
-   <br>
+    <br>
     <div class="row">
       <button class="confirmar">Confirmar</button>
     </div>

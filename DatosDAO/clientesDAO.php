@@ -22,7 +22,7 @@
         }
 
         public function read($id_cliente = ''){
-            $this->query = ($id_cliente == '')? "SELECT * FROM clientes c WHERE c.estado = true"
+            $this->query = ($id_cliente == '')? "SELECT * FROM clientes c "
             :"SELECT * FROM clientes c WHERE c.id_cliente = $id_cliente";
             $this->get_query();
 

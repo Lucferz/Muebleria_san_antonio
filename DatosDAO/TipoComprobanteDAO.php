@@ -19,7 +19,8 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO tipo_comprobante (id_tipo_comprobante , comprobante, num_factura, num_serie_ticket) VALUES ($id_tipo_comprobante, '$comprobante',  '$num_factura', '$num_serie_ticket')";
+            $this->query = "INSERT INTO tipo_comprobante (id_tipo_comprobante , comprobante, num_factura, num_serie_ticket) 
+            VALUES ($id_tipo_comprobante, '$comprobante',  '$num_factura', '$num_serie_ticket')";
 
             $this->set_query();
         }

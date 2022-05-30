@@ -5,7 +5,7 @@
 	class VentasDAO extends Base
 	{
 
-		function __construct(argument){
+		function __construct(){
 		}
 
 		function __destruct(){
@@ -16,14 +16,61 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO ventas(fk_articulo, fk_tipo_venta, fk_cliente, fk_usuario, fk_tipo_comprobante, descuento, cantidad, total, fecha_emision, fecha_mod, num_factura, num_ticket, estado) VALUES ($fk_articulo, $fk_tipo_venta, $fk_cliente, $fk_usuario, $fk_tipo_comprobante, $descuento, $cantidad, $total, CURRENT_TIMESTAMP,null, $num_factura, $num_ticket, true)";
+            $this->query = "INSERT INTO ventas(fk_articulo, fk_tipo_venta, fk_cliente, fk_usuario, fk_tipo_comprobante, descuento, cantidad, total, 
+            fecha_emision, fecha_mod, num_factura, num_ticket, estado) 
+            VALUES ($fk_articulo, $fk_tipo_venta, $fk_cliente, $fk_usuario, $fk_tipo_comprobante, $descuento, $cantidad, $total, 
+            CURRENT_TIMESTAMP,null, $num_factura, $num_ticket, true)";
             $this->set_query();
         }
 
         public function read($id_venta = ''){
             $this->query = ($id_venta == '')?
-             "SELECT v.id_venta, a.descripcion, tv.tipo , c.cliente, u.Nombre, tc.comprobante, v.descuento, v.cantidad, v.total, v.fecha_emision, v.fecha_mod, v.num_factura, v.num_ticket, v.estado FROM ventas v join articulos a on v.fk_articulo = a.id_articulo join tipo_venta tv on v.fk_tipo_venta = tv.id_tipo_Venta join clientes c on v.fk_cliente = c.id_cliente join usuarios u on v.fk_usuario = u.id_usuario join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante WHERE v.estado = true"
-            :"SELECT v.id_venta, a.descripcion, tv.tipo , c.cliente, u.Nombre, tc.comprobante, v.descuento, v.cantidad, v.total, v.fecha_emision, v.fecha_mod, v.num_factura, v.num_ticket, v.estado FROM ventas v join articulos a on v.fk_articulo = a.id_articulo join tipo_venta tv on v.fk_tipo_venta = tv.id_tipo_Venta join clientes c on v.fk_cliente = c.id_cliente join usuarios u on v.fk_usuario = u.id_usuario join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante WHERE v.estado = true and v.id_venta = $id_venta";
+             "SELECT 
+                v.id_venta,
+                c.cliente, 
+                c.ci,
+                c.ruc,
+                u.Nombre,
+                tv.tipo, 
+                tc.comprobante,
+                v.num_factura,
+                v.num_ticket, 
+                a.descripcion, 
+                v.cantidad, 
+                v.descuento, 
+                v.total, 
+                v.fecha_emision, 
+                v.fecha_mod,  
+                v.estado 
+            FROM ventas v join articulos a on v.fk_articulo = a.id_articulo 
+                join tipo_venta tv on v.fk_tipo_venta = tv.id 
+                join clientes c on v.fk_cliente = c.id_cliente 
+                join usuarios u on v.fk_usuario = u.id_usuario 
+                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante;"
+            :"SELECT 
+                v.id_venta,
+                c.cliente, 
+                c.ci,
+                c.ruc,
+                u.Nombre,
+                tv.tipo, 
+                tc.comprobante,
+                v.num_factura,
+                v.num_ticket, 
+                a.descripcion, 
+                v.cantidad, 
+                v.descuento, 
+                v.total, 
+                v.fecha_emision, 
+                v.fecha_mod,  
+                v.estado 
+            FROM ventas v join articulos a on v.fk_articulo = a.id_articulo 
+                join tipo_venta tv on v.fk_tipo_venta = tv.id 
+                join clientes c on v.fk_cliente = c.id_cliente 
+                join usuarios u on v.fk_usuario = u.id_usuario 
+                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante; 
+            WHERE 
+                v.id_venta = $id_venta";
             $this->get_query();
             $data = array();
             foreach ($this->rows as $key => $value) {
