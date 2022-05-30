@@ -1,8 +1,8 @@
 <?php include("includes/header.html");
 include("../Controlador/usuariosControl.php");
-include("../Controlador/TipoUsuarioControl.php") ;
+include("../Controlador/TipoUsuarioControl.php");
 $usuarios_control = new UsuariosControl();
-$tipousuarioControl = new tipousuarioControl();
+$tipousuarioControl = new TipoUsuarioControl();
 ?>
    <div id="cuerpo">
       <div id="cabecera-botones">
@@ -52,7 +52,7 @@ $tipousuarioControl = new tipousuarioControl();
             class="field" required> <br/>
 
             <input type="text" name="id_usuario" 
-            value="<?php echo isset($dataToMod[0]['id_usuario'])? $dataToMod[0]['id_usuario']:'' ?>" hidden>
+            value="<?php echo isset($dataToMod[0]['id_usuario'])? $dataToMod[0]['id_usuario']:''  ?>" hidden>
 
            <span>TIPO USUARIO:</span>
             <select id="tipo-select" name="fk_tipo_usuario" ><!--Aca hacer el read de Categorias-->

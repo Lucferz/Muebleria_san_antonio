@@ -8,7 +8,7 @@
 		private $tipusuaDAO;
 		public function __construct()
 		{
-			$this->tipusuaDAO = new TipousuarioDAO();
+			$this->tipusuaDAO = new TipoUsuarioDAO();
 		}
 
 		public function __destruct(){
