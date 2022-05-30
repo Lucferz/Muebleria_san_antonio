@@ -23,9 +23,9 @@
 
         public function read($id_usuario = ''){
             $this->query = ($id_usuario == '')? "SELECT u.id_usuario, u.Nombre,u.usuario,u.password,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
-            on u.fk_tipo_usuario  = t.id_tipo_usuario WHERE u.estado = true"
+            on u.fk_tipo_usuario  = t.id_tipo_usuario"
             :"SELECT u.id_usuario, u.Nombre,u.usuario,u.password,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
-            on u.fk_tipo_usuario  = t.id_tipo_usuario WHERE u.estado = true and u.id_usuario = $id_usuario";
+            on u.fk_tipo_usuario  = t.id_tipo_usuario WHERE u.id_usuario = $id_usuario";
             $this->get_query();
             //$num_rows = count($this->rows);
             $data = array();
