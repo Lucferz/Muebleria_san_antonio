@@ -25,5 +25,8 @@
 		public function delete($cliente = array()){
 			return $this->clientDAO->delete($cliente);
 		}
+		public function reactivar( $cliente = array()){
+			return $this->clientDAO->reactivar($cliente);
+		}
 	}
 ?>

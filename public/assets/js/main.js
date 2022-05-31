@@ -46,8 +46,9 @@ document.addEventListener('unload', function(){
   });
 
 /*Preguntar si realmente quiere eliminar el elemento */
-function desactivar(numero){
-    if (window.confirm("¿Esta seguro de querer desactivar el elemento?")) {
+function desactivar(numero, estado){
+    let pregunta = estado? "¿Esta seguro de querer desactivar el elemento?":"¿Esta seguro de querer reactivar el elemento?";
+    if (window.confirm(pregunta)) {
         var idForm = 'deleteForm' + numero.toString(); 
         form = document.getElementById(idForm);
 

@@ -116,7 +116,7 @@ $clientes_control = new ClientesControl();
                         <input type='text' name='id_cliente' value='$id_cliente' hidden>
                         <input type='text' name='estado' value='$estado' hidden>
                      </form>
-                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_cliente);\" >$btnDelLabel</button>
+                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_cliente,$estado);\" >$btnDelLabel</button>
                   </td>
                   </div>";
                   echo "</tr>";

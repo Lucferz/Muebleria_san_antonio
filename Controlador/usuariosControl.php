@@ -27,5 +27,8 @@
 		public function delete($usuario = array()){
 			return $this->usuaDAO->delete($usuario);
 		}
+		public function reactivar( $usuario = array()){
+			return $this->usuaDAO->reactivar($usuario);
+		}
 	}
 ?>

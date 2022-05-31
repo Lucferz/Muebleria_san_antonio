@@ -130,7 +130,7 @@ $categoriasControl = new CategoriasControl();
                         <input type='text' name='id_articulo' value='$id_articulo' hidden>
                         <input type='text' name='estado' value='$estado' hidden>
                      </form>
-                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_articulo);\" >$btnDelLabel</button>
+                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_articulo, $estado);\" >$btnDelLabel</button>
                   </td>
                   </div>";
                   echo "</tr>";

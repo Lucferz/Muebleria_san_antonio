@@ -55,7 +55,7 @@
             $this->set_query();
         }
 
-               public function reactivar( $usuario = array()){
+        public function reactivar( $usuario = array()){
             foreach ($usuario as $key => $value) {
                 $$key = $value;
             }
