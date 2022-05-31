@@ -63,11 +63,4 @@
             $this->set_query();
         }
     }
-
-/*    $usDAO = new UsuariosDAO();
-    $usu = new Usuarios(2,"Lucas", "Luc", "Luk12345", null, null, null, 1);
-
-    echo"<pre>";
-    var_dump($usDAO->read(2));
-    echo "</pre>"; */
 ?>

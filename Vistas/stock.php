@@ -18,7 +18,7 @@ $categoriasControl = new CategoriasControl();
          </div>
          <div id="articulos-buttons-container">
             <button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Articulo</button>
-            <button class="btn-informe"><ion-icon name="document-text-outline"></ion-icon> Informe de Inventario</button>
+            <button class="btn-informe"><ion-icon name="add-outline"></ion-icon> Nueva Categoria</button>
          </div>
       </div>
       <div id="tabla">
@@ -128,6 +128,7 @@ $categoriasControl = new CategoriasControl();
                   <td>
                      <form method='POST' action='stock_acciones.php' id='deleteForm$id_articulo' >
                         <input type='text' name='id_articulo' value='$id_articulo' hidden>
+                        <input type='text' name='estado' value='$estado' hidden>
                      </form>
                      <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_articulo);\" >$btnDelLabel</button>
                   </td>

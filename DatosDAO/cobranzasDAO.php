@@ -16,14 +16,36 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO cobranzas (fk_venta, fk_estado_cobranza, monto, fecha, estado,monto_cobrado) VALUES ($f_venta, $fk_estado_cobranza, $monto, CURRENT_TIMESTAMP, true, $monto_cobrado)";
+            $this->query = "INSERT INTO cobranzas (fk_venta, monto, fecha_cobro, fecha_cobrado, estado,monto_cobrado, fecha_modificado) VALUES ($fk_venta, $monto, $fecha_cobro, null, true, null, null)";
             $this->set_query();
         }
-
+        
+        //No se usa la tabla cobranzas porque le queda mejor para ver la tabla de estado_cobranza, pero solo cambia el sql
         public function read($id_cobranza = ''){
             $this->query = ($id_cobranza == '')?
-             "SELECT v.total, e.estado_cobranza, c.id_cobranza, c.monto, c.fecha,  c.fecha, c.estado, c.monto_cobrado FROM cobranzas c join ventas v on c.fk_venta = v.id_venta WHERE c.estado = true join estado_cobranza e on c.fk_estado_cobranza = e.id_estado_cobranza" 
-            :"SELECT v.total, e.estado_cobranza, c.id_cobranza, c.monto, c.fecha,  c.fecha, c.estado, c.monto_cobrado FROM cobranzas c join ventas v on v.fk_venta = c.id_categoria WHERE c.id_cobranza = $id_cobranza join estado_cobranza e on c.fk_estado_cobranza = e.id_estado_cobranza WHERE c.id_cobranza = $id_cobranza";
+             "SELECT
+                c.id_cobranza,
+                c.monto ,
+                c.fecha_cobro,
+                c.fecha_cobrado,
+                c.monto_cobrado,
+                u.Nombre as Cobrador,
+                ec.estado_cobranza
+            FROM 
+                estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
+                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)" 
+            :"SELECT
+                c.id_cobranza,
+                c.monto ,
+                c.fecha_cobro,
+                c.fecha_cobrado,
+                c.monto_cobrado,
+                u.Nombre as Cobrador,
+                ec.estado_cobranza
+            FROM 
+                estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
+                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario) 
+            WHERE c.id_cobranza = $id_cobranza";
             $this->get_query();
            
             $data = array();
@@ -39,7 +61,7 @@
                 $$key = $value;
             }
 
-            $this->query = "UPDATE cobranzas SET fk_venta = $fk_venta, fk_estado_cobranza = $fk_estado_cobranza, monto = $monto, fecha = CURRENT_TIMESTAMP, monto_cobrado = $monto_cobrado WHERE id_cobranza =$id_cobranza";
+            $this->query = "UPDATE cobranzas SET  fecha_cobrado = $fecha_cobrado, monto = $monto, fecha_modificado = CURRENT_TIMESTAMP, monto_cobrado = $monto_cobrado WHERE id_cobranza =$id_cobranza";
             $this->set_query();
         }
 
@@ -47,7 +69,7 @@
             foreach ($cobranza as $key => $value) {
                 $$key = $value;
             }
-            $this->query = "UPDATE cobranzas SET estado = false
+            $this->query = "UPDATE cobranzas SET estado = false, fecha_modificado = CURRENT_TIMESTAMP
             WHERE id_cobranza =$id_cobranza";
             $this->set_query();
         }
@@ -56,7 +78,7 @@
             foreach ($cobranzas as $key => $value) {
                 $$key = $value;
             }
-            $this->query = "UPDATE cobranzas a SET estado = true WHERE c.id_cobranza =$id_cobranza";
+            $this->query = "UPDATE cobranzas a SET estado = true, fecha_modificado = CURRENT_TIMESTAMP WHERE c.id_cobranza =$id_cobranza";
             $this->set_query();
         }
     }

@@ -55,14 +55,5 @@
             return "Esta clase no permite reactivacion";
         }
     }
-
- /*   $tDAO= new TipoUsuarioDAO();
-    $tipo = new TipoUsuario(2, "Yudith_2");
-    var_dump($tipo);
-    $tDAO->delete($tipo->toArray());
-
-echo"<pre>";
-    var_dump($tDAO->read());
-    echo "</pre>"; */
 ?>
 

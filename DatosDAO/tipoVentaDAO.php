@@ -60,40 +60,4 @@
             $this->set_query();
         }
     }
-
-
-
-    $tvDAO = new tipoVentaDAO();
-    $tipoVentaDAO = new tipoVenta(20,"contado_prueba", 5, null);
-
-
-    echo"<pre>";
-    var_dump($tvDAO->read(1));
-    echo "</pre>"; 
-
-
-    
-   
-     /*$clienteDAO = new clientesDAO();
-    $cliente = new Clientes(5, "lucas", "un numero", "Mi casa", "un ci", "un ruc", null, null, null);
-    echo "<pre>";
-    var_dump($cliente->toArray(5));
-    echo "</pre>";
-
-    $clienteDAO->reactivar($cliente->toArray());
-
-    $res = $clienteDAO->read();
-    echo "LISTARs<pre>";
-    var_dump($res);
-    echo "</pre>";*/
-
-
-
-/*  $usDAO = new UsuariosDAO();
-    $usu = new Usuarios(2,"Lucas", "Luc", "Luk12345", null, null, null, 1);
-
-    echo"<pre>";
-    var_dump($usDAO->read(2));
-    echo "</pre>"; */
-
 ?>

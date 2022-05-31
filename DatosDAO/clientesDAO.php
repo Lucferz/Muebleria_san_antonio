@@ -62,19 +62,6 @@
         }
     }
 
-    /*$clienteDAO = new clientesDAO();
-    $cliente = new Clientes(5, "lucas", "un numero", "Mi casa", "un ci", "un ruc", null, null, null);
-    echo "<pre>";
-    var_dump($cliente->toArray(5));
-    echo "</pre>";
-
-    $clienteDAO->reactivar($cliente->toArray());
-
-    $res = $clienteDAO->read();
-    echo "LISTARs<pre>";
-    var_dump($res);
-    echo "</pre>";*/
-
 
 
 
