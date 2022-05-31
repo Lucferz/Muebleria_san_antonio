@@ -9,9 +9,17 @@
         } else{
             if($data['id_cliente']!= null && $data['id_cliente'] != '' && isset($data['del']) && $data['del']=='si'){
                 $clientes_control->delete($data);
+                if($data['estado'] == 1){
+                    $clientes_control->delete($data);
+                }else{
+                    $clientes_control->reactivar($data);
+                }
             } else{
                 if($data['id_cliente']== null || $data['id_cliente'] == ''){
                     $clientes_control->create($data);
+                }else{
+                    header("Location: Cliente.php?error=true");
+                    die();
                 }
             }
         } 

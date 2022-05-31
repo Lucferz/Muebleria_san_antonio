@@ -88,7 +88,13 @@ $clientes_control = new ClientesControl();
                   foreach ($value as $key2 => $value2) {
                      $$key2 = $value2;
                   }
-                  $status = $estado?'Activo':'Inactivo';
+                  if($estado){
+                     $status = 'Activo';
+                     $btnDelLabel = 'Desactivar';
+                  }else{
+                     $status = 'Inactivo';
+                     $btnDelLabel = 'Reactivar';
+                  }
                   echo "<div id='row-content'>
                   <td>$id_cliente</td>
                   <td>$ci</td>
@@ -96,7 +102,7 @@ $clientes_control = new ClientesControl();
                   <td>$direccion</td>
                   <td>$telefono</td>
                   <td>$ruc</td>
-                  <td>$estado</td>
+                  <td>$status</td>
                   </div>
                   <div id='row-actions'>
                   <td>
@@ -108,8 +114,9 @@ $clientes_control = new ClientesControl();
                   <td>
                      <form method='POST' action='clientes_acciones.php' id='deleteForm$id_cliente' >
                         <input type='text' name='id_cliente' value='$id_cliente' hidden>
+                        <input type='text' name='estado' value='$estado' hidden>
                      </form>
-                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_cliente);\" >Desactivar</button>
+                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_cliente);\" >$btnDelLabel</button>
                   </td>
                   </div>";
                   echo "</tr>";

@@ -10,10 +10,17 @@ $tipousuarioControl = new tipousuarioControl();
             $usuarios_control->update($data);
         } else{
             if($data['id_usuario']!= null && $data['id_usuario'] != '' && isset($data['del']) && $data['del']=='si'){
-                $usuarios_control->delete($data);
+                if($data['estado'] == 1){
+                    $usuarios_control->delete($data);
+                }else{
+                    $usuarios_control->reactivar($data);
+                }
             } else{
                 if($data['id_usuario']== null || $data['id_usuario'] == ''){
                     $usuarios_control->create($data);
+                }else{
+                    header("Location: usuario.php?error=true");
+                    die();
                 }
             }
         } 

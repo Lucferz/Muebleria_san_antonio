@@ -98,7 +98,13 @@ $tipousuarioControl = new TipoUsuarioControl();
                   foreach ($value as $key2 => $value2) {
                      $$key2 = $value2;
                   }
-                  $status = $estado?'Activo':'Inactivo';
+                  if($estado){
+                     $status = 'Activo';
+                     $btnDelLabel = 'Desactivar';
+                  }else{
+                     $status = 'Inactivo';
+                     $btnDelLabel = 'Reactivar';
+                  }
                   echo "<div id='row-content'>
                   <td>$id_usuario</td>
                   <td>$Nombre</td>
@@ -117,8 +123,9 @@ $tipousuarioControl = new TipoUsuarioControl();
                   <td>
                      <form method='POST' action='usuario_acciones.php' id='deleteForm$id_usuario' >
                         <input type='text' name='id_usuario' value='$id_usuario' hidden>
+                        <input type='text' name='estado' value='$estado' hidden>
                      </form>
-                      <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_usuario);\" >Desactivar</button>
+                      <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_usuario);\" >$btnDelLabel</button>
                   </td>
                   </div>";
                   echo "</tr>";
