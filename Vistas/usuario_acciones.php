@@ -4,7 +4,7 @@ include("../Controlador/TipoUsuarioControl.php") ;
 $usuarios_control = new UsuariosControl();
 $tipousuarioControl = new tipousuarioControl();
 
-    if(isset($_POST)){
+    if(isset($_POST) && array_key_exists('id_usuario', $_POST)){
         $data = $_POST;
         if ($data['id_usuario']!= null && $data['id_usuario'] != '' && !isset($data['del'])){
             $usuarios_control->update($data);

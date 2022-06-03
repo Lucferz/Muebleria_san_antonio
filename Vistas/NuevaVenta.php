@@ -26,7 +26,7 @@
 
 
 <div class="contenido">
-  <form action="/action_page.php">    
+  <form action="ventas_acciones.php" method="POST">    
     <div class="row">
       <div class="col-25">
         <label for="clname">Cliente</label>
@@ -86,7 +86,7 @@
     </div>
     <br>
     <label class="container">Generar Factura
-      <input type="checkbox" checked="checked">
+      <input type="checkbox">
       <span class="checkmark"></span>
     </label>
 

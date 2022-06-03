@@ -19,12 +19,11 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO categorias (id_categoria, categoria) VALUES ($id_categoria, '$categoria')";
+            $this->query = "INSERT INTO categorias (categoria) VALUES ('$categoria')";
             $this->set_query();
         }
-        public function read($id_categoria = ''){
-            $this->query = ($id_categoria == '')? "SELECT * FROM categorias"
-            :"SELECT * FROM categorias c WHERE c.id_categoria = $id_categoria";
+        public function read(){
+            $this->query =  "SELECT * FROM categorias";
             $this->get_query();
             //$num_rows = count($this->rows);
             $data = array();
@@ -34,6 +33,18 @@
 
             return $data;
         }
+        
+        public function findById($id_categoria){
+            $this->query = "SELECT * FROM categorias c WHERE c.id_categoria = $id_categoria";
+            $this->get_query();
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return $data;
+        }
+
         public function update( $cat = array()){
             foreach ($cat as $key => $value) {
                 $$key = $value;

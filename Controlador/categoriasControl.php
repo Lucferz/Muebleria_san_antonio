@@ -15,8 +15,11 @@
 		public function create($cat = array()){
 			return $this->catDAO->create($cat);
 		}
-		public function read($id_categoria = ''){
+		public function read(){
 			return $this->catDAO->read($id_categoria);
+		}
+		public function findById($id_categoria){
+			return $this->catDAO->findById($id_categoria);
 		}
 		public function update( $cat = array()){
 			return $this->catDAO->update($cat);
@@ -26,5 +29,4 @@
 		}
 
 	}
-
 ?>

@@ -4,7 +4,7 @@
     $articulos_control = new ArticulosControl();
     $categoriasControl = new CategoriasControl();
 
-    if(isset($_POST)){
+    if(isset($_POST) && array_key_exists('id_articulo', $_POST)){
         $data = $_POST;
         if ($data['id_articulo']!= null && $data['id_articulo'] != '' && !isset($data['del'])){
             $articulos_control->update($data);

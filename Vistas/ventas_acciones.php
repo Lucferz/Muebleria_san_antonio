@@ -7,7 +7,7 @@
     var_dump($data);
     echo "</pre>";
 
-    if(isset($_POST)){
+    if(isset($_POST)&& array_key_exists('colocar id de venta', $_POST)){
         $data = $_POST;
         echo "<br>Entro en el primer if";
         if ($data['id_usuario']!= null && $data['id_usuario'] != '' && !isset($data['del'])){
@@ -32,5 +32,5 @@
         
     }
 
-    echo "<br/><br/><br/><a href='usuario.php'>Ir a Usuario</a>"
+    echo "<br/><br/><br/><a href='NuevaVenta.php'>Ir a Nueva Venta</a>"
 ?>

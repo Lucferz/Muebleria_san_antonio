@@ -1,4 +1,4 @@
-/*Modal de Insertar*/
+/*Modal*/
 document.addEventListener("DOMContentLoaded", function(event) {
     // Get the modal
     var modal = document.getElementById("myModal");
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
     modal.style.display = "none";
+    location.replace(window.location.href);
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -45,10 +46,26 @@ document.addEventListener('unload', function(){
     });
   });
 
-/*Preguntar si realmente quiere eliminar el elemento */
+/*Preguntar si realmente quiere desactivar/reactivar el elemento */
 function desactivar(numero, estado){
     let pregunta = estado? "¿Esta seguro de querer desactivar el elemento?":"¿Esta seguro de querer reactivar el elemento?";
     if (window.confirm(pregunta)) {
+        var idForm = 'deleteForm' + numero.toString(); 
+        form = document.getElementById(idForm);
+
+        formField = document.createElement('input');
+        formField.type = 'hidden';
+        formField.name = 'del';
+        formField.value = 'si';
+    
+        form.appendChild(formField);
+        form.submit();
+    }
+}
+
+//Pregunta si realmente se quiere eliminar definitivamente un elemento
+function eliminar(numero){
+    if (window.confirm("¿Esta seguro de querer eliminar definitivamente el elemento?")) {
         var idForm = 'deleteForm' + numero.toString(); 
         form = document.getElementById(idForm);
 
