@@ -25,6 +25,7 @@
             $this->query = ($id_cobranza == '')?
              "SELECT
                 c.id_cobranza,
+                cli.cliente,
                 c.monto ,
                 c.fecha_cobro,
                 c.fecha_cobrado,
@@ -33,9 +34,12 @@
                 ec.estado_cobranza
             FROM 
                 estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
-                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)" 
+                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
+                JOIN ventas v ON (c.fk_venta = v.id_venta)
+                JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)" 
             :"SELECT
                 c.id_cobranza,
+                cli.cliente,
                 c.monto ,
                 c.fecha_cobro,
                 c.fecha_cobrado,
@@ -44,7 +48,9 @@
                 ec.estado_cobranza
             FROM 
                 estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
-                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario) 
+                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
+                JOIN ventas v ON (c.fk_venta = v.id_venta)
+                JOIN clientes cli ON (v.fk_cliente = cli.id_cliente) 
             WHERE c.id_cobranza = $id_cobranza";
             $this->get_query();
            
