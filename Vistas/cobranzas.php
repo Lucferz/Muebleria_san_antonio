@@ -9,7 +9,8 @@
 <body>
 <?php 
 include("../Controlador/CobranzasControl.php");
-$clientes_control = new CobranzasControl();
+$cobranzas_control = new CobranzasControl();
+
 ?>
 
           <div class="usuarios-select">
