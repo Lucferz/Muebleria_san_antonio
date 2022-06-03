@@ -1,0 +1,79 @@
+ 
+body{
+  font-family: 'Quicksand', sans-serif;
+    padding: 0 1.5em;
+}
+
+ #usuarios {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: auto;
+  float: right;
+  background-color:  rgb(72, 76, 235, .8);
+  color: white;
+}
+
+option {
+  background-color: white;
+  color: black;
+ }
+
+
+.logo {
+    display: flex;
+    text-align: center;
+    font-size: 2.2em;
+    align-items: center;
+}
+
+.logo img{
+  height: 80px;
+  margin-right: 30px;
+}
+
+h2 {
+  text-align: center;
+  color: #4C48EB;
+  font-size: 1em;
+  margin-bottom: 0px;
+}
+
+h3 {
+  text-align: center;
+  color: #0D0C0C;
+  font-size: 1.1em;
+  margin-bottom: 0px;
+}
+
+/* TABLA */
+
+#table{
+  margin-top: 50px;
+  margin-left: 80px;
+  height: 100%;
+  overflow:auto;
+  }
+
+.content-table{
+  border: black 1px solid;
+  width: 100%
+}
+
+td, th {
+  border:  blue 1px solid;
+  color: #101010;
+  font-weight: 500;
+}
+td{
+  text-align: center;
+}
+
+
+
+@media screen and (max-width: 500px) {
+  .logo, #table{
+    width: 80%;
+    margin-top: 0;
+  }
+  }
