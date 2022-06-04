@@ -10,7 +10,6 @@
 <?php 
 include("../Controlador/CobranzasControl.php");
 $cobranzas_control = new CobranzasControl();
-
 ?>
 
           <div class="usuarios-select">
@@ -35,8 +34,7 @@ $cobranzas_control = new CobranzasControl();
          <thead>
             <tr>
                <th>Cliente</th>
-               <th>Direccion</th>
-               <th>Telefono</th>
+               <th>Monto</th>
                <th>Estado</th>
             </tr>
          </thead>
@@ -50,8 +48,8 @@ $cobranzas_control = new CobranzasControl();
                   }
                   echo "<div id='row-content'>
                   <td>$cliente</td>
-                  <td>$direccion</td>
-                  <td>$telefono</td>
+                  <td>$monto</td>
+                  <td>$estado_cobranza</td>
                   
                   </div>
                   ";
