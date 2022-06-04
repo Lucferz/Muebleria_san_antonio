@@ -26,6 +26,14 @@
         } 
         
     } 
-    header("Location: stock.php");
-    die();
+
+	if(isset($_GET['action'])){
+		$action = $_GET;
+		if ($action['action']== 'search'){
+			$datos_busqueda = $articulos_control->buscar($action['search_key']);
+            echo $datos_busqueda;
+		}
+	}
+    // header("Location: stock.php");
+    // die();
 ?>

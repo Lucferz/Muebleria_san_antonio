@@ -10,12 +10,13 @@ $categoriasControl = new CategoriasControl();
                <div class="flexsearch--wrapper">
                   <form class="flexsearch--form" action="" method="post">
                      <div class="flexsearch--input-wrapper">
-                        <input class="flexsearch--input" type="search" placeholder="search">
+                        <input class="flexsearch--input" type="search" id="search-box" placeholder="search">
                      </div>
                      <input class="flexsearch--submit" type="submit" value="&#10140;"/>
                   </form>
                </div>
          </div>
+         
          <div id="articulos-buttons-container">
             <button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Articulo</button>
             <a href="categorias.php" ><button class="btn-informe"><ion-icon name="add-outline"></ion-icon> Nueva Categoria</button></a>
@@ -94,7 +95,7 @@ $categoriasControl = new CategoriasControl();
                <th colspan="2">ACCIONES</th>
             </tr>
          </thead>
-         <tbody>
+         <tbody id="tablaDatos">
             <?php
                $data_articulos = $articulos_control->read();
                foreach ($data_articulos as $key => $value) {
@@ -119,19 +120,19 @@ $categoriasControl = new CategoriasControl();
                   <td>$status</td>
                   </div>
                   <div id='row-actions'>
-                  <td>
-                     <form method='POST' id='editForm'>
-                        <input type='text' name='id_articulo' value='$id_articulo' hidden>
-                        <input type='submit' class='btn-table' value='Editar' id='btn-editar'>
-                     </form>
-                  </td>
-                  <td>
-                     <form method='POST' action='stock_acciones.php' id='deleteForm$id_articulo' >
-                        <input type='text' name='id_articulo' value='$id_articulo' hidden>
-                        <input type='text' name='estado' value='$estado' hidden>
-                     </form>
-                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_articulo, $estado);\" >$btnDelLabel</button>
-                  </td>
+                     <td>
+                        <form method='POST' id='editForm'>
+                           <input type='text' name='id_articulo' value='$id_articulo' hidden>
+                           <input type='submit' class='btn-table' value='Editar' id='btn-editar'>
+                        </form>
+                     </td>
+                     <td>
+                        <form method='POST' action='stock_acciones.php' id='deleteForm$id_articulo' >
+                           <input type='text' name='id_articulo' value='$id_articulo' hidden>
+                           <input type='text' name='estado' value='$estado' hidden>
+                        </form>
+                        <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_articulo, $estado);\" >$btnDelLabel</button>
+                     </td>
                   </div>";
                   echo "</tr>";
                }

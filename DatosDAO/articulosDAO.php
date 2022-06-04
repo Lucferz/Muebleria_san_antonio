@@ -36,6 +36,41 @@
             return $data;
         }
 
+        public function buscar($search_key){
+            $this->query = <<<query
+            SELECT 
+                a.id_articulo, 
+                a.descripcion , 
+                a.precio_compra, 
+                a.precio_venta, 
+                a.existencias, 
+                a.estado, 
+                c.categoria, 
+                a.fecha_alta, 
+                a.fecha_modificacion 
+            FROM 
+                articulos a join categorias c on (a.fk_categoria = c.id_categoria)
+            WHERE 
+                a.id_articulo LIKE '%$search_key%' OR
+                a.descripcion LIKE '%$search_key%' OR
+                a.precio_compra LIKE '%$search_key%' OR
+                a.precio_venta LIKE '%$search_key%' OR
+                a.existencias LIKE '%$search_key%' OR
+                a.estado LIKE '%$search_key%' OR
+                c.categoria LIKE '%$search_key%' OR
+                a.fecha_alta LIKE '%$search_key%' OR
+                a.fecha_modificacion LIKE '%$search_key%' 
+            query;
+
+            $this->get_query();
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return json_encode($data);
+        }
+
         public function update( $articulo = array()){
             foreach ($articulo as $key => $value) {
                 $$key = $value;

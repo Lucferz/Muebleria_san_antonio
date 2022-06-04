@@ -31,5 +31,9 @@
 		public function reactivar($articulo = array()){
 			return $this->artiDAO->reactivar($articulo);
 		}
+
+		public function buscar($search_key){
+			return $this->artiDAO->buscar($search_key);
+		}
 	}
 ?>
