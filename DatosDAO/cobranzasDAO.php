@@ -26,6 +26,7 @@
              "SELECT
                 c.id_cobranza,
                 cli.cliente,
+                cli.direccion,
                 c.monto ,
                 c.fecha_cobro,
                 c.fecha_cobrado,
@@ -40,6 +41,7 @@
             :"SELECT
                 c.id_cobranza,
                 cli.cliente,
+                cli.direccion,
                 c.monto ,
                 c.fecha_cobro,
                 c.fecha_cobrado,
