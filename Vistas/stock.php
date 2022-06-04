@@ -18,7 +18,7 @@ $categoriasControl = new CategoriasControl();
          </div>
          <div id="articulos-buttons-container">
             <button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Articulo</button>
-            <button class="btn-informe"><ion-icon name="add-outline"></ion-icon> Nueva Categoria</button>
+            <a href="categorias.php" ><button class="btn-informe"><ion-icon name="add-outline"></ion-icon> Nueva Categoria</button></a>
          </div>
       </div>
       <div id="tabla">
