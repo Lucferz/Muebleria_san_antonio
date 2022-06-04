@@ -140,5 +140,6 @@ $categoriasControl = new CategoriasControl();
          </tbody>
       </table>
    </div>
+   <script type="text/javascript" src="../public/assets/js/stock.js"></script>
    
 <?php include("includes/footer.html"); ?>
