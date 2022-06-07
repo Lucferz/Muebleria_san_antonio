@@ -8,7 +8,7 @@ $catControl = new CategoriasControl();
                <div class="flexsearch--wrapper">
                   <form class="flexsearch--form" action="" method="post">
                      <div class="flexsearch--input-wrapper">
-                        <input class="flexsearch--input" type="search" placeholder="search">
+                     <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar">
                      </div>
                      <input class="flexsearch--submit" type="submit" value="&#10140;"/>
                   </form>
@@ -59,7 +59,7 @@ $catControl = new CategoriasControl();
                <th colspan="2">ACCIONES</th>
             </tr>
          </thead>
-         <tbody align="center">
+         <tbody align="center"id="tablaDatos">
              <?php
                $data_categorias = $catControl->read();
                foreach ($data_categorias as $key => $value) {
@@ -91,6 +91,7 @@ $catControl = new CategoriasControl();
          </tbody>
       </table>
 </div>		
+<script type="text/javascript" src="../public/assets/js/categorias.js"></script>
 <?php
 	include("includes/footer.html");
 ?>

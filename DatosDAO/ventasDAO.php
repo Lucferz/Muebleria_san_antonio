@@ -75,6 +75,54 @@
             return $data;
         }
 
+        public function buscar($search_key){
+            $this->query = <<<query
+            SELECT 
+                v.id_venta,
+                c.cliente, 
+                u.Nombre as vendedor,
+                tv.tipo as tipo_venta, 
+                tc.comprobante,
+                v.num_factura,
+                v.num_ticket, 
+                a.descripcion as articulo, 
+                v.cantidad, 
+                v.descuento, 
+                v.total, 
+                v.fecha_emision, 
+                v.fecha_mod,  
+                v.estado 
+            FROM 
+                ventas v join articulos a on v.fk_articulo = a.id_articulo 
+                join tipo_venta tv on v.fk_tipo_venta = tv.id 
+                join clientes c on v.fk_cliente = c.id_cliente 
+                join usuarios u on v.fk_usuario = u.id_usuario 
+                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante
+            WHERE
+                v.id_venta LIKE '%$search_key%' OR
+                c.cliente LIKE '%$search_key%' OR 
+                u.Nombre LIKE '%$search_key%' OR
+                tv.tipo LIKE '%$search_key%' OR 
+                tc.comprobante LIKE '%$search_key%' OR
+                v.num_factura LIKE '%$search_key%' OR
+                v.num_ticket LIKE '%$search_key%' OR 
+                a.descripcion LIKE '%$search_key%' OR 
+                v.cantidad LIKE '%$search_key%' OR 
+                v.descuento LIKE '%$search_key%' OR 
+                v.total LIKE '%$search_key%' OR 
+                v.fecha_emision LIKE '%$search_key%' OR 
+                v.fecha_mod LIKE '%$search_key%' OR  
+                v.estado LIKE '%$search_key%'
+            query;
+            $this->get_query();
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return json_encode($data);
+        }
+
         public function update( $venta = array()){
             foreach ($articulo as $key => $value) {
                 $$key = $value;

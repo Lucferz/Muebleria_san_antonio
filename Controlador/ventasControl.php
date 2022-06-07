@@ -27,5 +27,8 @@
 		public function reactivar( $venta = array()){
 			return $this->ventaDAO->reactivar($venta);
 		}
+		public function buscar($search_key){
+			return $this->ventaDAO->buscar($search_key);
+		}
 	}
 ?>

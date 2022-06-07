@@ -8,7 +8,7 @@ $clientes_control = new ClientesControl();
                <div class="flexsearch--wrapper">
                   <form class="flexsearch--form" action="" method="post">
                      <div class="flexsearch--input-wrapper">
-                        <input class="flexsearch--input" type="search" placeholder="search">
+                        <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar">
                      </div>
                      <input class="flexsearch--submit" type="submit" value="&#10140;"/>
                   </form>
@@ -80,7 +80,7 @@ $clientes_control = new ClientesControl();
                <th colspan="2">ACCIONES</th>
             </tr>
          </thead>
-         <tbody align="center">
+         <tbody align="center" id="tablaDatos">
              <?php
                $data_clientes = $clientes_control->read();
                foreach ($data_clientes as $key => $value) {
@@ -125,6 +125,7 @@ $clientes_control = new ClientesControl();
          </tbody>
       </table>
 </div>		
+<script type="text/javascript" src="../public/assets/js/cliente.js"></script>
 <?php
 	include("includes/footer.html");
 ?>

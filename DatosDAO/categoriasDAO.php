@@ -65,5 +65,22 @@
         public function reactivar(){
 
         }
+
+        public function buscar($search_key){
+            $this->query = <<<query
+            SELECT * FROM categorias c
+            WHERE 
+                c.id_categoria LIKE '%$search_key%' OR
+                c.categoria LIKE '%$search_key%'
+            query;
+
+            $this->get_query();
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return json_encode($data);
+        }
 	}
 ?>

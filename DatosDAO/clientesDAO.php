@@ -60,6 +60,28 @@
             $this->query = "UPDATE clientes SET estado = true, fecha_modificacion = CURRENT_TIMESTAMP WHERE id_cliente =$id_cliente";
             $this->set_query();
         }
+
+        public function buscar($search_key){
+            $this->query = "SELECT * FROM clientes c
+            WHERE id_cliente LIKE '%$search_key%' OR
+            cliente LIKE '%$search_key%' OR
+            telefono LIKE '%$search_key%' OR
+            direccion LIKE '%$search_key%' OR
+            ci LIKE '%$search_key%' OR
+            ruc LIKE '%$search_key%' OR
+            estado LIKE '%$search_key%' OR
+            fecha_alta LIKE '%$search_key%' OR
+            fecha_modificacion LIKE '%$search_key%'";
+
+            $this->get_query();
+
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return json_encode($data);
+        }
     }
 
 

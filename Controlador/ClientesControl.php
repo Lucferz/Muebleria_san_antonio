@@ -28,5 +28,8 @@
 		public function reactivar( $cliente = array()){
 			return $this->clientDAO->reactivar($cliente);
 		}
+		public function buscar($search_key){
+			return $this->clientDAO->buscar($search_key);
+		}
 	}
 ?>
