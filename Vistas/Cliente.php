@@ -8,7 +8,7 @@ $clientes_control = new ClientesControl();
                <div class="flexsearch--wrapper">
                   <form class="flexsearch--form" action="" method="post">
                      <div class="flexsearch--input-wrapper">
-                        <input class="flexsearch--input" type="search" placeholder="search">
+                        <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar">
                      </div>
                      <input class="flexsearch--submit" type="submit" value="&#10140;"/>
                   </form>
@@ -25,7 +25,7 @@ $clientes_control = new ClientesControl();
 		<div id="myModal" class="modal">
   			<!-- Modal content -->
   			<div class="modal-content"> 
-					<form method="POST" class= "modal-form" action="clientes_acciones.php" id="dataform">
+					<form method="POST" class= "modal-form" action="../acciones/clientes_acciones.php" id="dataform">
             <?php 
                $dataToMod;
                if (isset($_POST) && isset($_POST['id_cliente'])){
@@ -80,7 +80,7 @@ $clientes_control = new ClientesControl();
                <th colspan="2">ACCIONES</th>
             </tr>
          </thead>
-         <tbody align="center">
+         <tbody align="center" id="tablaDatos">
              <?php
                $data_clientes = $clientes_control->read();
                foreach ($data_clientes as $key => $value) {
@@ -112,7 +112,7 @@ $clientes_control = new ClientesControl();
                      </form>
                   </td>
                   <td>
-                     <form method='POST' action='clientes_acciones.php' id='deleteForm$id_cliente' >
+                     <form method='POST' action='../acciones/clientes_acciones.php' id='deleteForm$id_cliente' >
                         <input type='text' name='id_cliente' value='$id_cliente' hidden>
                         <input type='text' name='estado' value='$estado' hidden>
                      </form>
@@ -125,6 +125,7 @@ $clientes_control = new ClientesControl();
          </tbody>
       </table>
 </div>		
+<script type="text/javascript" src="../public/assets/js/cliente.js"></script>
 <?php
 	include("includes/footer.html");
 ?>

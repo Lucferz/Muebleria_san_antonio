@@ -30,5 +30,8 @@
 		public function reactivar( $usuario = array()){
 			return $this->usuaDAO->reactivar($usuario);
 		}
+		public function buscar($search_key){
+			return $this->usuaDAO->buscar($search_key);
+		}
 	}
 ?>

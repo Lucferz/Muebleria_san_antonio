@@ -28,5 +28,9 @@
 			return $this->catDAO->delete($cat);
 		}
 
+		public function buscar($search_key){
+			return $this->catDAO->buscar($search_key);
+		}
+
 	}
 ?>

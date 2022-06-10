@@ -8,7 +8,7 @@ $ventas_control = new VentasControl();
                <div class="flexsearch--wrapper">
                   <form class="flexsearch--form" action="" method="post">
                      <div class="flexsearch--input-wrapper">
-                        <input class="flexsearch--input" type="search" placeholder="search">
+                        <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar">
                      </div>
                      <input class="flexsearch--submit" type="submit" value="&#10140;"/>
                   </form>
@@ -42,7 +42,7 @@ $ventas_control = new VentasControl();
                <th colspan="2">ACCIONES</th>
             </tr>
          </thead>
-         <tbody>
+         <tbody id="tablaDatos">
             <?php
                $data_ventas = $ventas_control->read();
                foreach ($data_ventas as $key => $value) {
@@ -77,10 +77,10 @@ $ventas_control = new VentasControl();
                      </form>
                   </td>
                   <td>
-                     <form method='POST' action='stock_acciones.php' id='deleteForm$id_venta' >
+                     <form method='POST' action='../acciones/ventas_acciones.php' id='deleteForm$id_venta' >
                         <input type='text' name='id_articulo' value='$id_venta' hidden>
                      </form>
-                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_venta);\" >Anular</button>
+                     <button id='btn-desactivar' class='btn-table' onclick=\"anular($id_venta);\" >Anular</button>
                   </td>
                   </div>";
                   echo "</tr>";
@@ -89,5 +89,5 @@ $ventas_control = new VentasControl();
          </tbody>
       </table>
    </div>
-   
+   <script type="text/javascript" src="../public/assets/js/ventas.js"></script>
 <?php include("includes/footer.html"); ?>

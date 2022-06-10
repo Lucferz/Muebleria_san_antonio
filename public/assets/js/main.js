@@ -3,27 +3,30 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // Get the modal
     var modal = document.getElementById("myModal");
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("addNew");
+    if (modal){
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+        // Get the button that opens the modal
+        var btn = document.getElementById("addNew");
 
-    // When the user clicks the button, open the modal 
-    btn.onclick = function() {
-    modal.style.display = "block";
-    }
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-    modal.style.display = "none";
-    location.replace(window.location.href);
-    }
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
         modal.style.display = "none";
+        location.replace(window.location.href);
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+            modal.style.display = "none";
+            }
         }
     }
 });
@@ -78,57 +81,18 @@ function eliminar(numero){
         form.submit();
     }
 }
+   
+function anular(numero){
+    if (window.confirm("¿Esta seguro de querer anular la venta?")) {
+        var idForm = 'deleteForm' + numero.toString(); 
+        form = document.getElementById(idForm);
+
+        formField = document.createElement('input');
+        formField.type = 'hidden';
+        formField.name = 'del';
+        formField.value = 'si';
     
-//AJAX Para las busquedas, futuramente se implementera mas ampliamente
-
-document.querySelector('#search-box').addEventListener('keyup',buscarAjax, true);
-
-
-function buscarAjax(){
-    var xhttp = new XMLHttpRequest();
-    let barraBusqueda = document.querySelector('#search-box');
-    xhttp.onreadystatechange = function(){
-        if(this.readyState == 4 && this.status == 200){
-            let datos = JSON.parse(this.responseText);
-            let tabla = document.querySelector('#tablaDatos');
-            console.log(datos);
-            tabla.innerHTML = '';
-            let c = 0;
-            for(let item of datos){
-                tabla.innerHTML += `
-                <tr>
-                    <div>
-                        <td>${datos[c].id_articulo}</td>
-                        <td>${datos[c].descripcion}</td>
-                        <td>${datos[c].precio_compra}</td>
-                        <td>${datos[c].precio_venta}</td>
-                        <td>${datos[c].existencias}</td>
-                        <td>${datos[c].categoria}</td>
-                        <td>${(datos[c].estado)?'Activo':'Inactivo'}</td>
-                    </div>
-                    <div id='row-actions'>
-                        <td>
-                            <form method='POST' id='editForm'>
-                            <input type='text' name='id_articulo' value='${datos[c].id_articulo}' hidden>
-                            <input type='submit' class='btn-table' value='Editar' id='btn-editar'>
-                            </form>
-                        </td>
-                        <td>
-                            <form method='POST' action='stock_acciones.php' id='deleteForm${datos[c].id_articulo}' >
-                            <input type='text' name='id_articulo' value='${datos[c].id_articulo}' hidden>
-                            <input type='text' name='estado' value='${datos[c].estado}' hidden>
-                            </form>
-                            <button id='btn-desactivar' class='btn-table' onclick=\"desactivar(${datos[c].id_articulo}, ${datos[c].estado});\" >${(datos[c].estado)?'Desactivar':'Reactivar'}</button>
-                        </td>
-                    </td>
-                  </div>
-                </tr>
-                  `;
-                c++;
-            }
-        }
+        form.appendChild(formField);
+        form.submit();
     }
-    xhttp.open('GET', 'stock_acciones.php?action=search&search_key='+barraBusqueda.value, true);
-    xhttp.send();
-
 }

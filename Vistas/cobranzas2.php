@@ -4,7 +4,6 @@
       <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="../public/assets/css/cobranza.css">
-   <link rel="stylesheet" type="text/css" href="../public/assets/css/styles.css">
    <title>Clientes por cobrar</title>
 </head>
 <body>
