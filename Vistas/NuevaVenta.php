@@ -26,7 +26,7 @@
 
 
 <div class="contenido">
-  <form action="ventas_acciones.php" method="POST">    
+  <form action="../acciones/ventas_acciones.php" method="POST">    
     <div class="row">
       <div class="col-25">
         <label for="clname">Cliente</label>

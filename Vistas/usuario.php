@@ -28,7 +28,7 @@ $tipousuarioControl = new TipoUsuarioControl();
 	<div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-         <form method="POST" class="modal-form" action="usuario_acciones.php" id="dataform">
+         <form method="POST" class="modal-form" action="../acciones/usuario_acciones.php" id="dataform">
             <?php 
                $dataToMod;
                if (isset($_POST) && isset($_POST['id_usuario'])){
@@ -84,7 +84,6 @@ $tipousuarioControl = new TipoUsuarioControl();
                <th>ID</th>
                <th>NOMBRE</th>
                <th>USUARIO</th>
-               <th>CONTRASEÑA</th>
                <th>TIPO USUARIO</th>
                <th>ESTADO</th>
                <th colspan="2">ACCIONES</th>
@@ -109,7 +108,6 @@ $tipousuarioControl = new TipoUsuarioControl();
                   <td>$id_usuario</td>
                   <td>$Nombre</td>
                   <td>$usuario</td>
-                  <td>$password</td>
                   <td>$tipo</td>
                   <td>$status</td>
                   </div>
@@ -121,7 +119,7 @@ $tipousuarioControl = new TipoUsuarioControl();
                      </form>
                   </td>
                   <td>
-                     <form method='POST' action='usuario_acciones.php' id='deleteForm$id_usuario' >
+                     <form method='POST' action='../acciones/usuario_acciones.php' id='deleteForm$id_usuario' >
                         <input type='text' name='id_usuario' value='$id_usuario' hidden>
                         <input type='text' name='estado' value='$estado' hidden>
                      </form>

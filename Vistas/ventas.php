@@ -77,7 +77,7 @@ $ventas_control = new VentasControl();
                      </form>
                   </td>
                   <td>
-                     <form method='POST' action='stock_acciones.php' id='deleteForm$id_venta' >
+                     <form method='POST' action='../acciones/ventas_acciones.php' id='deleteForm$id_venta' >
                         <input type='text' name='id_articulo' value='$id_venta' hidden>
                      </form>
                      <button id='btn-desactivar' class='btn-table' onclick=\"anular($id_venta);\" >Anular</button>

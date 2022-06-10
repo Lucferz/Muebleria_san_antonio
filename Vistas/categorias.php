@@ -25,7 +25,7 @@ $catControl = new CategoriasControl();
 		<div id="myModal" class="modal">
   			<!-- Modal content -->
   			<div class="modal-content"> 
-					<form method="POST" class= "modal-form" action="categorias_acciones.php" id="dataform">
+					<form method="POST" class= "modal-form" action="../acciones/categorias_acciones.php" id="dataform">
             <?php 
                $dataToMod;
                if (isset($_POST) && isset($_POST['id_categoria'])){
@@ -79,7 +79,7 @@ $catControl = new CategoriasControl();
                      </form>
                   </td>
                   <td>
-                     <form method='POST' action='categorias_acciones.php' id='deleteForm$id_categoria' >
+                     <form method='POST' action='../acciones/categorias_acciones.php' id='deleteForm$id_categoria' >
                         <input type='text' name='id_categoria' value='$id_categoria' hidden>
                      </form>
                      <button id='btn-desactivar' class='btn-table' onclick=\"eliminar($id_categoria);\" >Eliminar</button>

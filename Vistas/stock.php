@@ -29,7 +29,7 @@ $categoriasControl = new CategoriasControl();
 	<div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-         <form method="POST" class="modal-form" action="stock_acciones.php" id="dataform">
+         <form method="POST" class="modal-form" action="../acciones/stock_acciones.php" id="dataform">
             <?php 
                $dataToMod;
                if (isset($_POST) && isset($_POST['id_articulo'])){
@@ -127,7 +127,7 @@ $categoriasControl = new CategoriasControl();
                         </form>
                      </td>
                      <td>
-                        <form method='POST' action='stock_acciones.php' id='deleteForm$id_articulo' >
+                        <form method='POST' action='../acciones/stock_acciones.php' id='deleteForm$id_articulo' >
                            <input type='text' name='id_articulo' value='$id_articulo' hidden>
                            <input type='text' name='estado' value='$estado' hidden>
                         </form>

@@ -25,7 +25,7 @@ $clientes_control = new ClientesControl();
 		<div id="myModal" class="modal">
   			<!-- Modal content -->
   			<div class="modal-content"> 
-					<form method="POST" class= "modal-form" action="clientes_acciones.php" id="dataform">
+					<form method="POST" class= "modal-form" action="../acciones/clientes_acciones.php" id="dataform">
             <?php 
                $dataToMod;
                if (isset($_POST) && isset($_POST['id_cliente'])){
@@ -112,7 +112,7 @@ $clientes_control = new ClientesControl();
                      </form>
                   </td>
                   <td>
-                     <form method='POST' action='clientes_acciones.php' id='deleteForm$id_cliente' >
+                     <form method='POST' action='../acciones/clientes_acciones.php' id='deleteForm$id_cliente' >
                         <input type='text' name='id_cliente' value='$id_cliente' hidden>
                         <input type='text' name='estado' value='$estado' hidden>
                      </form>
