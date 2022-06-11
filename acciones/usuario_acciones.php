@@ -27,6 +27,6 @@ $tipousuarioControl = new tipousuarioControl();
         
     }
 
-    header("Location: usuario.php");
+    header("Location: ../Vistas/usuario.php");
     die();
 ?>

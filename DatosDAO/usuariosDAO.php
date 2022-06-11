@@ -15,16 +15,18 @@
             foreach ($usuario as $key => $value) {
                 $$key = $value;
             }
-
-            $this->query = "INSERT INTO usuarios (Nombre,usuario,password,estado,fecha_alta, fecha_mod,fk_tipo_usuario) VALUES (    '$Nombre', '$usuario', '$password',
-                true, CURRENT_TIMESTAMP, null, $fk_tipo_usuario)";
+            
+            $pass = hash('sha256', $password);
+            $this->query = "INSERT INTO usuarios (Nombre,usuario,password,estado,fecha_alta, fecha_mod,fk_tipo_usuario) VALUES (    '$Nombre', '$usuario', 
+            '$pass', true, CURRENT_TIMESTAMP, null, $fk_tipo_usuario)";
             $this->set_query();
+            unset($pass);
         }
 
         public function read($id_usuario = ''){
-            $this->query = ($id_usuario == '')? "SELECT u.id_usuario, u.Nombre,u.usuario,u.password,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
+            $this->query = ($id_usuario == '')? "SELECT u.id_usuario, u.Nombre,u.usuario,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
             on u.fk_tipo_usuario  = t.id_tipo_usuario"
-            :"SELECT u.id_usuario, u.Nombre,u.usuario,u.password,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
+            :"SELECT u.id_usuario, u.Nombre,u.usuario,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
             on u.fk_tipo_usuario  = t.id_tipo_usuario WHERE u.id_usuario = $id_usuario";
             $this->get_query();
             //$num_rows = count($this->rows);
@@ -41,7 +43,6 @@
             SELECT 
                 u.id_usuario, 
                 u.Nombre,u.usuario,
-                u.password,
                 u.estado,
                 u.fecha_alta, 
                 u.fecha_mod, 
@@ -52,7 +53,6 @@
                 u.id_usuario LIKE '%$search_key%' OR 
                 u.Nombre LIKE '%$search_key%' OR
                 u.usuario LIKE '%$search_key%' OR
-                u.password LIKE '%$search_key%' OR
                 u.estado LIKE '%$search_key%' OR
                 u.fecha_alta LIKE '%$search_key%' OR 
                 u.fecha_mod LIKE '%$search_key%' OR 
@@ -72,11 +72,12 @@
             foreach ($usuario as $key => $value) {
                 $$key = $value;
             }
-
+            $pass = hash('sha256', $password);
             $this->query = "UPDATE usuarios SET Nombre ='$Nombre', usuario ='$usuario',
-            password = '$password',fecha_mod = CURRENT_TIMESTAMP,
+            password = '$pass',fecha_mod = CURRENT_TIMESTAMP,
             fk_tipo_usuario =$fk_tipo_usuario WHERE id_usuario =$id_usuario";
             $this->set_query();
+            unset($pass);
         }
 
         public function delete( $usuario = array()){
@@ -93,6 +94,31 @@
             }
             $this->query = "UPDATE usuarios SET estado = true, fecha_mod = CURRENT_TIMESTAMP WHERE id_usuario =$id_usuario";
             $this->set_query();
+        }
+
+        public function validar_usuario($usuario, $pass)
+        {
+            $password = hash('sha256', $pass);
+            $this->query = <<<query
+            SELECT
+                u.Nombre ,
+                u.usuario ,
+                tu.tipo as rol
+            FROM 
+                usuarios u JOIN tipo_usuario tu ON (u.fk_tipo_usuario = tu.id_tipo_usuario)
+            WHERE 
+                u.usuario = '$usuario' AND
+                u.password = '$password' AND
+                u.estado = true
+            query;
+            $this->get_query();
+            $data = array();
+            unset($password);
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return $data;
         }
     }
 ?>

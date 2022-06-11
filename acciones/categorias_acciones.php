@@ -24,6 +24,6 @@
 
     //echo "<br><br><br><a href='categorias.php'>Clientes</a>"
 
-    header("Location: categorias.php");
+    header("Location: ../Vistas/categorias.php");
     die();
 ?>

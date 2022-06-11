@@ -1,0 +1,1 @@
+/*Definir bien el formato de las cobranzas para ver si sera necesario realmente este archivo*/

@@ -1,4 +1,4 @@
-<?php include("includes/header.html");
+<?php include("includes/header.php");
 include("../Controlador/usuariosControl.php");
 include("../Controlador/TipoUsuarioControl.php");
 $usuarios_control = new UsuariosControl();

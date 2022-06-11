@@ -28,6 +28,6 @@
 
     //echo "<br><br><br><a href='Cliente.php'>Clientes</a>"
 
-    header("Location: Cliente.php");
+    header("Location: ../Vistas/Cliente.php");
     die();
 ?>

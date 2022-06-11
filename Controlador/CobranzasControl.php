@@ -19,6 +19,9 @@
 		public function read($id_cobranza = ''){
 			return $this->cobranzaDAO->read($id_cobranza);
 		}
+		public function buscar($search_key){
+			return $this->cobranzaDAO->buscar($search_key);
+		}
 		public function update( $cobranza = array()){
 			return $this->cobranzaDAO->update($cobranza);
 		}

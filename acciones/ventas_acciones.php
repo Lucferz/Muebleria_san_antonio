@@ -32,5 +32,5 @@
         
     }
 
-    echo "<br/><br/><br/><a href='NuevaVenta.php'>Ir a Nueva Venta</a>"
+    echo "<br/><br/><br/><a href='../Vistas/NuevaVenta.php'>Ir a Nueva Venta</a>"
 ?>

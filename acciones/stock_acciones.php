@@ -27,6 +27,6 @@
         
     } 
 
-    header("Location: stock.php");
+    header("Location: ../Vistas/stock.php");
     die();
 ?>

@@ -1,4 +1,4 @@
-<?php include("includes/header.html");
+<?php include("includes/header.php");
 include("../Controlador/ventasControl.php");
 $ventas_control = new VentasControl();
 ?>
