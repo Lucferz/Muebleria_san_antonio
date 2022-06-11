@@ -18,7 +18,7 @@
       <div class="sidebar">
 
          <center>
-            <img src="../public/assets/img/logo.jpg" class="foto" alt=" ">
+            <img src="../public/assets/img/santo.jpg" class="foto" alt=" ">
          </center>
          <a href="#" id="inicio"><ion-icon name="home-outline"></ion-icon><span> Inicio</span></a>
          <a href="Cliente.php"><ion-icon name="person-outline"></ion-icon><span> Clientes</span></a>
