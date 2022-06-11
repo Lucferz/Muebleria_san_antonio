@@ -1,5 +1,9 @@
 <?php
-   require_once("../acciones/session_actions.php");
+   require_once("../Controlador/app_base.php");
+   if(!array_key_exists('autenticado', $_SESSION) && $_SESSION['autenticado'] != true){
+      header("Location: Login.php");
+      die();
+   }
 
 
    $htmlHeaders = <<<htmlheaders
@@ -37,10 +41,12 @@
                   <div class="dropdown-content">
                      <a href="#">Perfil</a><hr>
                      <a href="#">Algo</a><hr>
-                     <a href="../session_actions.php?session=close">Cerrar Sesion</a>
+                     <a href="../acciones/session_actions.php?session=close">Cerrar Sesion</a>
                   </div>
                </div>
             </nav>
          </div>
    htmlheaders;
+
+   echo $htmlHeaders;
 ?>

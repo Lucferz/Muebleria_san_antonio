@@ -1,5 +1,8 @@
 # Ignora los archivos de la carpeta img
-publico/img/*
+public/img/*
 
 #Ignora la carpeta base de datos
 Base de datos
+
+#Ignora la carpeta pruebas
+pruebas

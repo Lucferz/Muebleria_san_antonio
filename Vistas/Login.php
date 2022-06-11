@@ -1,4 +1,15 @@
+<?php
+  require_once("../Controlador/app_base.php");
+  require_once("../Controlador/sessionControl.php");
+  
+  $user_session = new sessionControl();
 
+  if($_SESSION['autenticado']){
+    $location = $user_session->redireccion($_SESSION['rol']);
+    header("Location: ../Vistas/$location");
+    die();
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -27,7 +38,7 @@
       <div class="login">
         <div class="login-data">
          <!-- <img src="assets/collab.png" alt="" /> -->
-          <form action="" method="post" class="login-form"> 
+          <form method="post" action="../acciones/session_actions.php" class="login-form"> 
                      <h1>Inicio de Sesión</h1>
             <div class="input-group">
               <label class="input-fill">
