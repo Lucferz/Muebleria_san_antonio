@@ -17,7 +17,6 @@
                 $_SESSION['nombre'] = $val['Nombre'];
                 $_SESSION['rol'] = $val['rol'];
             }
-            var_dump($_SESSION);
             $location = $user_session->redireccion($_SESSION['rol']);
             header("Location: ../Vistas/$location");
             die();

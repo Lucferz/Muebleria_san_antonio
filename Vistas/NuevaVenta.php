@@ -1,3 +1,7 @@
+<?php
+  require_once("../Controlador/app_base.php");
+  var_dump($_SESSION);
+?>
 <!DOCTYPE html>
 <htmllang="es"> 
 <head>
@@ -7,13 +11,10 @@
    <title>Ventas</title>
 </head>
 <body>
-
-    </div>
-          <div class="usuarios-select">
+        <div class="usuarios-select">
           <select id="usuarios" name="usuarios">
-            <option value="no_select">Usuario Fulano</option>
-             <option value="cerrar">Cerrar sesion</option>
-            <!-- Ver para traer el usuario logueado  -->
+            <option value="no_select"><?php echo $_SESSION['nombre'] ?></option>
+            <option value="cerrar"><a href="acciones/session_actions.php?session=close">Cerrar sesion</a></option>
           </select>
         </div>
         <br> 
