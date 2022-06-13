@@ -5,9 +5,8 @@
         session_start();
     }
     
-    if(isset($_SESSION['autenticado']) && array_key_exists('autenticado', $_SESSION) && $_SESSION['autenticado'] != true){
+    if(!isset($_SESSION['autenticado'])){
         $_SESSION['autenticado'] = false;
     }
      
-
 ?>

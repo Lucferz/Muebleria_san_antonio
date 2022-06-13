@@ -1,3 +1,15 @@
+<?php 
+require_once("../Controlador/app_base.php");
+if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Cobrador'){
+   require_once("../Controlador/sessionControl.php");
+   $user_session = new sessionControl();
+   $location = $user_session->redireccion($_SESSION['rol']);
+   header("Location: ../Vistas/$location");
+   die();
+}
+include("../Controlador/CobranzasControl.php");
+$cobranzas_control = new CobranzasControl();
+?>
 <!DOCTYPE html>
 <htmllang="es"> 
 <head>
@@ -7,14 +19,11 @@
    <title>Clientes por cobrar</title>
 </head>
 <body>
-<?php 
-include("../Controlador/CobranzasControl.php");
-$cobranzas_control = new CobranzasControl();
-?>
+
 
           <div class="usuarios-select">
           <select id="usuarios" name="usuarios">
-            <option value="no_select">Usuario Fulano</option>
+            <option value="no_select"><?php echo $_SESSION['nombre'] ?></option>
              <option value="cerrar">Cerrar sesion</option>
             <!-- Ver para traer el usuario logueado  -->
           </select>
@@ -63,4 +72,3 @@ $cobranzas_control = new CobranzasControl();
 
 </body>
 </html>
-

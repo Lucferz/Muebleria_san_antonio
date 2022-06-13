@@ -1,6 +1,6 @@
 <?php
    require_once("../Controlador/app_base.php");
-   if(!array_key_exists('autenticado', $_SESSION) && $_SESSION['autenticado'] != true){
+   if($_SESSION['autenticado'] != true){
       header("Location: Login.php");
       die();
    }
@@ -13,7 +13,6 @@
       die();
    }
 
-   var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
