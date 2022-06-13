@@ -47,7 +47,6 @@
             <span>USUARIO: <?php echo $_SESSION['nombre'] ?><button class="dropbtn btn"><ion-icon size="large" name="menu-outline"></ion-icon></button></span>
             <div class="dropdown-content">
                <a href="#">Perfil</a><hr>
-               <a href="#">Algo</a><hr>
                <a href="../acciones/session_actions.php?session=close">Cerrar Sesion</a>
             </div>
          </div>
