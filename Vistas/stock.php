@@ -58,8 +58,9 @@ $categoriasControl = new CategoriasControl();
             
             <input type="text" name="id_articulo" 
             value="<?php echo isset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>" hidden>
+
             <span>CATEGORIA:</span>
-            <select id="categorias-select" name="fk_categoria" ><!--Aca hacer el read de Categorias-->
+            <select id="categorias-select" class="select-modal" name="fk_categoria" ><!--Aca hacer el read de Categorias-->
                <option value="no_select">Seleccione una Categoria</option>
                <?php
                   $data_categorias = $categoriasControl->read();

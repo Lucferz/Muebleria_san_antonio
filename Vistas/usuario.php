@@ -49,13 +49,13 @@ $tipousuarioControl = new TipoUsuarioControl();
 
             <p>CONTRASEÑA:</p>
             <input type="text" name="password" value="<?php echo isset($dataToMod[0]['password'])? $dataToMod[0]['password']:'' ?>" 
-            class="field" required> <br/>
+            class="field" required> <br/><br/><br/>
 
             <input type="text" name="id_usuario" 
             value="<?php echo isset($dataToMod[0]['id_usuario'])? $dataToMod[0]['id_usuario']:''  ?>" hidden>
 
            <span>TIPO USUARIO:</span>
-            <select id="tipo-select" name="fk_tipo_usuario" ><!--Aca hacer el read de Categorias-->
+            <select id="tipo-select" class="select-modal" name="fk_tipo_usuario" ><!--Aca hacer el read de Categorias-->
                <option value="no_select">Seleccione Tipo de usuario</option>
                <?php
                   $data_tipousuario = $tipousuarioControl->read();

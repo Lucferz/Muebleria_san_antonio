@@ -268,7 +268,7 @@ input:-moz-placeholder {
 	width: 300px;	
 }
 
-#categorias-select{
+.select-modal{
 	margin-left: 25px;
 	width: 250px;
 	height: 40px;
