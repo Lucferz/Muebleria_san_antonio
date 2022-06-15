@@ -1,10 +1,13 @@
 <?php
   require_once("../Controlador/app_base.php");
-  if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Vendedor'){
+  if (!$_SESSION['autenticado']){
+    header("Location: Login.php");
+    die();
+  }else if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Vendedor'){
     require_once("../Controlador/sessionControl.php");
     $user_session = new sessionControl();
     $location = $user_session->redireccion($_SESSION['rol']);
-    header("Location: ../Vistas/$location");
+    header("Location: $location");
     die();
   }
 ?>
