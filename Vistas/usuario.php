@@ -18,7 +18,6 @@ $tipousuarioControl = new TipoUsuarioControl();
          </div>
          <div id="articulos-buttons-container">
             <button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo usuario</button>
-            <button class="btn-informe"><ion-icon name="document-text-outline"></ion-icon> Informe de Inventario</button>
          </div>
       </div>
       <div id="tabla">

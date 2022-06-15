@@ -354,16 +354,12 @@ td{
 /* Informes */
 #informes-buttons{
 	margin-left: 100px;
-
-
-
-
 }
 
 /* BOTON EN CONFIG */
 #cabecera-botones-user{
-	 margin-top: 13%;
-	 margin-left: 6%;
+	 margin-top: 180px;
+	 margin-left: 100px;
 }
 
 /* Atributos @media para la adaptabilidad */
