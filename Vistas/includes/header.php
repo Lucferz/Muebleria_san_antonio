@@ -37,7 +37,7 @@
    <a href="stock.php"><ion-icon name="storefront-outline"></ion-icon><span> Stock</span></a>
    <a href="cobranzas.php"><ion-icon name="cash-outline"></ion-icon><span> Cobro</span></a> 
    <a href="#"><ion-icon name="document-text-outline"></ion-icon><span> Informes</span></a>
-   <a href="usuario.php"><ion-icon name="settings" size="large"></ion-icon></a>  
+   <a href="configuracion.php"><ion-icon name="settings" size="large"></ion-icon></a>  
 
 </div>
 

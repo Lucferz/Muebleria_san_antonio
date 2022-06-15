@@ -360,6 +360,11 @@ td{
 
 }
 
+/* BOTON EN CONFIG */
+#cabecera-botones-user{
+	 margin-top: 13%;
+	 margin-left: 6%;
+}
 
 /* Atributos @media para la adaptabilidad */
 
