@@ -41,6 +41,6 @@ var_dump($_POST);
         
     }
 
-    // header("Location: ../Vistas/usuario.php");
-    // die();
+    header("Location: ../Vistas/usuario.php");
+    die();
 ?>
