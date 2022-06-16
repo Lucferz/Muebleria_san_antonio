@@ -1,9 +1,35 @@
 //AJAX Para las busquedas, futuramente se implementera mas ampliamente
 
-document.querySelector('#search-box').addEventListener('keyup', buscarAjax, true);
+/*Hacer funciones mas modulares para mejor mantenimiento y facilidad
+* Aplicar a la funcion de la tabla en otra ocasion 15/06/22 - 01:09 am
+*/
+
+//Evento de busqueda AJAX para la tabla
+if (document.querySelector("#search-box") != null) {
+    document.querySelector('#search-box').addEventListener('keyup', buscarAjaxTable, true);
+}
 
 
-function buscarAjax() {
+//Evento de busqueda AJAX para los formularios
+if (document.getElementById("autocomplete-input-cliente") != null){
+    let inputSearch  = document.querySelector('#autocomplete-input-cliente');
+    let resultList = document.querySelector('#autocomplete-results-cliente');
+    let idSend = document.querySelector("#id_cliente");
+    inputSearch.addEventListener('keyup', buscarAjaxField, true);
+    resultList.addEventListener('click',function(event) {
+        if (event.target && event.target.nodeName == 'LI') {
+            inputSearch.value = event.target.innerHTML;
+            idSend.value = event.target.id;
+            listarClientes(resultList, []);
+        }
+    });
+}
+
+
+
+
+//Funcion de busqueda de la tabla
+function buscarAjaxTable() {
     var xhttp = new XMLHttpRequest();
     let barraBusqueda = document.querySelector('#search-box');
     xhttp.onreadystatechange = function () {
@@ -50,4 +76,43 @@ function buscarAjax() {
     xhttp.open('GET', '../api/listar.php?table=clientes&search_key=' + barraBusqueda.value, true);
     xhttp.send();
 
+}
+
+
+//Funcion de busqueda de clientes para la venta
+function buscarAjaxField(event){
+    try {
+        let resultList = document.querySelector('#autocomplete-results-cliente');
+        if (event.target.value.length > 0){
+        resultList.style.display = "block";
+        var xhttp = new XMLHttpRequest();
+        let key = document.querySelector('#autocomplete-input-cliente');
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                //console.log(this.responseText);
+                let datos = JSON.parse(this.responseText);
+                //console.log(datos);
+                listarClientes(resultList, datos);
+            }
+        }
+        xhttp.open('GET', '../api/listar.php?table=clientes&search_key=' + key.value, true);
+        xhttp.send();
+        } else{
+            listarClientes(resultList, []);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//funcion de crear HTML para listar clientes en ventas
+function listarClientes(resultList, datos) {
+    resultList.innerHTML = '';
+    let c = 0;
+    for (let item of datos) {
+        resultList.innerHTML += `
+            <li id="${datos[c].id_cliente}">${datos[c].cliente}</li>
+        `;
+        c++;
+    }
 }

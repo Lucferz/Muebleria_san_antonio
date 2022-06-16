@@ -24,7 +24,7 @@ ion-icon{
   box-sizing: border-box;
 }
 
-input[type=text]{
+.input-field{
   width: 50%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -34,13 +34,40 @@ input[type=text]{
 
 .flexsearch--input {
   width: 100%;
-  padding: 12px;
+  padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   resize: vertical;
   box-sizing: border-box;
   color: #191919;
 }
+
+/*Busqueda por los textfield*/
+.autocomplete{
+  display: flex;
+  flex-direction: column;
+}
+
+.autocomplete-results{
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  font-size: 1em;
+  list-style: none;
+}
+/*esta un poco mas a la derecha pq es hijo del de arriba,
+ solo para visualizacion realmente, como buenas practicas*/
+  .autocomplete-results li{
+    margin: 0;
+    padding: 0;
+    padding: 5px;
+    border-right: #ccc 1px solid;
+    border-bottom: #ccc 1px solid;
+    border-left: #ccc 1px solid;
+  }
+
+/*fin de estilos de busqueda*/
 
 .icono {
   color: #191919;
@@ -125,7 +152,7 @@ input[type=submit]:hover {
 .nuevo-cliente{
   float: left;
   padding: 7px;
-  margin-top: 2px;
+  margin-top: 15px;
   margin-left: 8px;
   border-radius: 50%;
   background-color: white;
@@ -146,7 +173,7 @@ input[type=submit]:hover {
 .container {
   display: block;
   position: relative;
-  padding-left: 35px;
+  padding-left: 40px;
   margin-bottom: 12px;
   cursor: pointer;
  /* font-size: 22px;*/

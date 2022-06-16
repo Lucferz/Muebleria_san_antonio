@@ -1,9 +1,28 @@
 //AJAX Para las busquedas, futuramente se implementera mas ampliamente
 
-document.querySelector('#search-box').addEventListener('keyup',buscarAjax, true);
+
+//Evento de busqueda AJAX para la tabla
+if (document.getElementById("search-box") != null){
+    document.querySelector('#search-box').addEventListener('keyup',buscarAjaxTable, true);
+}
+
+//Evento de busqueda AJAX para los formularios
+if (document.getElementById("autocomplete-input-articulo") != null){
+    let inputSearch  = document.querySelector('#autocomplete-input-articulo');
+    let resultList = document.querySelector('#autocomplete-results-articulo');
+    let idSend = document.querySelector("#id_articulo");
+    inputSearch.addEventListener('keyup', buscarAjaxField, true);
+    resultList.addEventListener('click',function(event) {
+        if (event.target && event.target.nodeName == 'LI') {
+            inputSearch.value = event.target.innerHTML;
+            idSend.value = event.target.id;
+            listarArticulos(resultList, []);
+        }
+    });
+}
 
 
-function buscarAjax(){
+function buscarAjaxTable(){
     var xhttp = new XMLHttpRequest();
     let barraBusqueda = document.querySelector('#search-box');
     xhttp.onreadystatechange = function(){
@@ -50,4 +69,44 @@ function buscarAjax(){
     xhttp.open('GET', '../api/listar.php?table=stock&search_key='+barraBusqueda.value, true);
     xhttp.send();
 
+}
+
+
+
+//Funcion de busqueda articulos para la venta
+function buscarAjaxField(event){
+    try {
+        let resultList = document.querySelector('#autocomplete-results-articulo');
+        if (event.target.value.length > 0){
+        resultList.style.display = "block";
+        var xhttp = new XMLHttpRequest();
+        let key = document.querySelector('#autocomplete-input-articulo');
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                //console.log(this.responseText);
+                let datos = JSON.parse(this.responseText);
+                //console.log(datos);
+                listarArticulos(resultList, datos);
+            }
+        }
+        xhttp.open('GET', '../api/listar.php?table=stock&search_key=' + key.value, true);
+        xhttp.send();
+        } else{
+            listarArticulos(resultList, []);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//funcion de crear HTML para listar clientes en ventas
+function listarArticulos(resultList, datos) {
+    resultList.innerHTML = '';
+    let c = 0;
+    for (let item of datos) {
+        resultList.innerHTML += `
+            <li id="${datos[c].id_articulo}">${datos[c].descripcion}</li>
+        `;
+        c++;
+    }
 }

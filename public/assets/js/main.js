@@ -1,3 +1,8 @@
+//importaciones
+import * as stock from "stock.js";
+
+
+
 /*Modal*/
 document.addEventListener("DOMContentLoaded", function(event) {
     // Get the modal

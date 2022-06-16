@@ -1,9 +1,9 @@
 //AJAX Para las busquedas, futuramente se implementera mas ampliamente
 
-document.querySelector('#search-box').addEventListener('keyup', buscarAjax, true);
+document.querySelector('#search-box').addEventListener('keyup', buscarAjaxTable, true);
 
 
-function buscarAjax() {
+function buscarAjaxTable() {
     var xhttp = new XMLHttpRequest();
     let barraBusqueda = document.querySelector('#search-box');
     xhttp.onreadystatechange = function () {
