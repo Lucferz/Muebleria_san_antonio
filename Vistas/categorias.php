@@ -6,12 +6,11 @@ $catControl = new CategoriasControl();
       <div id="cabecera-botones">
          <div class="flexsearch">
                <div class="flexsearch--wrapper">
-                  <form class="flexsearch--form" action="" method="post">
+                  <div class="flexsearch--form" >
                      <div class="flexsearch--input-wrapper">
-                     <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar">
+                        <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar" autocomplete="off">
                      </div>
-                     <input class="flexsearch--submit" type="submit" value="&#10140;"/>
-                  </form>
+                  </div>
                </div>
          </div>
          <div id="articulos-buttons-container">
