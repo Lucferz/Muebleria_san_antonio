@@ -1,6 +1,7 @@
 //importaciones
-import * as stock from "stock.js";
-
+// import * as stock from "stock.js";
+// import * as cliente from "cliente.js";
+//De momento no sirven como lo esperado, asi que dejar asi por ahora
 
 
 /*Modal*/

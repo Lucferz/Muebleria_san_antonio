@@ -11,7 +11,12 @@ if (document.querySelector("#search-box") != null) {
 
 
 //Evento de busqueda AJAX para los formularios
+
 if (document.getElementById("autocomplete-input-cliente") != null){
+    searchClientForSales()
+ }
+
+function searchClientForSales() {
     let inputSearch  = document.querySelector('#autocomplete-input-cliente');
     let resultList = document.querySelector('#autocomplete-results-cliente');
     let idSend = document.querySelector("#id_cliente");
@@ -24,8 +29,6 @@ if (document.getElementById("autocomplete-input-cliente") != null){
         }
     });
 }
-
-
 
 
 //Funcion de busqueda de la tabla
@@ -116,3 +119,9 @@ function listarClientes(resultList, datos) {
         c++;
     }
 }
+
+
+//EXPORTS
+//de momento no funciona, pero ver posteriormente si se puede hacer funcionar todo en el main
+
+export function searchClientForSales();
