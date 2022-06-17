@@ -187,7 +187,6 @@ input:-moz-placeholder {
 	height: 100%;
 }
 
-
 .sidebar .foto{
 	width: 50px;
 	height: 50px;
@@ -355,6 +354,46 @@ td{
 #informes-buttons{
 	margin-left: 100px;
 }
+
+.informes{
+	position: relative;
+	display: block;
+	padding-top: 12px;
+	padding-left: 5px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid rgba(100, 100, 100, .3);
+}
+
+.inforbtn {
+  background-color: transparent;
+  padding-left: 18px;
+	color: black;
+	font-size: 20px;
+	border: none;
+
+}
+
+.informes-content{
+	display: none;
+/*	position: absolute; */
+	background-color: #f1f1f1;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+	position: relative;
+	left: 50px;
+	padding-top: 5px;
+}
+
+.informes-content a {
+	color: black;
+	text-decoration: none; 
+
+	}
+
+.informes-content a:hover {background-color: #4C48EB;}
+
+.informes:hover .informes-content {display: block;} 
 
 /* BOTON EN CONFIG */
 #cabecera-botones-user{

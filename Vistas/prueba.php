@@ -1,5 +1,5 @@
 <?php include("includes/header.php");
-include("../public/assets/css/cobranza.css");
+include("../public/assets/css/pr.css");
 ?>
 <?php 
 require_once("../Controlador/app_base.php");
