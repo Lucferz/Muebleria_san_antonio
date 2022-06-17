@@ -37,16 +37,18 @@
    <a href="stock.php"><ion-icon name="storefront-outline"></ion-icon><span> Stock</span></a>
    <a href="cobranzas.php"><ion-icon name="cash-outline"></ion-icon><span> Cobro</span></a> 
    <a href="#"><ion-icon name="document-text-outline"></ion-icon><span> Informes</span></a>
+
    
    <nav>
-         <div class="dropdown">
-            <span><button class="dropbtn btn"><ion-icon name="document-text-outline"></ion-icon></button>Informes</span>
-            <div class="dropdown-content">
-               <a href="#">Informe de inventario</a><hr>
+         <div class="informes">
+            <span><button class="inforbtn"><ion-icon name="document-text-outline"></ion-icon></button>Informes</span>
+
+            <div class="informes-content">
+               <a href="#">Informe de stock</a>
                <a href="#">Informe de ventas</a>
             </div>
          </div>
-      </nav>
+   </nav>
 
    <a href="configuracion.php"><ion-icon name="settings" size="large"></ion-icon></a>  
 
