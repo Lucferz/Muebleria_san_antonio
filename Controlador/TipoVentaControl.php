@@ -25,5 +25,8 @@
 		public function delete($tipo = array()){
 			return $this->tipoVentaDAO->delete($tipo);
 		}
+		public function reactivar( $tipo = array()){
+			return $this->tipoVentaDAO->reactivar($tipo);
+		}
 	}
 ?>
