@@ -124,4 +124,4 @@ function listarClientes(resultList, datos) {
 //EXPORTS
 //de momento no funciona, pero ver posteriormente si se puede hacer funcionar todo en el main
 
-export function searchClientForSales();
+//export function searchClientForSales();

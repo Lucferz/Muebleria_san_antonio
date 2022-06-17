@@ -21,7 +21,6 @@ function buscarAjaxTable() {
                         <td>${datos[c].id_usuario}</td>
                         <td>${datos[c].Nombre}</td>
                         <td>${datos[c].usuario}</td>
-                        <td>${datos[c].password}</td>
                         <td>${datos[c].tipo}</td>
                         <td>${(datos[c].estado)?'Activo':'Inactivo'}</td>
                     </div>
