@@ -1,18 +1,18 @@
 Lucas
-    - Colocar eliminacion logica a todas las tablas(SQL)
-    - Crear tabla de taxes (SQL)
-    - Agg relacion de tabla taxes en articulos (SQL)
-    - Actualizar acciones y funciones a los nuevos campos de la BD (PHP)
-    - Crear Secuencia p/ num de ticket BD (PLSQL)
-    - Funcion para agg 7 dias a la fecha de cobro (SQL y PHP)
+    - Colocar eliminacion logica a todas las tablas(SQL)                            Listo
+    - Crear tabla de taxes (SQL)                                                    Listo
+    - Agg relacion de tabla taxes en articulos (SQL)                                Listo
+    - Actualizar acciones y funciones a los nuevos campos de la BD (PHP)            Pendiente
+    - Crear Secuencia p/ num de ticket BD (PLSQL)                                   Pendiente
+    - Funcion para agg 7 dias a la fecha de cobro (SQL y PHP)                       Pendiente
     - Mejorar acciones de venta p/ que cuando no se marque generar
-    factura se utilice la numeracion del ticket (PHP)
-    - Validaciones en los formularios para no mandar datos incorrectos (JS)
+    factura se utilice la numeracion del ticket (PHP)                               Pendiente
+    - Validaciones en los formularios para no mandar datos incorrectos (JS)         Pendiente
     - Crear campos hidden para la venta que contendran info del usuario y
-    cualquier otra informacion releveante (PHP y HTML)
+    cualquier otra informacion releveante (PHP y HTML)                              Pendiente
     - Actualizar acciones de Articulos, categorias, tipo_comprobante,
-    tipo_usuario, tipo_venta (PHP)
-    - crear MVC para taxes(PHP y SQL)
+    tipo_usuario, tipo_venta (PHP)                                                  Pendiente
+    - crear MVC para taxes(PHP y SQL)                                               Pendiente
 
 
 
