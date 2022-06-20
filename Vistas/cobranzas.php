@@ -19,7 +19,7 @@ $cobranzas_control = new CobranzasControl();
    <title>Clientes por cobrar</title>
 </head>
 <body>
-
+<button onclick="location.href= '#'" class="volver"><ion-icon name="arrow-undo-outline"></ion-icon></button>
 
           <div class="usuarios-select">
           <select id="usuarios" name="usuarios">
@@ -34,7 +34,7 @@ $cobranzas_control = new CobranzasControl();
       <div class="logo">
         <img src="../public/assets/img/santo.jpg">
         <h2>Muebleria San Antonio</h2> 
-
+      </div>
   </header>
 
   <h3>Clientes por cobrar</h3>
@@ -69,6 +69,8 @@ $cobranzas_control = new CobranzasControl();
       </table>
    </div>
 
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
 </html>
