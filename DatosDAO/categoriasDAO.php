@@ -51,7 +51,6 @@
             }
             $this->query = "UPDATE categorias SET categoria = '$categoria' WHERE id_categoria =$id_categoria";
             $this->set_query();
-            ;
         }
         public function delete($cat = array()){
             foreach ($cat as $key => $value) {

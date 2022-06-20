@@ -1,8 +1,10 @@
 <?php include("includes/header.php");
 include("../Controlador/ArticulosControl.php");
 include("../Controlador/categoriasControl.php") ;
+include("../Controlador/taxesControl.php") ;
 $articulos_control = new ArticulosControl();
 $categoriasControl = new CategoriasControl();
+$taxControl = new taxesControl();
 ?>
    <div id="cuerpo">
       <div id="cabecera-botones">
@@ -59,7 +61,7 @@ $categoriasControl = new CategoriasControl();
             value="<?php echo isset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>" hidden>
 
             <span>CATEGORIA:</span>
-            <select id="categorias-select" class="select-modal" name="fk_categoria" ><!--Aca hacer el read de Categorias-->
+            <select class="select-modal form-select" name="fk_categoria" ><!--Aca hacer el read de Categorias-->
                <option value="no_select">Seleccione una Categoria</option>
                <?php
                   $data_categorias = $categoriasControl->read();
@@ -70,6 +72,22 @@ $categoriasControl = new CategoriasControl();
                      $selected = (isset($dataToMod[0]['categoria']) && 
                      $categoria == $dataToMod[0]['categoria'])? 'selected':'';
                      echo "<option value='$id_categoria' $selected>$categoria</option>";
+                  }
+               ?>
+            </select>
+            <br/><br/>
+            <span>TIPO DE IVA:</span>
+            <select class="select-modal form-select" name="fk_tax" ><!--Aca hacer el read de taxes-->
+               <option value="no_select">Seleccione un tipo de IVA</option>
+               <?php
+                  $data_tax = $taxControl->read();
+                  foreach ($data_tax as $key => $value) {
+                     foreach ($value as $key2 => $value2) {
+                        $$key2 = $value2;
+                     }
+                     /*$selected = (isset($dataToMod[0]['tipo_iva']) && 
+                     $categoria == $dataToMod[0]['tipo_iva'])? 'selected':'';*/
+                     echo "<option value='$id' $selected>$name</option>";
                   }
                ?>
             </select>
@@ -91,6 +109,7 @@ $categoriasControl = new CategoriasControl();
                <th>PRECIO DE VENTA</th>
                <th>EXISTENCIAS</th>
                <th>CATEGORIA</th>
+               <th>IVA</th>
                <th>ESTADO</th>
                <th colspan="2">ACCIONES</th>
             </tr>
@@ -117,6 +136,7 @@ $categoriasControl = new CategoriasControl();
                   <td>$precio_venta</td>
                   <td>$existencias</td>
                   <td>$categoria</td>
+                  <td>$tipo_iva</td>
                   <td>$status</td>
                   </div>
                   <div id='row-actions'>

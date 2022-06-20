@@ -43,6 +43,7 @@ function buscarAjaxTable(){
                         <td>${datos[c].precio_venta}</td>
                         <td>${datos[c].existencias}</td>
                         <td>${datos[c].categoria}</td>
+                        <td>${datos[c].tipo_iva}</td>
                         <td>${(datos[c].estado)?'Activo':'Inactivo'}</td>
                     </div>
                     <div id='row-actions'>

@@ -1,18 +1,20 @@
 Lucas
-    - Colocar eliminacion logica a todas las tablas(SQL)                            Listo
-    - Crear tabla de taxes (SQL)                                                    Listo
-    - Agg relacion de tabla taxes en articulos (SQL)                                Listo
-    - Actualizar acciones y funciones a los nuevos campos de la BD (PHP)            Pendiente
-    - Crear Secuencia p/ num de ticket BD (PLSQL)                                   Pendiente
-    - Funcion para agg 7 dias a la fecha de cobro (SQL y PHP)                       Pendiente
+    - Colocar eliminacion logica a todas las tablas(SQL)                                Listo
+    - Crear tabla de taxes (SQL)                                                        Listo
+    - Agg relacion de tabla taxes en articulos (SQL)                                    Listo
+    - Crear Secuencia p/ num de ticket BD (PLSQL)                                       Pendiente
+    - Funcion para agg 7 dias a la fecha de cobro (SQL y PHP)                           Pendiente
     - Mejorar acciones de venta p/ que cuando no se marque generar
-    factura se utilice la numeracion del ticket (PHP)                               Pendiente
-    - Validaciones en los formularios para no mandar datos incorrectos (JS)         Pendiente
+    factura se utilice la numeracion del ticket (PHP)                                   Pendiente
+    - Validaciones en los formularios para no mandar datos incorrectos (JS)             Pendiente
     - Crear campos hidden para la venta que contendran info del usuario y
-    cualquier otra informacion releveante (PHP y HTML)                              Pendiente
-    - Actualizar acciones de Articulos, categorias, tipo_comprobante,
-    tipo_usuario, tipo_venta (PHP)                                                  Pendiente
-    - crear MVC para taxes(PHP y SQL)                                               Pendiente
+    cualquier otra informacion releveante (PHP y HTML)                                  Pendiente
+    - Actualizar acciones, formularios y funciones de Articulos (PHP y HTML)            Pendiente
+    - Actualizar acciones, formularios y funciones de categorias (PHP y HTML)           Pendiente
+    - Actualizar acciones, formularios y funciones de tipo_comprobante (PHP y HTML)     Pendiente
+    - Actualizar acciones, formularios y funciones de tipo_usuario (PHP y HTML)         Pendiente
+    - Actualizar acciones, formularios y funciones de tipo_venta (PHP y HTML)           Pendiente
+    - crear MVC para taxes(PHP y SQL)                                                   Listo
 
 
 
