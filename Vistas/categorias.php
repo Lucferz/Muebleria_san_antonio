@@ -55,6 +55,7 @@ $catControl = new CategoriasControl();
             <tr>
                <th>ID</th>
                <th>CATEGORIA</th>
+               <th>ESTADO</th>
                <th colspan="2">ACCIONES</th>
             </tr>
          </thead>
@@ -66,9 +67,17 @@ $catControl = new CategoriasControl();
                   foreach ($value as $key2 => $value2) {
                      $$key2 = $value2;
                   }
+                  if($estado){
+                     $status = 'Activo';
+                     $btnDelLabel = 'Desactivar';
+                  }else{
+                     $status = 'Inactivo';
+                     $btnDelLabel = 'Reactivar';
+                  }
                   echo "<div id='row-content'>
                   <td>$id_categoria</td>
                   <td>$categoria</td>
+                  <td>$status</td>
                   </div>
                   <div id='row-actions'>
                   <td>
@@ -80,8 +89,9 @@ $catControl = new CategoriasControl();
                   <td>
                      <form method='POST' action='../acciones/categorias_acciones.php' id='deleteForm$id_categoria' >
                         <input type='text' name='id_categoria' value='$id_categoria' hidden>
+                        <input type='text' name='estado' value='$estado' hidden>
                      </form>
-                     <button id='btn-desactivar' class='btn-table' onclick=\"eliminar($id_categoria);\" >Eliminar</button>
+                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_categoria, $estado);\" >$btnDelLabel</button>
                   </td>
                   </div>";
                   echo "</tr>";

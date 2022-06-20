@@ -53,7 +53,7 @@ $tipousuarioControl = new TipoUsuarioControl();
             value="<?php echo isset($dataToMod[0]['id_usuario'])? $dataToMod[0]['id_usuario']:''  ?>" hidden>
 
            <span>TIPO USUARIO:</span>
-            <select id="tipo-select" class="select-modal" name="fk_tipo_usuario" ><!--Aca hacer el read de Categorias-->
+            <select class="select-modal form-select" name="fk_tipo_usuario" ><!--Aca hacer el read de Categorias-->
                <option value="no_select">Seleccione Tipo de usuario</option>
                <?php
                   $data_tipousuario = $tipousuarioControl->read();
