@@ -19,7 +19,7 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO tipo_comprobante (comprobante) VALUES ('$comprobante')";
+            $this->query = "INSERT INTO tipo_comprobante (comprobante, estado) VALUES ('$comprobante', true)";
 
             $this->set_query();
         }
@@ -47,12 +47,17 @@
                 $$key = $value;
             }
 
-            $this->query = "DELETE FROM tipo_comprobante WHERE id_tipo_comprobante =$id_tipo_comprobante";
+            $this->query = "UPDATE tipo_comprobante SET estado = false WHERE id_tipo_comprobante =$id_tipo_comprobante";
             $this->set_query();
         }
 
-        public function reactivar(){
-            return "Este Elemento no permite reactivacion";
+        public function reactivar($tipo = array()){
+            foreach ($comprobante as $key => $value) {
+                $$key = $value;
+            }
+
+            $this->query = "UPDATE tipo_comprobante SET estado = true WHERE id_tipo_comprobante =$id_tipo_comprobante";
+            $this->set_query();
         }
     }
 ?>
