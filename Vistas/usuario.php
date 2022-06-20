@@ -8,12 +8,11 @@ $tipousuarioControl = new TipoUsuarioControl();
       <div id="cabecera-botones">
          <div class="flexsearch">
                <div class="flexsearch--wrapper">
-                  <form class="flexsearch--form" action="" method="post">
+                  <div class="flexsearch--form" >
                      <div class="flexsearch--input-wrapper">
-                        <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar">
+                        <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar" autocomplete="off">
                      </div>
-                     <input class="flexsearch--submit" type="submit" value="&#10140;"/>
-                  </form>
+                  </div>
                </div>
          </div>
          <div id="articulos-buttons-container">
@@ -54,7 +53,7 @@ $tipousuarioControl = new TipoUsuarioControl();
             value="<?php echo isset($dataToMod[0]['id_usuario'])? $dataToMod[0]['id_usuario']:''  ?>" hidden>
 
            <span>TIPO USUARIO:</span>
-            <select id="tipo-select" class="select-modal" name="fk_tipo_usuario" ><!--Aca hacer el read de Categorias-->
+            <select class="select-modal form-select" name="fk_tipo_usuario" ><!--Aca hacer el read de Categorias-->
                <option value="no_select">Seleccione Tipo de usuario</option>
                <?php
                   $data_tipousuario = $tipousuarioControl->read();

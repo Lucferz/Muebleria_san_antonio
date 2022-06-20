@@ -40,7 +40,6 @@
             }
             $this->query = "UPDATE tipo_usuario SET tipo = '$tipo' WHERE id_tipo_usuario =$id_tipo_usuario";
             $this->set_query();
-            ;
         }
         public function delete($tipo = array()){
             foreach ($tipo as $key => $value) {

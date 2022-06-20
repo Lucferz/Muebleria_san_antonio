@@ -27,6 +27,9 @@
 		public function delete($cat = array()){
 			return $this->catDAO->delete($cat);
 		}
+		public function reactivar($cat = array()){
+			return $this->catDAO->reactivar($cat);
+		}
 
 		public function buscar($search_key){
 			return $this->catDAO->buscar($search_key);

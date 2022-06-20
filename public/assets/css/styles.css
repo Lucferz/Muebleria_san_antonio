@@ -273,7 +273,7 @@ input:-moz-placeholder {
 	height: 40px;
 }
 
-.field:focus,  #categorias-select:focus{
+.field:focus,  .form-select:focus{
 	border-color: #4C48EB;
 }
 

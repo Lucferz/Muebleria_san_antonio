@@ -2,6 +2,7 @@
     include("../Controlador/categoriasControl.php");
     $catControl = new CategoriasControl();
 
+    var_dump($_POST);   
 
     if(isset($_POST) && array_key_exists('id_categoria', $_POST)){
         $data = $_POST;
@@ -9,7 +10,11 @@
             $catControl->update($data);
         } else{
             if($data['id_categoria']!= null && $data['id_categoria'] != '' && isset($data['del']) && $data['del']=='si'){
-                $catControl->delete($data);
+                if($data['estado'] == 1){
+                    $catControl->delete($data);
+                }else{
+                    $catControl->reactivar($data);
+                }
             } else{
                 if($data['id_categoria']== null || $data['id_categoria'] == ''){
                     $catControl->create($data);

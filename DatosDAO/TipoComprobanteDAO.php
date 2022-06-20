@@ -41,7 +41,6 @@
             }
             $this->query = "UPDATE tipo_comprobante SET comprobante = '$comprobante' WHERE id_tipo_comprobante =$id_tipo_comprobante";
             $this->set_query();
-            ;
         }
         public function delete($tipo = array()){
             foreach ($comprobante as $key => $value) {

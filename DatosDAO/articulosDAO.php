@@ -17,15 +17,40 @@
             }
 
             $this->query = "INSERT INTO articulos (descripcion,precio_compra,precio_venta,existencias,estado,
-                fecha_alta, fecha_modificacion,fk_categoria) VALUES ('$descripcion', $precio_compra, $precio_venta,
-                $existencias,true, CURRENT_TIMESTAMP, null, $fk_categoria)";
+                fecha_alta, fecha_modificacion,fk_categoria, fk_tax) VALUES ('$descripcion', $precio_compra, $precio_venta,
+                $existencias,true, CURRENT_TIMESTAMP, null, $fk_categoria, $fk_tax)";
             $this->set_query();
         }
 
         public function read($id_articulo = ''){
             $this->query = ($id_articulo == '')?
-             "SELECT a.id_articulo, a.descripcion , a.precio_compra, a.precio_venta, a.existencias, a.estado, c.categoria, a.fecha_alta, a.fecha_modificacion FROM articulos a join categorias c on a.fk_categoria = c.id_categoria"
-            :"SELECT a.id_articulo, a.descripcion , a.precio_compra, a.precio_venta, a.existencias, a.estado, c.categoria, a.fecha_alta, a.fecha_modificacion FROM articulos a join categorias c on a.fk_categoria = c.id_categoria WHERE a.id_articulo = $id_articulo";
+             "SELECT a.id_articulo, 
+                a.descripcion , 
+                a.precio_compra, 
+                a.precio_venta, 
+                a.existencias, 
+                a.estado, 
+                c.categoria, 
+                (SELECT name from taxes WHERE id = a.fk_tax) as tipo_iva,
+                a.fecha_alta, 
+                a.fecha_modificacion 
+             FROM 
+                articulos a join categorias c on a.fk_categoria = c.id_categoria"
+            :"SELECT 
+                a.id_articulo, 
+                a.descripcion , 
+                a.precio_compra, 
+                a.precio_venta, 
+                a.existencias, 
+                a.estado, 
+                c.categoria, 
+                (SELECT name from taxes WHERE id = a.fk_tax) as tipo_iva,
+                a.fecha_alta, 
+                a.fecha_modificacion 
+            FROM 
+                articulos a join categorias c on a.fk_categoria = c.id_categoria 
+            WHERE 
+                a.id_articulo = $id_articulo";
             $this->get_query();
             //$num_rows = count($this->rows);
             $data = array();
@@ -46,6 +71,7 @@
                 a.existencias, 
                 a.estado, 
                 c.categoria, 
+                (SELECT name from taxes WHERE id = a.fk_tax) as tipo_iva,
                 a.fecha_alta, 
                 a.fecha_modificacion 
             FROM 
@@ -59,8 +85,19 @@
                 a.estado LIKE '%$search_key%' OR
                 c.categoria LIKE '%$search_key%' OR
                 a.fecha_alta LIKE '%$search_key%' OR
-                a.fecha_modificacion LIKE '%$search_key%' 
+                a.fecha_modificacion LIKE '%$search_key%'
             query;
+            /*
+            a.id_articulo LIKE '%$search_key%' OR
+                a.descripcion LIKE '%$search_key%' OR
+                a.precio_compra LIKE '%$search_key%' OR
+                a.precio_venta LIKE '%$search_key%' OR
+                a.existencias LIKE '%$search_key%' OR
+                a.estado LIKE '%$search_key%' OR
+                c.categoria LIKE '%$search_key%' OR
+                a.fecha_alta LIKE '%$search_key%' OR
+                a.fecha_modificacion LIKE '%$search_key%'
+                */
 
             $this->get_query();
             $data = array();
@@ -78,7 +115,7 @@
 
             $this->query = "UPDATE articulos SET descripcion ='$descripcion', precio_compra =$precio_compra,
             precio_venta = $precio_venta,existencias =$existencias,fecha_modificacion = CURRENT_TIMESTAMP,
-            fk_categoria =$fk_categoria WHERE id_articulo =$id_articulo";
+            fk_categoria =$fk_categoria , fk_tax = $fk_tax WHERE id_articulo =$id_articulo";
             $this->set_query();
         }
 

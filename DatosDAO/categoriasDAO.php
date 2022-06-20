@@ -19,7 +19,7 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO categorias (categoria) VALUES ('$categoria')";
+            $this->query = "INSERT INTO categorias (categoria, estado) VALUES ('$categoria', true)";
             $this->set_query();
         }
         public function read(){
@@ -51,26 +51,29 @@
             }
             $this->query = "UPDATE categorias SET categoria = '$categoria' WHERE id_categoria =$id_categoria";
             $this->set_query();
-            ;
         }
         public function delete($cat = array()){
             foreach ($cat as $key => $value) {
                 $$key = $value;
             }
 
-            $this->query = "DELETE FROM categorias WHERE id_categoria =$id_categoria";
+            $this->query = "UPDATE categorias SET estado = 0 WHERE id_categoria =$id_categoria";
             $this->set_query();
         }
 
-        public function reactivar(){
+        public function reactivar($cat = array()){
+            foreach ($cat as $key => $value) {
+                $$key = $value;
+            }
 
+            $this->query = "UPDATE categorias SET estado = 1 WHERE id_categoria =$id_categoria";
+            $this->set_query();
         }
 
         public function buscar($search_key){
             $this->query = <<<query
             SELECT * FROM categorias c
             WHERE 
-                c.id_categoria LIKE '%$search_key%' OR
                 c.categoria LIKE '%$search_key%'
             query;
 
