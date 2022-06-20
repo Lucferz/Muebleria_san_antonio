@@ -23,6 +23,8 @@
    <title>Ventas</title>
 </head>
 <body>
+      
+   <button onclick="location.href= 'ventas.php'" class="volver"><ion-icon name="arrow-undo-outline"></ion-icon></button>
    <div class="usuarios-select">
       <select id="usuarios" name="usuarios">
          <option value="no_select"><?php echo $_SESSION['nombre'] ?></option>
