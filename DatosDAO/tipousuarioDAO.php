@@ -19,7 +19,7 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO tipo_usuario (id_tipo_usuario, tipo) VALUES ($id_tipo_usuario, '$tipo')";
+            $this->query = "INSERT INTO tipo_usuario (id_tipo_usuario, tipo, estado) VALUES ($id_tipo_usuario, '$tipo', true)";
             $this->set_query();
         }
         public function read($id_tipo_usuario = ''){
@@ -46,12 +46,17 @@
                 $$key = $value;
             }
 
-            $this->query = "DELETE FROM tipo_usuario WHERE id_tipo_usuario =$id_tipo_usuario";
+            $this->query = "UPDATE tipo_usuario SET estado = false WHERE id_tipo_usuario =$id_tipo_usuario";
             $this->set_query();
         }
 
-        public function reactivar(){
-            return "Esta clase no permite reactivacion";
+        public function reactivar($tipo = array()){
+            foreach ($tipo as $key => $value) {
+                $$key = $value;
+            }
+
+            $this->query = "UPDATE tipo_usuario SET estado = true WHERE id_tipo_usuario =$id_tipo_usuario";
+            $this->set_query();
         }
     }
 ?>

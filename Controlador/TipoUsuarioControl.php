@@ -15,17 +15,20 @@
 			unset($this->tipusuaDAO);
 		}
 
-		public function create($usuario = array()){
+		public function create($tipo = array()){
 			return $this->tipusuaDAO->create($tipo);
 		}
-		public function read($id_usuario = ''){
-			return $this->tipusuaDAO->read($id_usuario);
+		public function read($id_tipo_usuario = ''){
+			return $this->tipusuaDAO->read($id_tipo_usuario);
 		}
-		public function update( $usuario = array()){
+		public function update( $tipo = array()){
 			return $this->tipusuaDAO->update($tipo);
 		}
-		public function delete($usuario = array()){
+		public function delete($tipo = array()){
 			return $this->tipusuaDAO->delete($tipo);
+		}
+		public function reactivar($tipo = array()){
+			return $this->tipousuaDAO->reactivar($tipo);
 		}
 	}
 ?>

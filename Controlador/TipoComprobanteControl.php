@@ -27,5 +27,8 @@
 		public function delete($comprobante = array()){
 			return $this->tipcomDAO->delete($comprobante);
 		}
+		public function reactivar($tipo = array()){
+			return $this->tipocomDAO->reactivar($tipo);
+		}
 	}
 ?>

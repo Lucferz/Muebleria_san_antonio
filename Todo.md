@@ -10,10 +10,9 @@ Lucas
     - Crear campos hidden para la venta que contendran info del usuario y
     cualquier otra informacion releveante (PHP y HTML)                                  Pendiente
     - Actualizar acciones, formularios y funciones de Articulos (PHP y HTML)            Listo
-    - Actualizar acciones, formularios y funciones de categorias (PHP y HTML)           Pendiente
-    - Actualizar acciones, formularios y funciones de tipo_comprobante (PHP y HTML)     Pendiente
-    - Actualizar acciones, formularios y funciones de tipo_usuario (PHP y HTML)         Pendiente
-    - Actualizar acciones, formularios y funciones de tipo_venta (PHP y HTML)           Pendiente
+    - Actualizar acciones, formularios y funciones de categorias (PHP y HTML)           Listo
+    - Actualizar acciones, formularios y funciones de tipo_comprobante (PHP y HTML)     Listo
+    - Actualizar acciones, formularios y funciones de tipo_usuario (PHP y HTML)         Listo
     - crear MVC para taxes(PHP y SQL)                                                   Listo
 
 
