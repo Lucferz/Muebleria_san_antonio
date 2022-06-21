@@ -35,3 +35,7 @@ Nombre de la empresa
 https://www.set.gov.py/portal/PARAGUAY-SET/detail?folder-id=repository:collaboration:/sites/PARAGUAY-SET/categories/SET/biblioteca-virtual/preguntas-frecuentes/timbrado&content-id=/repository/collaboration/sites/PARAGUAY-SET/documents/biblioteca/biblioteca-virtual/sistema-de-facturacion-y-timbrado
 
 ver mas detalles en el enlace de arriba
+
+https://parzibyte.me/blog/2018/02/25/cargar-nuestras-clases-composer/
+https://parzibyte.me/blog/2019/02/03/adaptar-proyecto-php-composer/
+https://parzibyte.me/blog/2019/12/27/factura-pdf-php-ejemplo-completo/
