@@ -101,6 +101,7 @@
             $password = hash('sha256', $pass);
             $this->query = <<<query
             SELECT
+                u.id_usuario,
                 u.Nombre ,
                 u.usuario ,
                 tu.tipo as rol

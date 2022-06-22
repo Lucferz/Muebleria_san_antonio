@@ -1,7 +1,5 @@
 <?php
   require_once("../Controlador/app_base.php");
-  require_once("../Controlador/TipoVentaControl.php");
-  $tvc = new TipoVentaControl();
   if (!$_SESSION['autenticado']){
     header("Location: Login.php");
     die();
@@ -12,6 +10,8 @@
     header("Location: $location");
     die();
   }
+  require_once("../Controlador/TipoVentaControl.php");
+  $tvc = new TipoVentaControl();
 ?>
 <!DOCTYPE html>
 <htmllang="es"> 
@@ -39,7 +39,7 @@
    </header>
    <div class="contenido">
       <form action="../acciones/ventas_acciones.php" method="POST">
-        <input type="text" name="fk_usuario" value="" hidden />
+        <input type="text" name="fk_usuario" value="<?php echo $_SESSION['id_usuario'] ?>" hidden />
          <div class="row">
             <div class="col-25">
                <label for="clname">Cliente</label>
