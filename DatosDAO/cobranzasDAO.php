@@ -107,7 +107,7 @@
                 $$key = $value;
             }
 
-            $this->query = "UPDATE cobranzas SET  fecha_cobrado = $fecha_cobrado, monto = $monto, fecha_modificado = CURRENT_TIMESTAMP, monto_cobrado = $monto_cobrado WHERE id_cobranza =$id_cobranza";
+            $this->query = "UPDATE cobranzas SET  monto = $monto, fecha_modificado = CURRENT_TIMESTAMP, monto_cobrado = $monto_cobrado WHERE id_cobranza =$id_cobranza";
             $this->set_query();
         }
 
@@ -125,6 +125,11 @@
                 $$key = $value;
             }
             $this->query = "UPDATE cobranzas a SET estado = true, fecha_modificado = CURRENT_TIMESTAMP WHERE c.id_cobranza =$id_cobranza";
+            $this->set_query();
+        }
+
+        public function aplazar_cobro($id){//aplaza el cobro por 7 dias, despues mejorar para que sean puestos por el usuario
+            $this->query = "UPDATE cobranzas c SET fecha = ADDDATE((SELECT c.fecha_cobro FROM cobranzas c WHERE id = $id), 7) WHERE c.id_cobranza = $id";
             $this->set_query();
         }
     }
