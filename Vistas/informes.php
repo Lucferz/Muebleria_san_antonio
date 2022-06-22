@@ -62,7 +62,7 @@ $taxControl = new taxesControl();
 <?php 
 
 $html= ob_get_clean();
-require_once'../informes/librerias/dompdf/autoload.inc.php';
+require_once'../vendor/dompdf/dompdf/autoload.php';
 use Dompdf\Dompdf;
 $dompdf = new Dompdf();
 $options = $dompdf->getOptions();
