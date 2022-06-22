@@ -127,6 +127,7 @@
           <span class="checkmark"></span>
          </label>
          <br>
+         <input type="text" name="id_venta" value="" hidden />
          <div class="row">
             <button type="submit" class="confirmar">Confirmar</button>
          </div>

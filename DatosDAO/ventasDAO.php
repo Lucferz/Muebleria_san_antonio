@@ -16,9 +16,9 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO ventas(fk_articulo, fk_tipo_venta, fk_cliente, fk_usuario, fk_tipo_comprobante, descuento, cantidad, total, 
+            $this->query = "INSERT INTO ventas(fk_articulo, fk_tipo_venta, fk_cliente, fk_usuario, fk_tipo_comprobante, descuento, cantidad, entrega, total, 
             fecha_emision, fecha_mod, num_factura, num_ticket, estado) 
-            VALUES ($fk_articulo, $fk_tipo_venta, $fk_cliente, $fk_usuario, $fk_tipo_comprobante, $descuento, $cantidad, $total, 
+            VALUES ($fk_articulo, $fk_tipo_venta, $fk_cliente, $fk_usuario, $fk_tipo_comprobante, $descuento, $cantidad, $entrega, $total, 
             CURRENT_TIMESTAMP,null, $num_factura, $num_ticket, true)";
             $this->set_query();
         }
@@ -35,6 +35,7 @@
                 a.descripcion as articulo, 
                 v.cantidad, 
                 v.descuento, 
+                v.entrega,
                 v.total, 
                 v.fecha_emision, 
                 v.fecha_mod,  
@@ -54,7 +55,8 @@
                 v.num_ticket, 
                 a.descripcion as articulo, 
                 v.cantidad, 
-                v.descuento, 
+                v.descuento,
+                v.entrega 
                 v.total, 
                 v.fecha_emision, 
                 v.fecha_mod,  
@@ -88,6 +90,7 @@
                 a.descripcion as articulo, 
                 v.cantidad, 
                 v.descuento, 
+                v.entrega
                 v.total, 
                 v.fecha_emision, 
                 v.fecha_mod,  
@@ -99,17 +102,13 @@
                 join usuarios u on v.fk_usuario = u.id_usuario 
                 join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante
             WHERE
-                v.id_venta LIKE '%$search_key%' OR
                 c.cliente LIKE '%$search_key%' OR 
                 u.Nombre LIKE '%$search_key%' OR
                 tv.tipo LIKE '%$search_key%' OR 
                 tc.comprobante LIKE '%$search_key%' OR
                 v.num_factura LIKE '%$search_key%' OR
                 v.num_ticket LIKE '%$search_key%' OR 
-                a.descripcion LIKE '%$search_key%' OR 
-                v.cantidad LIKE '%$search_key%' OR 
-                v.descuento LIKE '%$search_key%' OR 
-                v.total LIKE '%$search_key%' OR 
+                a.descripcion LIKE '%$search_key%' OR
                 v.fecha_emision LIKE '%$search_key%' OR 
                 v.fecha_mod LIKE '%$search_key%' OR  
                 v.estado LIKE '%$search_key%'
@@ -130,7 +129,7 @@
 
             $this->query = "UPDATE ventas SET fk_articulo = $fk_articulo, fk_tipo_venta=$fk_tipo_venta,
             fk_cliente = $fk_cliente,fk_usuario = $fk_usuario, fk_tipo_comprobante = $fk_tipo_comprobante,
-            descuento = $descuento, cantidad = $cantidad, total = $total, fecha_mod = CURRENT_TIMESTAMP,
+            descuento = $descuento, cantidad = $cantidad, entrega = $entrega, total = $total, fecha_mod = CURRENT_TIMESTAMP,
             num_factura = $num_factura, num_ticket = $num_ticket WHERE id_venta =$id_venta";
             $this->set_query();
         }
