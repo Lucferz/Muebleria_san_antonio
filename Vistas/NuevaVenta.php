@@ -23,13 +23,22 @@
    <title>Ventas</title>
 </head>
 <body>
-      
-   <button onclick="location.href= 'ventas.php'" class="volver"><ion-icon name="arrow-undo-outline"></ion-icon></button>
-   <div class="usuarios-select">
+   <?php
+      if($_SESSION['rol'] == 'Admin'){
+         echo "<button onclick=\"location.href= 'ventas.php'\" class=\"volver\"><ion-icon name=\"arrow-undo-outline\"></ion-icon></button>";
+      }
+   ?>
+   <!--<div class="usuarios-select">
       <select id="usuarios" name="usuarios">
          <option value="no_select"><?php echo $_SESSION['nombre'] ?></option>
          <option value="cerrar"><a href="acciones/session_actions.php?session=close">Cerrar sesion</a></option>
       </select>
+   </div>-->
+   <div id="usuarios" class="dropdown">
+      <?php echo $_SESSION['nombre'] ?><button class="dropbtn btn"></button>
+      <div class="dropdown-content">
+         <a href="../acciones/session_actions.php?session=close">Cerrar Sesion</a>
+      </div>
    </div>
    <br> 
    <header>
@@ -68,7 +77,15 @@
                 </ul>
               </div>
             </div>
-         </div><br/>
+         </div>
+         <div class="row">
+            <div class="col-25">
+               <label for="fcant">Cantidad</label>
+            </div>
+            <div class="col-75">
+               <input type="number" id="fcant" class="input-field" name="cantidad" placeholder="Entrega"> 
+            </div>
+         </div>
          <div class="row">
             <div class="col-25">
                <label for="fname">Entrega</label>
