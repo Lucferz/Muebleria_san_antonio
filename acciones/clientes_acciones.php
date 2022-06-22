@@ -2,7 +2,6 @@
     include("../Controlador/ClientesControl.php");
     $clientes_control = new ClientesControl();
     
-
     if(isset($_POST) && array_key_exists('id_cliente', $_POST)){
         $data = $_POST;
         if ($data['id_cliente']!= null && $data['id_cliente'] != '' && !isset($data['del'])){
@@ -26,8 +25,11 @@
         
     }
 
-    //echo "<br><br><br><a href='Cliente.php'>Clientes</a>"
-
-    header("Location: ../Vistas/Cliente.php");
+    // echo "<br><br><br><a href='Cliente.php'>Clientes</a>"
+    if(array_key_exists('venta', $_POST)){
+        header("Location: ../Vistas/NuevaVenta.php");
+    }else{
+        header("Location: ../Vistas/Cliente.php");
+    }
     die();
 ?>

@@ -46,8 +46,41 @@
       <img src="../public/assets/img/santo.jpg">
       <h2>Muebleria San Antonio</h2>
    </header>
+   <!-- The Modal -->
+   <div id="newClientModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content"> 
+            <form method="POST" class= "modal-form" action="../acciones/clientes_acciones.php" id="formven">
+               <span id="closeBtn" class="close"><ion-icon name="close-outline"></ion-icon></span>
+               <h1 class="titulo-modal">Nuevo Cliente</h1>
+               
+               <p>Cliente:</p>
+               <input type="text" name="cliente" class="field" autocomplete="off" required> <br/>
+
+               <p>CI:</p>
+               <input type="text" name="ci" class="field" autocomplete="off" required> <br/>
+
+               <p>RUC:</p>
+               <input type="text" name="ruc" class="field" autocomplete="off"> <br/>
+
+               <p>Telefono:</p>
+               <input type="text" name="telefono" class="field" autocomplete="off" required> <br/>
+   
+               <p>Direccion:</p>
+               <input type="text" name="direccion" class="field" autocomplete="off" required> <br/>
+
+               <br/>
+               <input type="text" name="id_cliente" hidden>
+               <input type="text" name='venta' hidden>
+
+               <p class="center-content">
+               <input type="submit" class="btn-azul" value="GUARDAR">
+               </p>
+            </form>
+      </div>
+   </div>
    <div class="contenido">
-      <form action="../acciones/ventas_acciones.php" method="POST">
+      <form id="formven" action="../acciones/ventas_acciones.php" method="POST">
         <input type="text" name="fk_usuario" value="<?php echo $_SESSION['id_usuario'] ?>" hidden />
          <div class="row">
             <div class="col-25">
@@ -61,7 +94,7 @@
                 </ul>
               </div>
             </div>
-            <button class="nuevo-cliente" >
+            <button id="newClientBtn" class="nuevo-cliente" >
               <ion-icon name="add-outline"></ion-icon>
             </button>
          </div>
@@ -137,6 +170,7 @@
    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
    <script src="../public/assets/js/cliente.js"></script>
    <script src="../public/assets/js/stock.js"></script>
+   <script src="../public/assets/js/ventas.js"></script>
 </body>
 </html>
 

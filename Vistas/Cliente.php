@@ -37,23 +37,23 @@ $clientes_control = new ClientesControl();
 						
 						<p>Cliente:</p>
 						<input type="text" name="cliente" value="<?php echo isset($dataToMod[0]['cliente'])? $dataToMod[0]['cliente']:'' ?>" 
-                  class="field" required> <br/>
+                  class="field" autocomplete="off" required> <br/>
 
 						<p>CI:</p>
 						<input type="text" name="ci" value="<?php echo isset($dataToMod[0]['ci'])? $dataToMod[0]['ci']:'' ?>" 
-                  class="field" required> <br/>
+                  class="field" autocomplete="off" required> <br/>
 
 						<p>RUC:</p>
 						<input type="text" name="ruc" value="<?php echo isset($dataToMod[0]['ruc'])? $dataToMod[0]['ruc']:'' ?>" 
-                  class="field"> <br/>
+                  class="field" autocomplete="off"> <br/>
 
 						<p>Telefono:</p>
 						<input type="text" name="telefono" value="<?php echo isset($dataToMod[0]['telefono'])? $dataToMod[0]['telefono']:'' ?>" 
-                  class="field" required> <br/>
+                  class="field" autocomplete="off" required> <br/>
 		
 						<p>Direccion:</p>
 						<input type="text" name="direccion" value="<?php echo isset($dataToMod[0]['direccion'])? $dataToMod[0]['direccion']:'' ?>" 
-                  class="field" required> <br/>
+                  class="field" autocomplete="off" required> <br/>
 
                   <br/>
                     <input type="text" name="id_cliente" 
