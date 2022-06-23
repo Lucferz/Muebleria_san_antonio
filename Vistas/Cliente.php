@@ -55,9 +55,8 @@ $clientes_control = new ClientesControl();
 						<input type="text" name="direccion" value="<?php echo isset($dataToMod[0]['direccion'])? $dataToMod[0]['direccion']:'' ?>" 
                   class="field" autocomplete="off" required> <br/>
 
-                  <br/>
-                    <input type="text" name="id_cliente" 
-                     value="<?php echo isset($dataToMod[0]['id_cliente'])? $dataToMod[0]['id_cliente']:'' ?>" hidden>
+                  <input type="text" name="id_cliente" 
+                  value="<?php echo isset($dataToMod[0]['id_cliente'])? $dataToMod[0]['id_cliente']:'' ?>" hidden>
 
 						<p class="center-content">
 						<input type="submit" class="btn-azul" value="GUARDAR">

@@ -69,7 +69,6 @@
                <p>Direccion:</p>
                <input type="text" name="direccion" class="field" autocomplete="off" required> <br/>
 
-               <br/>
                <input type="text" name="id_cliente" hidden>
                <input type="text" name='venta' hidden>
 
