@@ -41,6 +41,7 @@ $pdf->AddPage();
 
 while ($row = $resultado->fetch_assoc()) {
     $pdf->Cell(25); 
+    $pdf->SetFont('Arial','',11);
 	$pdf->Cell(100, 10, $row['descripcion'], 1, 0, 'C', 0);
 	$pdf->Cell(40, 10, $row['existencias'], 1, 1 , 'C', 0);
 }
