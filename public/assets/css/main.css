@@ -147,8 +147,24 @@ border-radius: 7.1px;
 
 
 @media screen and (max-width: 600px) {
-  .login-design, .login, input[type=submit]{
-    width: 80%;
-    margin-top: 0;
+  .login-design {
+    width: 100%;
+}
+  .login-form {
+    width: 320px;
+    height: 310px;
+    padding: 10px;
+    background: rgba(201, 168, 244, 0.5);
+    backdrop-filter: blur(177.5px);
+    border-radius: 7.1px;
+    text-align: center;
+}
+  .login-design{ 
+    display: block;
+    text-align: center;
   }
+
+.waves{
+  flex-shrink: 3;
+}
 }
