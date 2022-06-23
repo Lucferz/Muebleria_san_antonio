@@ -24,6 +24,13 @@ Lucas
 
 Para la version 2
 
+ver: 
+    informconf
+
+usuarios iniciar sesion con CI
+    
+tablas
+https://datatables.net/
 
 Modificar proyecto para trabajar con framework LARAVEL
 https://www.youtube.com/watch?v=ImtZ5yENzgE&ab_channel=freeCodeCamp.org
