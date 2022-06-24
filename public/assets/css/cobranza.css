@@ -5,7 +5,8 @@ body{
 }
 
 .volver{
-  padding: 10px;
+  padding: 4px;
+ margin-right: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   width: auto;
