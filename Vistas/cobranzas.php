@@ -16,6 +16,7 @@ $cobranzas_control = new CobranzasControl();
       <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="../public/assets/css/cobranza.css">
+    <link rel="stylesheet" type="text/css" href="../public/assets/css/modal.css">
    <title>Clientes por cobrar</title>
 </head>
 <body>
@@ -45,6 +46,7 @@ $cobranzas_control = new CobranzasControl();
                <th>Cliente</th>
                <th>Monto</th>
                <th>Estado</th>
+               <th>Acciones</th>
             </tr>
          </thead>
          <tbody>
@@ -59,18 +61,55 @@ $cobranzas_control = new CobranzasControl();
                   <td>$cliente</td>
                   <td>$monto</td>
                   <td>$estado_cobranza</td>
-                  
                   </div>
                   ";
-                  echo "</tr>";
                }
             ?>
+            <td>
+                <button id="addNew">Cobrar</button>
+            </td>
+              <!-- The Modal -->
+      <div id="myModal" class="modal">
+         <!-- Modal content -->
+         <div class="modal-content"> 
+               <form method="POST" >
+                  <span class="close"><ion-icon name="close-outline"></ion-icon></span>
+                  <h1 class="titulo-modal">Traer nombre del cliente</h1>
+                  
+                  <p>Saldo:</p>
+                  <input type="text" readonly="readonly" 
+                  class="field"> <br/>
+
+                  <p>Cuota Nro:</p>
+                  <input type="text" name="cuotaNro" readonly="readonly" 
+                  > <br/>
+
+                  <p>Entrega:</p>
+                  <input type="text" name="entrega"  
+                  class="field"> <br/>
+
+                  <br>
+                  <div class="btns">
+                  <p>
+                  <input type="submit" class="btn-azul" value="COBRAR">
+                  </p>
+                  <p>
+                  <input type="submit" class="btn-azul2" value="NO PAGÓ">
+                  </p>
+                  </div>
+                  
+               </form>
+         </div>
+      </div>
+
          </tbody>
       </table>
    </div>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-
+<?php
+   include("includes/footer.html");
+?>
 </body>
 </html>
