@@ -110,3 +110,17 @@
   justify-content: center;
 
 }
+
+@media screen and (max-width: 600px) {
+  .modal-content{
+    width: 80%;
+    margin-top: 0;
+  }
+  .field {
+    border: solid 1px #AFAFAF;
+    padding: 10px;
+    margin-left: 5px;
+    outline: none;
+    width: 280px;
+}
+  }

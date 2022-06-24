@@ -81,7 +81,7 @@ $cobranzas_control = new CobranzasControl();
                   class="field"> <br/>
 
                   <p>Cuota Nro:</p>
-                  <input type="text" name="cuotaNro" readonly="readonly" 
+                  <input type="text" class="field"name="cuotaNro" readonly="readonly" 
                   > <br/>
 
                   <p>Entrega:</p>
