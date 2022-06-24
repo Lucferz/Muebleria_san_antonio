@@ -42,7 +42,7 @@
 
             <div class="informes-content">
                <a href="informe_stock.php">Informe de stock</a>
-               <a href="#">Informe de ventas</a>
+               <a href="informeVentas.php">Informe de ventas</a>
             </div>
          </div>
    </nav>
