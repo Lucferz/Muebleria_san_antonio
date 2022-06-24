@@ -25,6 +25,11 @@
             } else{
                 echo "<br>Entro en el else secundario";
                 if($data['id_venta']== null || $data['id_venta'] == ''){
+                    if ( array_key_exists("fk_tipo_comprobante", $data)){
+                        $data['fk_tipo_comprobante']= 2;
+                    }else{
+                        array_push($data, 'fk_tipo_comprobante' => 2);
+                    }
                     echo "<br>Entro en insertar";
                     $usuarios_control->create($data);
                     echo "<br>inserto";

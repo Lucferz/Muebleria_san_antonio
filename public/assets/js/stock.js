@@ -17,6 +17,7 @@ if (document.getElementById("autocomplete-input-articulo") != null){
             inputSearch.value = event.target.innerHTML;
             idSend.value = event.target.id;
             listarArticulos(resultList, []);
+            hallar_datos(event.target.id);
         }
     });
 }
@@ -110,4 +111,29 @@ function listarArticulos(resultList, datos) {
         `;
         c++;
     }
+}
+
+
+function hallar_datos(id) {
+    let stock;
+    let precio;
+    var xhttp = new XMLHttpRequest();
+    console.log(id);
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            //console.log(this.responseText);
+            let datos = JSON.parse(this.responseText);
+            //console.log(datos);
+            stock = datos[0].existencias;
+            precio = datos[0].precio_venta;
+            console.log(stock);
+            console.log(precio);
+            document.getElementById("fprecio").value = precio;
+            document.getElementById("stock").value = stock;//No esta poniendo nada
+        }
+    }
+    xhttp.open('GET', '../api/listar.php?table=stock&id='+id, true);
+    xhttp.send();
+
+    
 }

@@ -115,7 +115,15 @@
                <label for="fcant">Cantidad</label>
             </div>
             <div class="col-75">
-               <input type="number" id="fcant" class="input-field" name="cantidad" placeholder="Entrega"> 
+               <input type="number" id="fcant" class="input-field" name="cantidad" placeholder="Cantidad a vender"> 
+            </div>
+         </div>
+         <div class="row">
+            <div class="col-25">
+               <label for="fprecio">Precio</label>
+            </div>
+            <div class="col-75">
+               <input type="text" id="fprecio" class="input-field" readonly="readonly"> 
             </div>
          </div>
          <div class="row">
