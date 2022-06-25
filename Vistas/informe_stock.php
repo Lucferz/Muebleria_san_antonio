@@ -14,9 +14,9 @@ function Header()
     $this->Ln(20); 
    
     $this->SetFont('Arial','B',12);  
-    $this->Cell(25); 
-    $this->Cell(100, 10, 'Descripcion', 1, 0, 'C', 0);
-    $this->Cell(40, 10, 'Existencias', 1, 1 , 'C', 0);
+    $this->Cell(8); 
+    $this->Cell(150, 10, 'Descripcion', 1, 0, 'C', 0);
+    $this->Cell(25, 10, 'Existencias', 1, 1 , 'C', 0);
 }
 // Pie de página
 function Footer()
@@ -40,10 +40,10 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 
 while ($row = $resultado->fetch_assoc()) {
-    $pdf->Cell(25); 
+    $pdf->Cell(8); 
     $pdf->SetFont('Arial','',11);
-	$pdf->Cell(100, 10, $row['descripcion'], 1, 0, 'C', 0);
-	$pdf->Cell(40, 10, $row['existencias'], 1, 1 , 'C', 0);
+	$pdf->Cell(150, 10, $row['descripcion'], 1, 0, 'C', 0);
+	$pdf->Cell(25, 10, $row['existencias'], 1, 1 , 'C', 0);
 }
 
 
