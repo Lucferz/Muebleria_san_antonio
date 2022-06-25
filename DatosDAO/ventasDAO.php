@@ -44,7 +44,9 @@
                 join tipo_venta tv on v.fk_tipo_venta = tv.id 
                 join clientes c on v.fk_cliente = c.id_cliente 
                 join usuarios u on v.fk_usuario = u.id_usuario 
-                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante"
+                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante
+            ORDER BY
+                v.id_venta"
             :"SELECT 
                 v.id_venta,
                 c.cliente, 
@@ -111,7 +113,9 @@
                 a.descripcion LIKE '%$search_key%' OR
                 v.fecha_emision LIKE '%$search_key%' OR 
                 v.fecha_mod LIKE '%$search_key%' OR  
-                v.estado LIKE '%$search_key%'
+                v.estado LIKE '%$search_key%
+            ORDER BY
+                v.id_vent'
             query;
             $this->get_query();
             $data = array();

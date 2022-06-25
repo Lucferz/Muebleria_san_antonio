@@ -115,7 +115,7 @@
                <label for="fcant">Cantidad</label>
             </div>
             <div class="col-75">
-               <input type="number" id="fcant" class="input-field" name="cantidad" placeholder="Cantidad a vender"> 
+               <input type="number" id="fcant" class="input-field" name="cantidad" placeholder="Cantidad a vender"><em id="stock"></em>
             </div>
          </div>
          <div class="row">
@@ -123,7 +123,8 @@
                <label for="fprecio">Precio</label>
             </div>
             <div class="col-75">
-               <input type="text" id="fprecio" class="input-field" readonly="readonly"> 
+               <input type="text" id="fprecio" class="input-field" name="total" readonly="readonly">
+               <input type="text" id="fprecio_h" readonly="readonly" hidden>
             </div>
          </div>
          <div class="row">
@@ -136,11 +137,11 @@
          </div>
          <div class="row">
             <div class="col-25">
-               <label for="cuotas">Cuotas</label>
+               <label for="cuotas">Tipo De Venta</label>
             </div>
             <div class="col-75">
                <select id="cuotas" name="fk_tipo_venta">
-                  <option value="no_select">Seleccione Tipo De Venta</option>
+                  <!--<option value="no_select">Seleccione Tipo De Venta</option>-->
                   <?php
                     $data_tpv = $tvc->read();
                     foreach ($data_tpv as $key => $value) {

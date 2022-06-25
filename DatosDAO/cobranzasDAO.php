@@ -37,7 +37,9 @@
                 estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
                 JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
                 JOIN ventas v ON (c.fk_venta = v.id_venta)
-                JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)" 
+                JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)
+            ORDER BY
+                c.id_cobranza" 
             :"SELECT
                 c.id_cobranza,
                 cli.cliente,
@@ -87,10 +89,13 @@
                 cli.direccion LIKE '%$search_key%' OR
                 c.monto LIKE '%$search_key%' OR
                 c.fecha_cobro LIKE '%$search_key%' OR
+                c.fecha_cobro_mora LIKE '%$search_key%' OR
                 c.fecha_cobrado LIKE '%$search_key%' OR
                 c.monto_cobrado LIKE '%$search_key%' OR
                 u.Nombre LIKE '%$search_key%' OR
                 ec.estado_cobranza LIKE '%$search_key%'
+            ORDER BY
+                c.id_cobranza
             query;
             $this->get_query();
            
@@ -129,7 +134,7 @@
         }
 
         public function aplazar_cobro($id){//aplaza el cobro por 7 dias, despues mejorar para que sean puestos por el usuario
-            $this->query = "UPDATE cobranzas c SET fecha = ADDDATE((SELECT c.fecha_cobro FROM cobranzas c WHERE id = $id), 7) WHERE c.id_cobranza = $id";
+            $this->query = "UPDATE cobranzas c SET c.fecha_cobro_mora = ADDDATE((SELECT c.fecha_cobro FROM cobranzas c WHERE id = $id), 7) WHERE c.id_cobranza = $id";
             $this->set_query();
         }
     }

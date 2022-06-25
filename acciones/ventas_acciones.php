@@ -7,8 +7,13 @@
     echo "<pre>";
     var_dump($data);
     echo "</pre>";
+    if ( array_key_exists("fk_tipo_comprobante", $data)){
+        $data['fk_tipo_comprobante']= 1;
+    }else{
+        $data['fk_tipo_comprobante']= 2;
+    }
 
-    if(isset($_POST)&& array_key_exists('colocar id de venta', $_POST)){
+  /*  if(isset($_POST)&& array_key_exists('colocar id de venta', $_POST)){
         $data = $_POST;
         echo "<br>Entro en el primer if";
         if ($data['id_venta']!= null && $data['id_venta'] != '' && !isset($data['del'])){
@@ -28,7 +33,7 @@
                     if ( array_key_exists("fk_tipo_comprobante", $data)){
                         $data['fk_tipo_comprobante']= 2;
                     }else{
-                        array_push($data, 'fk_tipo_comprobante' => 2);
+                        $data['fk_tipo_comprobante']= 1;
                     }
                     echo "<br>Entro en insertar";
                     $usuarios_control->create($data);
@@ -37,7 +42,11 @@
             }
         } 
         
-    }
+    }*/
+
+    echo "<pre>";
+    var_dump($data);
+    echo "</pre>";
 
     echo "<br/><br/><br/><a href='../Vistas/NuevaVenta.php'>Ir a Nueva Venta</a>"
 ?>

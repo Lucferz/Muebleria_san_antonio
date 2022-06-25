@@ -16,7 +16,7 @@
 			return $this->catDAO->create($cat);
 		}
 		public function read(){
-			return $this->catDAO->read($id_categoria);
+			return $this->catDAO->read();
 		}
 		public function findById($id_categoria){
 			return $this->catDAO->findById($id_categoria);
