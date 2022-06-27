@@ -23,37 +23,14 @@
         //No se usa la tabla cobranzas porque le queda mejor para ver la tabla de estado_cobranza, pero solo cambia el sql
         public function read($id_cobranza = ''){
             $this->query = ($id_cobranza == '')?
-             "SELECT
-                c.id_cobranza,
-                cli.cliente,
-                cli.direccion,
-                c.monto,
-                c.fecha_cobro,
-                c.fecha_cobrado,
-                c.monto_cobrado,
-                u.Nombre as Cobrador,
-                ec.estado_cobranza
-            FROM 
-                estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
-                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
-                JOIN ventas v ON (c.fk_venta = v.id_venta)
-                JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)" 
-            :"SELECT
-                c.id_cobranza,
-                cli.cliente,
-                cli.direccion,
-                c.monto,
-                c.fecha_cobro,
-                c.fecha_cobrado,
-                c.monto_cobrado,
-                u.Nombre as Cobrador,
-                ec.estado_cobranza
-            FROM 
-                estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
-                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
-                JOIN ventas v ON (c.fk_venta = v.id_venta)
-                JOIN clientes cli ON (v.fk_cliente = cli.id_cliente) 
-            WHERE c.id_cobranza = $id_cobranza";
+             "SELECT * FROM cobranzas c 
+             WHERE 
+                 id_cobranza NOT IN (SELECT ec.fk_cobranza  from estado_cobranza ec) AND
+                 c.estado = 1" 
+            :"SELECT * FROM cobranzas c 
+            WHERE 
+                id_cobranza NOT IN (SELECT ec.fk_cobranza  from estado_cobranza ec) AND
+                c.estado = 1 AND c.id_cobranza = $id_cobranza";
             $this->get_query();
            
             $data = array();
@@ -87,10 +64,13 @@
                 cli.direccion LIKE '%$search_key%' OR
                 c.monto LIKE '%$search_key%' OR
                 c.fecha_cobro LIKE '%$search_key%' OR
+                c.fecha_cobro_mora LIKE '%$search_key%' OR
                 c.fecha_cobrado LIKE '%$search_key%' OR
                 c.monto_cobrado LIKE '%$search_key%' OR
                 u.Nombre LIKE '%$search_key%' OR
                 ec.estado_cobranza LIKE '%$search_key%'
+            ORDER BY
+                c.id_cobranza
             query;
             $this->get_query();
            
@@ -107,7 +87,7 @@
                 $$key = $value;
             }
 
-            $this->query = "UPDATE cobranzas SET  fecha_cobrado = $fecha_cobrado, monto = $monto, fecha_modificado = CURRENT_TIMESTAMP, monto_cobrado = $monto_cobrado WHERE id_cobranza =$id_cobranza";
+            $this->query = "UPDATE cobranzas SET  monto = $monto, fecha_modificado = CURRENT_TIMESTAMP, monto_cobrado = $monto_cobrado WHERE id_cobranza =$id_cobranza";
             $this->set_query();
         }
 
@@ -125,6 +105,11 @@
                 $$key = $value;
             }
             $this->query = "UPDATE cobranzas a SET estado = true, fecha_modificado = CURRENT_TIMESTAMP WHERE c.id_cobranza =$id_cobranza";
+            $this->set_query();
+        }
+
+        public function aplazar_cobro($id){//aplaza el cobro por 7 dias, despues mejorar para que sean puestos por el usuario
+            $this->query = "UPDATE cobranzas c SET c.fecha_cobro_mora = ADDDATE((SELECT c.fecha_cobro FROM cobranzas c WHERE id = $id), 7) WHERE c.id_cobranza = $id";
             $this->set_query();
         }
     }

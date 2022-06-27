@@ -11,13 +11,21 @@ if (document.getElementById("autocomplete-input-articulo") != null){
     let inputSearch  = document.querySelector('#autocomplete-input-articulo');
     let resultList = document.querySelector('#autocomplete-results-articulo');
     let idSend = document.querySelector("#id_articulo");
+    let fprecio = document.getElementById("fprecio");
     inputSearch.addEventListener('keyup', buscarAjaxField, true);
     resultList.addEventListener('click',function(event) {
         if (event.target && event.target.nodeName == 'LI') {
             inputSearch.value = event.target.innerHTML;
             idSend.value = event.target.id;
             listarArticulos(resultList, []);
+            hallar_datos(event.target.id);
         }
+    });
+    document.getElementById("fcant").addEventListener("keyup", function (event) {
+        let precio_u = document.getElementById("fprecio_h").value;
+        console.log(precio_u);
+        console.log(event.target.value);
+        fprecio.value = event.target.value * precio_u;
     });
 }
 
@@ -110,4 +118,38 @@ function listarArticulos(resultList, datos) {
         `;
         c++;
     }
+}
+
+
+function hallar_datos(id) {
+    let stock=0;
+    let precio=0;
+    let stock_t="";
+    let cant =0;
+    if(id != null && id != 0){
+        var xhttp = new XMLHttpRequest();
+        console.log(id);
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                //console.log(this.responseText);
+                let datos = JSON.parse(this.responseText);
+                //console.log(datos);
+                stock = datos[0].existencias;
+                precio = datos[0].precio_venta;
+                console.log(stock);
+                console.log(precio);
+                stock_t = "En stock: "+stock;
+                cant = 1;
+                document.getElementById("fprecio").value = precio;
+                document.getElementById("fprecio_h").value = precio;
+                document.getElementById("fcant").value = cant;
+                document.getElementById("stock").innerHTML = stock_t;
+            }
+        }
+        xhttp.open('GET', '../api/listar.php?table=stock&id='+id, true);
+        xhttp.send();
+    }
+    
+
+    
 }

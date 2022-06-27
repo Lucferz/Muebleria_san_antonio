@@ -37,7 +37,7 @@ $catControl = new CategoriasControl();
 						
 						<p>Categoria:</p>
 						<input type="text" name="categoria" value="<?php echo isset($dataToMod[0]['categoria'])? $dataToMod[0]['categoria']:'' ?>" 
-                  class="field" autocomplete="off" required> <br/>
+                  class="field" required> <br/>
 
                   <br/>
                     <input type="text" name="id_categoria" 

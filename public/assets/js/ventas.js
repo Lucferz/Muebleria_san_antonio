@@ -1,7 +1,7 @@
 //AJAX Para las busquedas, futuramente se implementera mas ampliamente
-
-document.querySelector('#search-box').addEventListener('keyup', buscarAjaxTable, true);
-
+if (document.getElementById("search-box") != null){
+    document.querySelector('#search-box').addEventListener('keyup', buscarAjaxTable, true);
+}
 
 function buscarAjaxTable() {
     var xhttp = new XMLHttpRequest();
@@ -55,4 +55,26 @@ function buscarAjaxTable() {
     xhttp.open('GET', '../api/listar.php?table=ventas&search_key='+barraBusqueda.value, true);
     xhttp.send();
 
+}
+
+
+if (document.getElementById("newClientModal")){
+    let modal = document.getElementById("newClientModal");
+    let btnclose = document.getElementById("closeBtn");
+    let btnNewCli = document.getElementById("newClientBtn");
+
+    btnNewCli.addEventListener('click', function (event) {
+        event.preventDefault();
+        modal.style.display = "block";
+    });
+
+    btnclose.addEventListener('click', function(){
+        modal.style.display = "none";
+    });
+
+   window.addEventListener("click", function(event){
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
 }

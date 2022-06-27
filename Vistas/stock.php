@@ -43,19 +43,19 @@ $taxControl = new taxesControl();
             
             <p>DESCRIPCION:</p>
             <input type="text" name="descripcion" value="<?php echo isset($dataToMod[0]['descripcion'])? $dataToMod[0]['descripcion']:'' ?>" 
-            class="field" required> <br/>
+            class="field" autocomplete="off" required> <br/>
 
             <p>PRECIO DE COMPRA:</p>
             <input type="text" name="precio_compra" value="<?php echo isset($dataToMod[0]['precio_compra'])? $dataToMod[0]['precio_compra']:'' ?>"
-            class="field" required> <br/>
+            class="field" autocomplete="off" required> <br/>
 
             <p>PRECIO DE VENTA:</p>
             <input type="text" name="precio_venta" value="<?php echo isset($dataToMod[0]['precio_venta'])? $dataToMod[0]['precio_venta']:'' ?>" 
-            class="field" required> <br/>
+            class="field" autocomplete="off" required> <br/>
 
             <p>EXISTENCIAS:</p>
             <input type="text" name="existencias" value="<?php echo isset($dataToMod[0]['existencias'])? $dataToMod[0]['existencias']:'' ?>" 
-            class="field" required> <br/><br/><br/>
+            class="field" autocomplete="off" required> <br/><br/><br/>
             
             <input type="text" name="id_articulo" 
             value="<?php echo isset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>" hidden>
@@ -85,8 +85,8 @@ $taxControl = new taxesControl();
                      foreach ($value as $key2 => $value2) {
                         $$key2 = $value2;
                      }
-                     /*$selected = (isset($dataToMod[0]['tipo_iva']) && 
-                     $categoria == $dataToMod[0]['tipo_iva'])? 'selected':'';*/
+                     $selected = (isset($dataToMod[0]['tipo_iva']) && 
+                     $categoria == $dataToMod[0]['tipo_iva'])? 'selected':'';
                      echo "<option value='$id' $selected>$name</option>";
                   }
                ?>

@@ -1,7 +1,7 @@
 <?php
 	require_once ("../DatosDAO/ventasDAO.php");
 
-	class VentasControl{
+	class ventasControl{
 		private $ventaDAO;
 		public function __construct()
 		{
