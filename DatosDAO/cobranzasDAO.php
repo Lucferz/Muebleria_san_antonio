@@ -23,37 +23,14 @@
         //No se usa la tabla cobranzas porque le queda mejor para ver la tabla de estado_cobranza, pero solo cambia el sql
         public function read($id_cobranza = ''){
             $this->query = ($id_cobranza == '')?
-             "SELECT
-                c.id_cobranza,
-                cli.cliente,
-                cli.direccion,
-                c.monto,
-                c.fecha_cobro,
-                c.fecha_cobrado,
-                c.monto_cobrado,
-                u.Nombre as Cobrador,
-                ec.estado_cobranza
-            FROM 
-                estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
-                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
-                JOIN ventas v ON (c.fk_venta = v.id_venta)
-                JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)" 
-            :"SELECT
-                c.id_cobranza,
-                cli.cliente,
-                cli.direccion,
-                c.monto,
-                c.fecha_cobro,
-                c.fecha_cobrado,
-                c.monto_cobrado,
-                u.Nombre as Cobrador,
-                ec.estado_cobranza
-            FROM 
-                estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
-                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
-                JOIN ventas v ON (c.fk_venta = v.id_venta)
-                JOIN clientes cli ON (v.fk_cliente = cli.id_cliente) 
-            WHERE c.id_cobranza = $id_cobranza";
+             "SELECT * FROM cobranzas c 
+             WHERE 
+                 id_cobranza NOT IN (SELECT ec.fk_cobranza  from estado_cobranza ec) AND
+                 c.estado = 1" 
+            :"SELECT * FROM cobranzas c 
+            WHERE 
+                id_cobranza NOT IN (SELECT ec.fk_cobranza  from estado_cobranza ec) AND
+                c.estado = 1 AND c.id_cobranza = $id_cobranza";
             $this->get_query();
            
             $data = array();

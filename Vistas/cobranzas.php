@@ -1,6 +1,10 @@
 <?php 
 require_once("../Controlador/app_base.php");
-if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Cobrador'){
+
+if (!$_SESSION['autenticado']){
+   header("Location: Login.php");
+   die();
+}else if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Cobrador'){
    require_once("../Controlador/sessionControl.php");
    $user_session = new sessionControl();
    $location = $user_session->redireccion($_SESSION['rol']);
@@ -51,25 +55,31 @@ $cobranzas_control = new CobranzasControl();
          </thead>
          <tbody>
             <?php
-               $data_cobranzas = $cobranzas_control->read();
-               foreach ($data_cobranzas as $key => $value) {
-                  echo "<tr>";
-                  foreach ($value as $key2 => $value2) {
-                     $$key2 = $value2;
+               if ($data_cobranzas != null) {
+                  $data_cobranzas = $cobranzas_control->read();
+                  foreach ($data_cobranzas as $key => $value) {
+                     foreach ($value as $key2 => $value2) {
+                        $$key2 = $value2;
+                     }
+                     echo "<tr>
+                              <div id='row-content'>
+                                 <td>$cliente</td>
+                                 <td>$monto</td>
+                                 <td>$estado_cobranza</td>
+                                 <td><button id=\"addNew\">Cobrar</button></td>
+                              </div>
+                           </tr>
+                     ";
                   }
-                  echo "<div id='row-content'>
-                  <td>$cliente</td>
-                  <td>$monto</td>
-                  <td>$estado_cobranza</td>
-                  </div>
-                  ";
+               }else{
+                  echo "<tr><td colspan=\"4\"> No hay cobranzas por realizar</td></tr>";
                }
             ?>
-            <td>
-                <button id="addNew">Cobrar</button>
-            </td>
-              <!-- The Modal -->
-      <div id="myModal" class="modal">
+         </tbody>
+      </table>
+   </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
          <!-- Modal content -->
          <div class="modal-content"> 
                <form method="POST" >
@@ -101,10 +111,6 @@ $cobranzas_control = new CobranzasControl();
                </form>
          </div>
       </div>
-
-         </tbody>
-      </table>
-   </div>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
