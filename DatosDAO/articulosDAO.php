@@ -35,7 +35,9 @@
                 a.fecha_alta, 
                 a.fecha_modificacion 
              FROM 
-                articulos a join categorias c on a.fk_categoria = c.id_categoria"
+                articulos a join categorias c on a.fk_categoria = c.id_categoria
+            ORDER BY 
+                a.id_articulo"
             :"SELECT 
                 a.id_articulo, 
                 a.descripcion , 
@@ -86,6 +88,8 @@
                 c.categoria LIKE '%$search_key%' OR
                 a.fecha_alta LIKE '%$search_key%' OR
                 a.fecha_modificacion LIKE '%$search_key%'
+            ORDER BY 
+                a.id_articulo
             query;
             /*
             a.id_articulo LIKE '%$search_key%' OR

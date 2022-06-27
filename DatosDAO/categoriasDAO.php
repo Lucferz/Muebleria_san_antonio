@@ -23,7 +23,7 @@
             $this->set_query();
         }
         public function read(){
-            $this->query =  "SELECT * FROM categorias";
+            $this->query =  "SELECT * FROM categorias ORDER BY id_categoria";
             $this->get_query();
             //$num_rows = count($this->rows);
             $data = array();

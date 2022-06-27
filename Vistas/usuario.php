@@ -39,15 +39,15 @@ $tipousuarioControl = new TipoUsuarioControl();
             
             <p>NOMBRE:</p>
             <input type="text" name="Nombre" value="<?php echo isset($dataToMod[0]['Nombre'])? $dataToMod[0]['Nombre']:'' ?>" 
-            class="field" required> <br/>
+            class="field" autocomplete="off" required> <br/>
 
             <p>USUARIO:</p>
             <input type="text" name="usuario" value="<?php echo isset($dataToMod[0]['usuario'])? $dataToMod[0]['usuario']:'' ?>"
-            class="field" required> <br/>
+            class="field" autocomplete="off" required> <br/>
 
             <p>CONTRASEÑA:</p>
             <input type="text" name="password" value="<?php echo isset($dataToMod[0]['password'])? $dataToMod[0]['password']:'' ?>" 
-            class="field" required> <br/><br/><br/>
+            class="field" autocomplete="off" required> <br/><br/><br/>
 
             <input type="text" name="id_usuario" 
             value="<?php echo isset($dataToMod[0]['id_usuario'])? $dataToMod[0]['id_usuario']:''  ?>" hidden>

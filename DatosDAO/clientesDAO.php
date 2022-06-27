@@ -22,7 +22,7 @@
         }
 
         public function read($id_cliente = ''){
-            $this->query = ($id_cliente == '')? "SELECT * FROM clientes c "
+            $this->query = ($id_cliente == '')? "SELECT * FROM clientes c ORDER BY id_cliente"
             :"SELECT * FROM clientes c WHERE c.id_cliente = $id_cliente";
             $this->get_query();
 
@@ -71,7 +71,9 @@
             ruc LIKE '%$search_key%' OR
             estado LIKE '%$search_key%' OR
             fecha_alta LIKE '%$search_key%' OR
-            fecha_modificacion LIKE '%$search_key%'";
+            fecha_modificacion LIKE '%$search_key%'
+            ORDER BY
+            id_cliente";
 
             $this->get_query();
 

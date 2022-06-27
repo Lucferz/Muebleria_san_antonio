@@ -15,6 +15,10 @@
                 $datos_busqueda = $controlador->buscar($_GET['search_key']);
                 echo $datos_busqueda;
             }
+            if (array_key_exists('id',$_GET)) {
+                $datos_busqueda = $controlador->read($_GET['id']);
+                echo json_encode($datos_busqueda);
+            }
             break;
         case 'categorias':
             include_once("../Controlador/categoriasControl.php");

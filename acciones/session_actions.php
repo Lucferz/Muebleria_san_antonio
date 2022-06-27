@@ -13,6 +13,7 @@
         } else {
             $_SESSION['autenticado'] = true;
             foreach ($session as $val) {
+                $_SESSION['id_usuario'] = $val['id_usuario'];
                 $_SESSION['usuario'] = $val['usuario'];
                 $_SESSION['nombre'] = $val['Nombre'];
                 $_SESSION['rol'] = $val['rol'];

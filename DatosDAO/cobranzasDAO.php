@@ -64,10 +64,13 @@
                 cli.direccion LIKE '%$search_key%' OR
                 c.monto LIKE '%$search_key%' OR
                 c.fecha_cobro LIKE '%$search_key%' OR
+                c.fecha_cobro_mora LIKE '%$search_key%' OR
                 c.fecha_cobrado LIKE '%$search_key%' OR
                 c.monto_cobrado LIKE '%$search_key%' OR
                 u.Nombre LIKE '%$search_key%' OR
                 ec.estado_cobranza LIKE '%$search_key%'
+            ORDER BY
+                c.id_cobranza
             query;
             $this->get_query();
            
@@ -84,7 +87,7 @@
                 $$key = $value;
             }
 
-            $this->query = "UPDATE cobranzas SET  fecha_cobrado = $fecha_cobrado, monto = $monto, fecha_modificado = CURRENT_TIMESTAMP, monto_cobrado = $monto_cobrado WHERE id_cobranza =$id_cobranza";
+            $this->query = "UPDATE cobranzas SET  monto = $monto, fecha_modificado = CURRENT_TIMESTAMP, monto_cobrado = $monto_cobrado WHERE id_cobranza =$id_cobranza";
             $this->set_query();
         }
 
@@ -102,6 +105,11 @@
                 $$key = $value;
             }
             $this->query = "UPDATE cobranzas a SET estado = true, fecha_modificado = CURRENT_TIMESTAMP WHERE c.id_cobranza =$id_cobranza";
+            $this->set_query();
+        }
+
+        public function aplazar_cobro($id){//aplaza el cobro por 7 dias, despues mejorar para que sean puestos por el usuario
+            $this->query = "UPDATE cobranzas c SET c.fecha_cobro_mora = ADDDATE((SELECT c.fecha_cobro FROM cobranzas c WHERE id = $id), 7) WHERE c.id_cobranza = $id";
             $this->set_query();
         }
     }

@@ -32,5 +32,8 @@
 		public function reactivar($cobranza = array()){
 			return $this->cobranzaDAO->reactivar($cobranza);
 		}
+		public function aplazar_cobro($id){
+			return $this->cobranzaDAO->aplazar_cobro($id);
+		}
 	}
 ?>

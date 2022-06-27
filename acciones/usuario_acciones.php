@@ -4,43 +4,34 @@ include("../Controlador/TipoUsuarioControl.php") ;
 $usuarios_control = new UsuariosControl();
 $tipousuarioControl = new tipousuarioControl();
 var_dump($_POST);
-
-    if(isset($_POST) && array_key_exists('id_usuario', $_POST)){
-        echo "llego 1";
-        $data = $_POST;
-        if ($data['id_usuario']!= null && $data['id_usuario'] != '' && !isset($data['del'])){
-            echo "llego2";
-            $usuarios_control->update($data);
-            echo "llego3";
-        } else{
-            if($data['id_usuario']!= null && $data['id_usuario'] != '' && isset($data['del']) && $data['del']=='si'){
-                echo "llego4";
-                if($data['estado'] == 1){
-                    echo "llego5";
-                    $usuarios_control->delete($data);
-                    echo "llego6";
-                }else{
-                    echo "llego7";
-                    $usuarios_control->reactivar($data);
-                    echo "llego8";
-                }
+    try{
+        if(isset($_POST) && array_key_exists('id_usuario', $_POST)){
+            $data = $_POST;
+            if ($data['id_usuario']!= null && $data['id_usuario'] != '' && !isset($data['del'])){
+                $usuarios_control->update($data);
             } else{
-                echo "llego9";
-                if($data['id_usuario']== null || $data['id_usuario'] == ''){
-                    echo "llego10";
-                    $usuarios_control->create($data);
-                    echo "llego11";
-                }else{
-                    echo "llego12";
-                    header("Location: usuario.php?error=true");
-                    echo "llego13";
-                    die();
+                if($data['id_usuario']!= null && $data['id_usuario'] != '' && isset($data['del']) && $data['del']=='si'){
+                    if($data['estado'] == 1){
+                        $usuarios_control->delete($data);
+                    }else{
+                        $usuarios_control->reactivar($data);
+                    }
+                } else{
+                    if($data['id_usuario']== null || $data['id_usuario'] == ''){
+                        $usuarios_control->create($data);
+                    }else{
+                        header("Location: usuario.php?error=true");
+                        die();
+                    }
                 }
-            }
-        } 
-        
-    }
+            } 
+            
+        }
 
-    header("Location: ../Vistas/usuario.php");
-    die();
+        header("Location: ../Vistas/usuario.php");
+        die();
+    }catch(Exception $e){
+        header("Location: ../Vistas/usuario.php?error=$e->getMessage()");
+        die();
+    }
 ?>
