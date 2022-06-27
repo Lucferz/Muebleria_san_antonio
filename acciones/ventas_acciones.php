@@ -19,6 +19,8 @@
                     echo "<br>Entro en eliminar";
                     $venCon->delete($data);
                     echo "<br>Elimino";
+                    header("Location: ../Vistas/ventas.php");
+                    die();
                 } else{
                     echo "<br>Entro en el else secundario";
                     if($data['id_venta']== null || $data['id_venta'] == ''){
@@ -27,6 +29,7 @@
                         }else{
                             $data['fk_tipo_comprobante']= 2;
                         }
+                        $venCon->create($data);
                     }
                 }
             } 
