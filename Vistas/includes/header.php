@@ -5,7 +5,7 @@ if ($_SESSION['autenticado'] != true) {
    die();
 }
 ?>
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 
 <head>
