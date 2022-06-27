@@ -1,4 +1,9 @@
 <?php
+require_once("../Controlador/app_base.php");
+if($_SESSION['autenticado'] != true){
+   header("Location: Login.php");
+   die();
+}
 if($_SESSION['rol'] != 'Admin'){
     require_once("../Controlador/sessionControl.php");
     $user_session = new sessionControl();
@@ -6,7 +11,7 @@ if($_SESSION['rol'] != 'Admin'){
     header("Location: ../Vistas/$location");
     die();
  }
-require('../inf/fpdf/fpdf.php');
+require('fpdf/fpdf.php');
 class PDF extends FPDF{
 // Cabecera de página
 function Header()

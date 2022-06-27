@@ -46,8 +46,8 @@ if ($_SESSION['autenticado'] != true) {
                </button>Informes</span>
 
             <div class="informes-content">
-               <a href="informeStock.php">Informe de stock</a>
-               <a href="informeVentas.php">Informe de ventas</a>
+               <a href="../informes/informeStock.php">Informe de stock</a>
+               <a href="../informes/informeVentas.php">Informe de ventas</a>
             </div>
          </div>
       </nav>
