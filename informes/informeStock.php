@@ -60,15 +60,15 @@ $articulos_control = new ArticulosControl();
 
 $data_articulos = $articulos_control->informeStock();
     foreach ($data_articulos as $key => $value) {
-                  foreach ($value as $key2 => $value2) {
-                     $$key2 = $value2;
-                  }
-        $pdf->SetFont('Arial','',11);
-        $pdf->MultiCell( 150, 8, $descripcion , 1, 'C', 0);
-        $x = $pdf->GetX();
-        $y = $pdf->GetY();
-        $pdf->SetXY($x+150, $y-8);
-        $pdf->MultiCell( 25, 8, $existencias , 1, 'C', 0);
+        foreach ($value as $key2 => $value2) {
+            $$key2 = $value2;
+        }
+    $pdf->SetFont('Arial','',11);
+    $pdf->MultiCell( 150, 8, $descripcion , 1, 'C', 0);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetXY($x+150, $y-8);
+    $pdf->MultiCell( 25, 8, $existencias , 1, 'C', 0);
 
 }
 

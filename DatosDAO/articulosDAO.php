@@ -141,7 +141,7 @@
         }
 
         public function informeStock(){
-            $this->query = "SELECT descripcion,existencias from articulos order by existencias desc"
+            $this->query = "SELECT descripcion,existencias from articulos order by existencias desc";
             $this->get_query();
             $data = array();
             foreach ($this->rows as $key => $value) {
