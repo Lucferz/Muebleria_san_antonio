@@ -1,4 +1,11 @@
 <?php include("includes/header.php");
+if($_SESSION['rol'] != 'Admin'){
+   require_once("../Controlador/sessionControl.php");
+   $user_session = new sessionControl();
+   $location = $user_session->redireccion($_SESSION['rol']);
+   header("Location: ../Vistas/$location");
+   die();
+}
 include("../Controlador/categoriasControl.php");
 $catControl = new CategoriasControl();
 ?>
@@ -14,41 +21,13 @@ $catControl = new CategoriasControl();
                </div>
          </div>
          <div id="articulos-buttons-container">
-         	<button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nueva Categoria</button>
+         <a href="cobranzas.php"><button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Realizar Nueva Cobranza</button></a>
          </div>
       </div>
       <div id="tabla">
       </div>
    </div>
-		<!-- The Modal -->
-		<div id="myModal" class="modal">
-  			<!-- Modal content -->
-  			<div class="modal-content"> 
-					<form method="POST" class= "modal-form" action="../acciones/categorias_acciones.php" id="dataform">
-            <?php 
-               $dataToMod;
-               if (isset($_POST) && isset($_POST['id_categoria'])){
-                  $dataToMod = $catControl->findById($_POST['id_categoria']);
-                  echo '<script type="text/javascript"> document.all.myModal.style.display = "block"</script>';
-               }
-            ?>
-						<span class="close"><ion-icon name="close-outline"></ion-icon></span>
-						<h1 class="titulo-modal">Nueva Categoria</h1>
-						
-						<p>Categoria:</p>
-						<input type="text" name="categoria" value="<?php echo isset($dataToMod[0]['categoria'])? $dataToMod[0]['categoria']:'' ?>" 
-                  class="field" required> <br/>
-
-                  <br/>
-                    <input type="text" name="id_categoria" 
-                     value="<?php echo isset($dataToMod[0]['id_categoria'])? $dataToMod[0]['id_categoria']:'' ?>" hidden>
-
-						<p class="center-content">
-						<input type="submit" class="btn-azul" value="GUARDAR">
-						</p>
-					</form>
-  			</div>
-		</div>
+		
 <div id="table">
       <table class="content-table">
          <thead>

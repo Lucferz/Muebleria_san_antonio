@@ -26,7 +26,7 @@
             $location;
             switch ($rol) {
                 case 'Admin':
-                    $location = "stock.php";
+                    $location = "inicio.php";
                     break;
 
                 case 'Vendedor':
@@ -37,9 +37,11 @@
                     $location = "cobranzas.php";
                     break;
                 
-                default:
-                    $location = "error404.html";
+                case 'Stock':
+                    $location = "stock.php";
                     break;
+                default:
+                    $location = "Login.php";
             }
 
             return $location;

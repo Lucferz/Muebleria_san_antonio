@@ -23,14 +23,60 @@
         //No se usa la tabla cobranzas porque le queda mejor para ver la tabla de estado_cobranza, pero solo cambia el sql
         public function read($id_cobranza = ''){
             $this->query = ($id_cobranza == '')?
-             "SELECT * FROM cobranzas c 
-             WHERE 
-                 id_cobranza NOT IN (SELECT ec.fk_cobranza  from estado_cobranza ec) AND
-                 c.estado = 1" 
+            "SELECT
+                cli.cliente,
+                cli.direccion,
+                c.monto,
+                CASE
+                    WHEN c.fecha_cobro_mora IS NULL THEN
+                        0
+                    ELSE
+                        DATEDIFF(c.fecha_cobro_mora, c.fecha_cobro)
+                END AS 'mora'
+            FROM
+                cobranzas c
+            JOIN ventas v ON
+                (c.fk_venta = v.id_venta)
+            JOIN clientes cli ON
+                (v.fk_cliente = cli.id_cliente)
+            WHERE
+                (c.fecha_cobro = CURDATE()
+                OR
+                c.fecha_cobro_mora = CURDATE())
+                AND
+                c.fecha_cobrado IS NULL 
+                AND 
+                c.monto_cobrado IS NULL " 
             :"SELECT * FROM cobranzas c 
             WHERE 
                 id_cobranza NOT IN (SELECT ec.fk_cobranza  from estado_cobranza ec) AND
                 c.estado = 1 AND c.id_cobranza = $id_cobranza";
+            $this->get_query();
+           
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return $data;
+        }
+
+        public function listar(){
+            $this->query = "SELECT
+            c.id_cobranza,
+            cli.cliente,
+            cli.direccion,
+            c.monto,
+            c.fecha_cobro,
+            c.fecha_cobrado,
+            c.monto_cobrado,
+            u.Nombre as Cobrador,
+            ec.estado_cobranza
+        FROM 
+            estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
+            JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
+            JOIN ventas v ON (c.fk_venta = v.id_venta)
+            JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)" ;
             $this->get_query();
            
             $data = array();

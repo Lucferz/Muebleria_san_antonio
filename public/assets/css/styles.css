@@ -303,15 +303,22 @@ input:-moz-placeholder {
 	margin-left: 80px;
 	height: 100%;
 	overflow:auto;
-	}
+}
+
+.table_cob{
+	margin-top: 50px;
+	height: 100%;
+	overflow:auto;
+}
 
 .content-table{
 	border: black 2px solid;
-	width: 100%
+	width: 100%;
+	border-collapse: collapse;
 }
 
 td, th {
-	border:  blue 1px solid;
+	border:  rgb(75, 75, 75) 1px solid;
 }
 td{
 	text-align: center;

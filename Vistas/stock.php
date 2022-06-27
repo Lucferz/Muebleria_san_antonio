@@ -5,6 +5,13 @@ include("../Controlador/taxesControl.php") ;
 $articulos_control = new ArticulosControl();
 $categoriasControl = new CategoriasControl();
 $taxControl = new taxesControl();
+if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
+   require_once("../Controlador/sessionControl.php");
+   $user_session = new sessionControl();
+   $location = $user_session->redireccion($_SESSION['rol']);
+   header("Location: ../Vistas/$location");
+   die();
+}
 ?>
    <div id="cuerpo">
       <div id="cabecera-botones">
@@ -20,7 +27,11 @@ $taxControl = new taxesControl();
          
          <div id="articulos-buttons-container">
             <button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Articulo</button>
-            <a href="categorias.php" ><button class="btn-informe"><ion-icon name="add-outline"></ion-icon> Nueva Categoria</button></a>
+            <?php
+               if($_SESSION['rol'] == 'Admin'){
+                  echo '<a href="categorias.php" ><button class="btn-informe"><ion-icon name="add-outline"></ion-icon> Nueva Categoria</button></a>';
+               }
+            ?>
          </div>
       </div>
       <div id="tabla">

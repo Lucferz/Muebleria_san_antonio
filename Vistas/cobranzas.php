@@ -17,23 +17,25 @@ $cobranzas_control = new CobranzasControl();
 <!DOCTYPE html>
 <htmllang="es"> 
 <head>
-      <meta charset="utf-8">
+   <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" type="text/css" href="../public/assets/css/cobranza.css">
-    <link rel="stylesheet" type="text/css" href="../public/assets/css/modal.css">
+   <link rel="stylesheet" type="text/css" href="../public/assets/css/venta.css">
+   <link rel="stylesheet" type="text/css" href="../public/assets/css/styles.css">
+   <link rel="stylesheet" type="text/css" href="../public/assets/css/modal.css">
    <title>Clientes por cobrar</title>
 </head>
 <body>
-<button onclick="location.href= '#'" class="volver"><ion-icon name="arrow-undo-outline"></ion-icon></button>
-
-          <div class="usuarios-select">
-          <select id="usuarios" name="usuarios">
-            <option value="no_select"><?php echo $_SESSION['nombre'] ?></option>
-             <option value="cerrar">Cerrar sesion</option>
-            <!-- Ver para traer el usuario logueado  -->
-          </select>
-        </div>
-        <br> 
+   <?php
+      if($_SESSION['rol'] == 'Admin'){
+         echo "<button onclick=\"location.href= 'cobranzasview.php'\" class=\"volver\"><ion-icon name=\"arrow-undo-outline\"></ion-icon></button>";
+      }
+   ?>
+   <div id="usuarios" class="dropdown">
+         <?php echo $_SESSION['nombre'] ?><button class="dropbtn btn"></button>
+      <div class="dropdown-content">
+         <a href="../acciones/session_actions.php?session=close">Cerrar Sesion</a>
+      </div>
+   </div>
    <header>  
 
       <div class="logo">
@@ -43,20 +45,21 @@ $cobranzas_control = new CobranzasControl();
   </header>
 
   <h3>Clientes por cobrar</h3>
- <div id="table">
+ <div class="table_cob">
       <table class="content-table">
          <thead>
             <tr>
                <th>Cliente</th>
                <th>Monto</th>
-               <th>Estado</th>
+               <th>Direccion</th>
+               <th>DIas de Mora</th>
                <th>Acciones</th>
             </tr>
          </thead>
          <tbody>
             <?php
+            $data_cobranzas = $cobranzas_control->read();
                if ($data_cobranzas != null) {
-                  $data_cobranzas = $cobranzas_control->read();
                   foreach ($data_cobranzas as $key => $value) {
                      foreach ($value as $key2 => $value2) {
                         $$key2 = $value2;
@@ -65,7 +68,8 @@ $cobranzas_control = new CobranzasControl();
                               <div id='row-content'>
                                  <td>$cliente</td>
                                  <td>$monto</td>
-                                 <td>$estado_cobranza</td>
+                                 <td>$direccion</td>
+                                 <td>$mora</td>
                                  <td><button id=\"addNew\">Cobrar</button></td>
                               </div>
                            </tr>
