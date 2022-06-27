@@ -33,7 +33,7 @@
   <body>
     <main class="login-design">
       <div class="waves">
-        <img src="../public/assets/img/loginPerson.png" alt="" />
+        <img id="img" src="../public/assets/img/loginPerson.png" alt="" />
       </div>
       <div class="login">
         <div class="login-data">

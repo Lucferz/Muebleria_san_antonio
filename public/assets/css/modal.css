@@ -1,0 +1,126 @@
+/* MODAL */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px;/* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* The Close Button */
+  .close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  }
+
+/* FORM OF MODAL */
+  .modal-form{
+  background-color: white;
+  border-radius: 3px;
+  color: #0D0D0D;
+  font-size: 0.8em;
+  padding: 20px;
+  margin: 0 auto;
+  width: 30%;
+}
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+.field{
+  border: solid 1px #AFAFAF;
+  padding: 10px;
+  margin-left: 50px;
+  outline: none;
+  width: 300px; 
+}
+
+.select-modal{
+  margin-left: 25px;
+  width: 250px;
+  height: 40px;
+}
+
+.field:focus,  .form-select:focus{
+  border-color: #4C48EB;
+}
+
+.center-content{
+  text-align: center;
+  /*align-content: center;*/
+}
+
+.titulo-modal{
+  text-align: center;
+  color: #4C48EB;
+  font-size: 20px;
+
+}
+
+/* BOTON MODAL */
+.btn-azul{
+  color: white;
+  background-color: #4C48EB;
+  padding: 12px 7px;
+  border-radius: 8px;
+  margin-right: 20px;
+  border: 1.6px solid black;
+  cursor: pointer;
+
+}
+.btn-azul2{
+  color: white;
+  background-color: #808080;
+  padding: 12px 7px;
+  border-radius: 8px;
+  border: 1.6px solid black;
+  cursor: pointer;
+
+}
+
+#addNew {
+    background-color: #0074BD;
+    border: none;
+    color: white;
+    padding: 7px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+
+}
+
+@media screen and (max-width: 600px) {
+  .modal-content{
+    width: 80%;
+    margin-top: 0;
+  }
+  .field {
+    border: solid 1px #AFAFAF;
+    padding: 10px;
+    margin-left: 5px;
+    outline: none;
+    width: 280px;
+}
+  }

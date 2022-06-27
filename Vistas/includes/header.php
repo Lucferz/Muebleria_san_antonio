@@ -41,8 +41,8 @@
             <span><button class="inforbtn"><ion-icon name="document-text-outline"></ion-icon></button>Informes</span>
 
             <div class="informes-content">
-               <a href="#">Informe de stock</a>
-               <a href="#">Informe de ventas</a>
+               <a href="../informes/informe_stock.php">Informe de stock</a>
+               <a href="../informes/informeVentas.php">Informe de ventas</a>
             </div>
          </div>
    </nav>
