@@ -13,6 +13,13 @@ h2 {
 	margin-bottom: 0px;
 }
 
+h3 {
+  text-align: center;
+  color: #0D0C0C;
+  font-size: 1.1em;
+  margin-bottom: 7px;
+}
+
 ion-icon{
 	float: left;
   color: rgb(72, 76, 235) ;

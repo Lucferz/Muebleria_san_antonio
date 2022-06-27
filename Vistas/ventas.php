@@ -1,4 +1,11 @@
 <?php include("includes/header.php");
+if($_SESSION['rol'] != 'Admin'){
+   require_once("../Controlador/sessionControl.php");
+   $user_session = new sessionControl();
+   $location = $user_session->redireccion($_SESSION['rol']);
+   header("Location: ../Vistas/$location");
+   die();
+}
 include("../Controlador/ventasControl.php");
 $ventas_control = new VentasControl();
 ?>
@@ -15,7 +22,6 @@ $ventas_control = new VentasControl();
          </div>
          <div id="articulos-buttons-container">
             <a href="NuevaVenta.php"><button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nueva Venta</button></a>
-            <button class="btn-informe"><ion-icon name="document-text-outline"></ion-icon> Informe de Inventario</button>
          </div>
       </div>
       <div id="tabla">
