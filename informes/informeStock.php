@@ -11,7 +11,9 @@ if($_SESSION['rol'] != 'Admin'){
     header("Location: ../Vistas/$location");
     die();
  }
-require('fpdf/fpdf.php');
+
+
+require('../informes/fpdf/fpdf.php');
 class PDF extends FPDF{
 // Cabecera de página
 function Header()
@@ -44,26 +46,31 @@ function Footer()
 
 }
 
-require'../DatosDAO/cn.php';
-$consulta = "SELECT descripcion,existencias from articulos order by existencias desc";
-$resultado = $mysqli->query($consulta);
+
 
 // Creación del objeto de la clase heredada
 $pdf=new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 
-while ($row = $resultado->fetch_assoc()) {
-    //$pdf->Cell(8); 
-    $pdf->SetFont('Arial','',11);
-    $pdf->MultiCell( 150, 8, $row['descripcion'] , 1, 'C', 0);
-    $x = $pdf->GetX();
-    $y = $pdf->GetY();
-    $pdf->SetXY($x+150, $y-8);
-    $pdf->MultiCell( 25, 8, $row['existencias'] , 1, 'C', 0);
+
+
+require('../Controlador/ArticulosControl.php');
+$articulos_control = new ArticulosControl();
+
+$data_articulos = $articulos_control->informeStock();
+    foreach ($data_articulos as $key => $value) {
+                  foreach ($value as $key2 => $value2) {
+                     $$key2 = $value2;
+                  }
+        $pdf->SetFont('Arial','',11);
+        $pdf->MultiCell( 150, 8, $descripcion , 1, 'C', 0);
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+        $pdf->SetXY($x+150, $y-8);
+        $pdf->MultiCell( 25, 8, $existencias , 1, 'C', 0);
+
 }
-
-
 
 
 $pdf->Output();
