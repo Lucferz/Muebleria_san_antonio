@@ -49,7 +49,7 @@ $ventas_control = new VentasControl();
                   foreach ($value as $key2 => $value2) {
                      $$key2 = $value2;
                   }
-                  $status = $estado?'Activo':'Inactivo';
+                  $status = $estado?'Activo':'ANULADO';
                   $numero_fac = ($num_factura != "")? $num_factura : "-";
                   $numero_ticket = ($num_ticket != "")? $num_ticket : "-";
                   $descuento_venta = ($descuento != "")? $descuento : "-";
@@ -77,7 +77,7 @@ $ventas_control = new VentasControl();
                   </td>
                   <td>
                      <form method='POST' action='../acciones/ventas_acciones.php' id='deleteForm$id_venta' >
-                        <input type='text' name='id_articulo' value='$id_venta' hidden>
+                        <input type='text' name='id_venta' value='$id_venta' hidden>
                      </form>
                      <button id='btn-desactivar' class='btn-table' onclick=\"anular($id_venta);\" >Anular</button>
                   </td>

@@ -123,7 +123,7 @@
                <label for="fprecio">Precio</label>
             </div>
             <div class="col-75">
-               <input type="text" id="fprecio" class="input-field" name="total" readonly="readonly">
+               <input type="number" id="fprecio" class="input-field" name="total" readonly="readonly">
                <input type="text" id="fprecio_h" readonly="readonly" hidden>
             </div>
          </div>
@@ -132,7 +132,7 @@
                <label for="fname">Entrega</label>
             </div>
             <div class="col-75">
-               <input type="text" id="fname" class="input-field" name="entrega" placeholder="Entrega"> 
+               <input type="number" id="fname" class="input-field" name="entrega" placeholder="Entrega" value="0" autocomplete="off"> 
             </div>
          </div>
          <div class="row">
@@ -159,7 +159,7 @@
                <label for="aname">Descuento</label>
             </div>
             <div class="col-75">
-               <input type="text" id="aname" class="input-field" name="descuento" placeholder="Descuento"> 
+               <input type="number" id="aname" class="input-field" name="descuento" value="0" placeholder="Descuento"> 
             </div>
          </div>
          <br>
@@ -168,7 +168,7 @@
           <span class="checkmark"></span>
          </label>
          <br>
-         <input type="text" name="id_venta" value="" hidden />
+         <input type="number" name="id_venta" readonly="readonly" hidden />
          <div class="row">
             <button type="submit" class="confirmar">Confirmar</button>
          </div>
