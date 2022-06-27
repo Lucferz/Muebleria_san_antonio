@@ -59,11 +59,16 @@ $clientes_control = new ClientesControl();
                   value="<?php echo isset($dataToMod[0]['id_cliente'])? $dataToMod[0]['id_cliente']:'' ?>" hidden>
 
 						<p class="center-content">
-						<input type="submit" class="btn-azul" value="GUARDAR">
+						<input type="submit" class="btn-azul" id="btnG" value="GUARDAR">
 						</p>
 					</form>
   			</div>
 		</div>
+      <script type="text/javascript">
+         document.getElementById('btnG').onclick = function(){
+         alert('Cliente registrado con éxito'); 
+      }
+      </script>
 <div id="table">
       <table class="content-table">
          <thead>

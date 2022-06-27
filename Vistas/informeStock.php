@@ -14,10 +14,11 @@ function Header()
     $this->Ln(20); 
    
     $this->SetFont('Arial','B',12);  
-    $this->Cell(8); 
-    $this->Cell(150, 10, 'Descripcion', 1, 0, 'C', 0);
-    $this->Cell(25, 10, 'Existencias', 1, 1 , 'C', 0);
+  //  $this->Cell(8); 
+    $this->Cell(150, 8, 'Descripcion', 1, 0, 'C', 0);
+    $this->Cell(25, 8, 'Existencias', 1, 1 , 'C', 0);
 }
+
 // Pie de página
 function Footer()
 {
@@ -28,10 +29,11 @@ function Footer()
     // Número de página
     $this->Cell(0,10,utf8_decode('Página').$this->PageNo().'/{nb}',0,0,'C');
 }
+
 }
 
 require'../DatosDAO/cn.php';
-$consulta = "SELECT descripcion,existencias from articulos";
+$consulta = "SELECT descripcion,existencias from articulos order by existencias desc";
 $resultado = $mysqli->query($consulta);
 
 // Creación del objeto de la clase heredada
@@ -40,13 +42,19 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 
 while ($row = $resultado->fetch_assoc()) {
-    $pdf->Cell(8); 
+    //$pdf->Cell(8); 
     $pdf->SetFont('Arial','',11);
-	$pdf->Cell(150, 10, $row['descripcion'], 1, 0, 'C', 0);
-	$pdf->Cell(25, 10, $row['existencias'], 1, 1 , 'C', 0);
+    $pdf->MultiCell( 150, 8, $row['descripcion'] , 1, 'C', 0);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetXY($x+150, $y-8);
+    $pdf->MultiCell( 25, 8, $row['existencias'] , 1, 'C', 0);
 }
+
+
 
 
 $pdf->Output();
 
 ?>
+

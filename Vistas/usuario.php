@@ -69,12 +69,17 @@ $tipousuarioControl = new TipoUsuarioControl();
             </select>
             <br/>
             <p class="center-content">
-            <input type="submit" class="btn-azul" value="GUARDAR"/>
+            <input type="submit" class="btn-azul" id="btnG" value="GUARDAR"/>
             </p>
 
          </form>
       </div>
    </div>
+     <script type="text/javascript">
+         document.getElementById('btnG').onclick = function(){
+         alert('Usuario registrado con éxito'); 
+      }
+      </script>
    <div id="table">
       <table class="content-table">
          <thead>
