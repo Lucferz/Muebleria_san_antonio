@@ -14,12 +14,12 @@ function Header()
     $this->Ln(20); 
    
     $this->SetFont('Arial','B',12);  
-    $this->Cell(5); 
-    $this->Cell(35, 10, 'Cliente', 1, 0, 'C', 0);
-    $this->Cell(35, 10, 'Vendedor', 1, 0, 'C', 0);
-    $this->Cell(40, 10, 'Articulo', 1, 0, 'C', 0);
-    $this->Cell(35, 10, 'Total', 1, 0, 'C', 0);
-    $this->Cell(40, 10, 'Fecha de Venta', 1, 1 , 'C', 0);
+    $this->Cell(-2); 
+    $this->Cell(30, 6, 'Cliente', 1, 0, 'C', 0);
+    $this->Cell(30, 6, 'Vendedor', 1, 0, 'C', 0);
+    $this->Cell(65, 6, 'Articulo', 1, 0, 'C', 0);
+    $this->Cell(30, 6, 'Total', 1, 0, 'C', 0);
+    $this->Cell(40, 6, 'Fecha de Venta', 1, 1 , 'C', 0);
 
 }
 // Pie de página
@@ -43,7 +43,8 @@ v.total,
 v.fecha_emision 
 FROM ventas v join articulos a on v.fk_articulo = a.id_articulo
 join clientes c on v.fk_cliente = c.id_cliente 
-join usuarios u on v.fk_usuario = u.id_usuario where u.fk_tipo_usuario=1 or u.fk_tipo_usuario=3; ";
+join usuarios u on v.fk_usuario = u.id_usuario where u.fk_tipo_usuario=1 or u.fk_tipo_usuario=3
+ORDER BY fecha_emision asc; ";
 $resultado = $mysqli->query($consulta);
 
 // Creación del objeto de la clase heredada
@@ -52,13 +53,29 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 
 while ($row = $resultado->fetch_assoc()) {
-    $pdf->Cell(5); 
+    $pdf->Cell(-2); 
     $pdf->SetFont('Arial','',11);
-	$pdf->Cell(35, 10, $row['cliente'], 1, 0, 'C', 0);
-    $pdf->Cell(35, 10, $row['Nombre'], 1, 0, 'C', 0);
-    $pdf->Cell(40, 10, $row['descripcion'], 1, 0, 'C', 0);
-    $pdf->Cell(35, 10, $row['total'], 1, 0, 'C', 0);
-	$pdf->Cell(40, 10, $row['fecha_emision'], 1, 1 , 'C', 0);
+    $pdf->MultiCell( 30, 6, $row['cliente'], 1, 'C', 0);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetXY($x+30, $y-6);
+    $pdf->Cell(-2.2); 
+	$pdf->MultiCell( 30, 6, $row['Nombre'], 1, 'C', 0);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetXY($x+30, $y-6);
+    $pdf->Cell(28); 
+    $pdf->MultiCell( 65, 6, $row['descripcion'] , 1, 'C', 0);
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetXY($x+65, $y-6);
+    $pdf->Cell(58); 
+    $pdf->MultiCell( 30, 6, $row['total'] , 1, 'C', 0);  
+    $x = $pdf->GetX();
+    $y = $pdf->GetY();
+    $pdf->SetXY($x+30, $y-6);
+    $pdf->Cell(123); 
+    $pdf->MultiCell( 40, 6, $row['fecha_emision'] , 1, 'C', 0);
 }
 
 
