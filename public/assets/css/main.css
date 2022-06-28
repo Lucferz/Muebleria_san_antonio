@@ -162,13 +162,13 @@ border-radius: 7.1px;
   background-image: url('../img/loginPerson.png'); 
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 300px;
+  background-size: 350px;
   background-position-x: center;
   display: inline-block;
   justify-content: center;
   align-items: center;
-  padding-top: 170px;
-  padding-left: 5px;
+  padding-top: 220px;
+  padding-left: 35px;
 
   }
   .login-form {
