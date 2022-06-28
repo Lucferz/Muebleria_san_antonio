@@ -97,7 +97,7 @@ if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
                         $$key2 = $value2;
                      }
                      $selected = (isset($dataToMod[0]['tipo_iva']) && 
-                     $categoria == $dataToMod[0]['tipo_iva'])? 'selected':'';
+                     $name == $dataToMod[0]['tipo_iva'])? 'selected':'';
                      echo "<option value='$id' $selected>$name</option>";
                   }
                ?>

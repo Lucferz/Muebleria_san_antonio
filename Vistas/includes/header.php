@@ -39,18 +39,22 @@ if ($_SESSION['autenticado'] != true) {
       <a href="cobranzasview.php" <?php echo $_SERVER['REQUEST_URI']=="/Muebleria_san_antonio/Vistas/cobranzasview.php"?"class = 'navbaractive'":"" ?>>
          <ion-icon name="cash-outline"></ion-icon><span> Cobro</span>
       </a>
-      <nav>
-         <div class="informes">
-            <span><button class="inforbtn">
-                  <ion-icon name="document-text-outline"></ion-icon>
-               </button>Informes</span>
+      <?php
+         if($_SESSION['rol']== 'Admin'){
+               echo '<nav>
+               <div class="informes">
+                  <span><button class="inforbtn">
+                        <ion-icon name="document-text-outline"></ion-icon>
+                     </button>Informes</span>
 
-            <div class="informes-content">
-               <a href="../informes/informeStock.php">Informe de stock</a>
-               <a href="../informes/informeVentas.php">Informe de ventas</a>
-            </div>
-         </div>
-      </nav>
+                  <div class="informes-content">
+                     <a href="../informes/informeStock.php">Informe de stock</a>
+                     <a href="../informes/informeVentas.php">Informe de ventas</a>
+                  </div>
+               </div>
+            </nav>';
+         }
+      ?>
       <?php
          // $url = $_SERVER['REQUEST_URI'];
          // var_dump($url);
