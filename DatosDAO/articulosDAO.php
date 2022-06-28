@@ -1,6 +1,6 @@
 <?php
     require_once("Base.php");
-    require_once("../Modelo/articulos.php");
+   // require_once("../Modelo/articulos.php");
 
     class ArticulosDAO extends Base
     {
