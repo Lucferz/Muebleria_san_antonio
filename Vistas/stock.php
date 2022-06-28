@@ -57,15 +57,15 @@ if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
             class="field" autocomplete="off" required> <br/>
 
             <p>PRECIO DE COMPRA:</p>
-            <input type="text" name="precio_compra" value="<?php echo isset($dataToMod[0]['precio_compra'])? $dataToMod[0]['precio_compra']:'' ?>"
+            <input type="number" name="precio_compra" value="<?php echo isset($dataToMod[0]['precio_compra'])? $dataToMod[0]['precio_compra']:'' ?>"
             class="field" autocomplete="off" required> <br/>
 
             <p>PRECIO DE VENTA:</p>
-            <input type="text" name="precio_venta" value="<?php echo isset($dataToMod[0]['precio_venta'])? $dataToMod[0]['precio_venta']:'' ?>" 
+            <input type="number" name="precio_venta" value="<?php echo isset($dataToMod[0]['precio_venta'])? $dataToMod[0]['precio_venta']:'' ?>" 
             class="field" autocomplete="off" required> <br/>
 
             <p>EXISTENCIAS:</p>
-            <input type="text" name="existencias" value="<?php echo isset($dataToMod[0]['existencias'])? $dataToMod[0]['existencias']:'' ?>" 
+            <input type="number" name="existencias" value="<?php echo isset($dataToMod[0]['existencias'])? $dataToMod[0]['existencias']:'' ?>" 
             class="field" autocomplete="off" required> <br/><br/><br/>
             
             <input type="text" name="id_articulo" 
