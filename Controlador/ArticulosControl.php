@@ -35,5 +35,9 @@
 		public function buscar($search_key){
 			return $this->artiDAO->buscar($search_key);
 		}
+
+		public function informeStock(){
+			return $this->artiDAO->informeStock();
+		}
 	}
 ?>
