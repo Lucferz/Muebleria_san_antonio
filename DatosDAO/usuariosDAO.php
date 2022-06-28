@@ -1,6 +1,6 @@
 <?php
     require_once("Base.php");
-    require_once("../Modelo/usuarios.php");
+   // require_once("../Modelo/usuarios.php");
 
     class UsuariosDAO extends Base
     {

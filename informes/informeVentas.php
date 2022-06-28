@@ -11,7 +11,7 @@ if($_SESSION['rol'] != 'Admin'){
     header("Location: ../Vistas/$location");
     die();
  }
-require('fpdf/fpdf.php');
+require('../informes/fpdf/fpdf.php');
 class PDF extends FPDF{
 // Cabecera de página
 function Header()
@@ -46,48 +46,45 @@ function Footer()
 }
 }
 
-require'../DatosDAO/cn.php';
-$consulta = "SELECT 
-c.cliente, 
-u.Nombre,
-a.descripcion, 
-v.total, 
-v.fecha_emision 
-FROM ventas v join articulos a on v.fk_articulo = a.id_articulo
-join clientes c on v.fk_cliente = c.id_cliente 
-join usuarios u on v.fk_usuario = u.id_usuario where u.fk_tipo_usuario=1 or u.fk_tipo_usuario=3
-ORDER BY fecha_emision asc; ";
-$resultado = $mysqli->query($consulta);
 
 // Creación del objeto de la clase heredada
 $pdf=new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 
-while ($row = $resultado->fetch_assoc()) {
-    $pdf->Cell(-2); 
+
+require('../Controlador/ventasControl.php');
+$ventas_control = new VentasControl();
+
+$data_ventas = $ventas_control->informeVentas();
+    foreach ($data_ventas as $key => $value) {
+        foreach ($value as $key2 => $value2) {
+            $$key2 = $value2;
+        }
+
+    $pdf->Cell(-2);
     $pdf->SetFont('Arial','',11);
-    $pdf->MultiCell( 30, 6, $row['cliente'], 1, 'C', 0);
+    $pdf->MultiCell( 30, 6, $cliente, 1, 'C', 0);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
     $pdf->SetXY($x+30, $y-6);
     $pdf->Cell(-2.2); 
-	$pdf->MultiCell( 30, 6, $row['Nombre'], 1, 'C', 0);
+    $pdf->MultiCell( 30, 6, $Nombre, 1, 'C', 0);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
     $pdf->SetXY($x+30, $y-6);
     $pdf->Cell(28); 
-    $pdf->MultiCell( 65, 6, $row['descripcion'] , 1, 'C', 0);
+    $pdf->MultiCell( 65, 6, $descripcion, 1, 'C', 0);
     $x = $pdf->GetX();
     $y = $pdf->GetY();
     $pdf->SetXY($x+65, $y-6);
     $pdf->Cell(58); 
-    $pdf->MultiCell( 30, 6, $row['total'] , 1, 'C', 0);  
+    $pdf->MultiCell( 30, 6, $total, 1, 'C', 0);  
     $x = $pdf->GetX();
     $y = $pdf->GetY();
     $pdf->SetXY($x+30, $y-6);
     $pdf->Cell(123); 
-    $pdf->MultiCell( 40, 6, $row['fecha_emision'] , 1, 'C', 0);
+    $pdf->MultiCell( 40, 6, $fecha_emision, 1, 'C', 0);
 }
 
 

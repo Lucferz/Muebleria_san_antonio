@@ -1,6 +1,6 @@
 <?php
 	require_once("Base.php");
-	require_once("../Modelo/ventas.php");
+	//require_once("../Modelo/ventas.php");
 
 	class VentasDAO extends Base
 	{
@@ -154,5 +154,31 @@
             $this->query = "UPDATE ventas SET estado = true, fecha_mod = CURRENT_TIMESTAMP WHERE id_venta =$id_venta";
             $this->set_query();
         }
+
+        public function informeVentas(){
+            $this->query = "SELECT 
+            c.cliente, 
+            u.Nombre,
+            a.descripcion, 
+            v.total, 
+            v.fecha_emision 
+            FROM ventas v join articulos a on v.fk_articulo = a.id_articulo
+            join clientes c on v.fk_cliente = c.id_cliente 
+            join usuarios u on v.fk_usuario = u.id_usuario where u.fk_tipo_usuario=1 or u.fk_tipo_usuario=3
+            ORDER BY fecha_emision asc";
+
+            $this->get_query();
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return $data;
+        }
+
+        
 	}
+
+
+
 ?>

@@ -3,7 +3,7 @@
 	 *
 	 */
 	require_once("Base.php");
-	require_once("../Modelo/categorias.php");
+	//require_once("../Modelo/categorias.php");
 
 	class CategoriasDAO extends Base
 	{

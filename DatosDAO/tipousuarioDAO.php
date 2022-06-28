@@ -3,7 +3,7 @@
      *
      */
     require_once("Base.php");
-    require_once("../Modelo/tipoUsuario.php");
+    //require_once("../Modelo/tipoUsuario.php");
 
     class TipoUsuarioDAO extends Base
     {

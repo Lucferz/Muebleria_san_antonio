@@ -1,6 +1,6 @@
 <?php
     require_once("Base.php");
-    require_once("../Modelo/tipoVenta.php");
+    //require_once("../Modelo/tipoVenta.php");
 
     class tipoVentaDAO extends Base
     {

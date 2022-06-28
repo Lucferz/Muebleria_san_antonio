@@ -30,5 +30,9 @@
 		public function buscar($search_key){
 			return $this->ventaDAO->buscar($search_key);
 		}
+
+		public function informeVentas(){
+            return $this->ventaDAO->informeVentas();
+        }
 	}
 ?>
