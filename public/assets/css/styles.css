@@ -264,7 +264,7 @@ input:-moz-placeholder {
 
 .field{
 	border: solid 1px #AFAFAF;
-	padding: 10px;
+	padding: 9px;
 	margin-left: 50px;
 	outline: none;
 	width: 300px;	
@@ -273,7 +273,7 @@ input:-moz-placeholder {
 .select-modal{
 	margin-left: 25px;
 	width: 250px;
-	height: 40px;
+	height: 25px;
 }
 
 .field:focus,  .form-select:focus{
