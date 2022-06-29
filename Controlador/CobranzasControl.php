@@ -31,7 +31,9 @@
 		public function delete($cobranza = array()){
 			return $this->cobranzaDAO->delete($cobranza);
 		}
-
+		public function listarInicio(){
+			return $this->cobranzaDAO->listarInicio();
+		}
 		public function reactivar($cobranza = array()){
 			return $this->cobranzaDAO->reactivar($cobranza);
 		}

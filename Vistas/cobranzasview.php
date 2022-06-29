@@ -6,8 +6,8 @@ if($_SESSION['rol'] != 'Admin'){
    header("Location: ../Vistas/$location");
    die();
 }
-include("../Controlador/categoriasControl.php");
-$catControl = new CategoriasControl();
+include("../Controlador/CobranzasControl.php");
+$cobControl = new CobranzasControl();
 ?>
 <div id="cuerpo">
       <div id="cabecera-botones">
@@ -33,47 +33,43 @@ $catControl = new CategoriasControl();
          <thead>
             <tr>
                <th>ID</th>
-               <th>CATEGORIA</th>
-               <th>ESTADO</th>
-               <th colspan="2">ACCIONES</th>
+               <th>CLIENTE</th>
+               <th>DIRECCION</th>
+               <th>MONTO</th>
+               <th>FECHA A COBRAR</th>
+               <th>COBRADO EL</th>
+               <th>MONTO COBRADO</th>
+               <th>ACCIONES</th>
             </tr>
          </thead>
          <tbody align="center"id="tablaDatos">
              <?php
-               $data_categorias = $catControl->read();
-               foreach ($data_categorias as $key => $value) {
-                  echo "<tr>";
+               $data_cobranzas = $cobControl->listar();
+               foreach ($data_cobranzas as $key => $value) {
                   foreach ($value as $key2 => $value2) {
                      $$key2 = $value2;
                   }
-                  if($estado){
-                     $status = 'Activo';
-                     $btnDelLabel = 'Desactivar';
-                  }else{
-                     $status = 'Inactivo';
-                     $btnDelLabel = 'Reactivar';
-                  }
-                  echo "<div id='row-content'>
-                  <td>$id_categoria</td>
-                  <td>$categoria</td>
-                  <td>$status</td>
+                  $cobrado = ($fecha_cobrado == null)? '----':$fecha_cobrado;
+                  $monto_c = ($monto_cobrado == null)? '----':$monto_cobrado;
+                  echo "<tr>
+                  <div id='row-content'>
+                  <td>$id_cobranza</td>
+                  <td>$cliente</td>
+                  <td>$direccion</td>
+                  <td>$monto</td>
+                  <td>$fecha_cobro</td>
+                  <td>$cobrado</td>
+                  <td>$monto_c</td>
                   </div>
                   <div id='row-actions'>
-                  <td>
-                     <form method='POST' id='editForm'>
-                        <input type='text' name='id_categoria' value='$id_categoria' hidden>
-                        <input type='submit' class='btn-table' value='Editar' id='btn-editar'>
-                     </form>
-                  </td>
-                  <td>
-                     <form method='POST' action='../acciones/categorias_acciones.php' id='deleteForm$id_categoria' >
-                        <input type='text' name='id_categoria' value='$id_categoria' hidden>
-                        <input type='text' name='estado' value='$estado' hidden>
-                     </form>
-                     <button id='btn-desactivar' class='btn-table' onclick=\"desactivar($id_categoria, $estado);\" >$btnDelLabel</button>
-                  </td>
-                  </div>";
-                  echo "</tr>";
+                     <td>
+                        <form method='POST' id='editForm'>
+                           <input type='text' name='id_categoria' value='$id_cobranza' hidden>
+                           <input type='submit' class='btn-table' value='Editar' id='btn-editar'>
+                        </form>
+                     </td>
+                  </div>
+                  </tr>";
                }
             ?>
          </tbody>

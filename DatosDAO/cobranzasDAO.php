@@ -69,14 +69,24 @@
             c.monto,
             c.fecha_cobro,
             c.fecha_cobrado,
-            c.monto_cobrado,
-            u.Nombre as Cobrador,
-            ec.estado_cobranza
+            c.monto_cobrado
         FROM 
-            estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
-            JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
-            JOIN ventas v ON (c.fk_venta = v.id_venta)
-            JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)" ;
+            cobranzas c JOIN ventas v ON (c.fk_venta = v.id_venta)
+            JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)
+        ORDER BY 
+        	c.id_cobranza  desc" ;
+            $this->get_query();
+           
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return $data;
+        }
+
+        public function listarInicio(){
+            $this->query = "SELECT * FROM cobranza_view cv ORDER BY estado_cobranza desc, fecha_cobro asc, mora desc limit 25" ;
             $this->get_query();
            
             $data = array();
