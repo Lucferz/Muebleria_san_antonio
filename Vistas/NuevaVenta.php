@@ -96,7 +96,7 @@
             </div>
             <div class="col-75">
               <div class="autocomplete">
-                <input type="text" id="autocomplete-input-cliente" class="flexsearch--input" placeholder="Buscar cliente..." autocomplete="off" >
+                <input type="text" id="autocomplete-input-cliente" class="flexsearch--input" placeholder="Buscar cliente..." autocomplete="off" value="<?php echo isset($dataToMod[0]['id_cliente'])? $dataToMod[0]['id_cliente']:'' ?>" >
                 <input type="text" id="id_cliente" name="fk_cliente" hidden>
                 <ul id="autocomplete-results-cliente" class="autocomplete-results">
                 </ul>
@@ -112,7 +112,7 @@
             </div>
             <div class="col-75">
             <div class="autocomplete">
-                <input type="text" id="autocomplete-input-articulo" class="flexsearch--input" placeholder="Buscar articulo..." autocomplete="off">
+                <input type="text" id="autocomplete-input-articulo" class="flexsearch--input" placeholder="Buscar articulo..." autocomplete="off" value="<?php echo isset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>">
                 <input type="text" id="id_articulo" name="fk_articulo" hidden>
                 <ul id="autocomplete-results-articulo" class="autocomplete-results">
                 </ul>
