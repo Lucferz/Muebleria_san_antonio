@@ -60,8 +60,8 @@ $tipousuarioControl = new TipoUsuarioControl();
             value="<?php echo isset($dataToMod[0]['id_usuario'])? $dataToMod[0]['id_usuario']:''  ?>" hidden>
 
            <span>TIPO USUARIO:</span>
-            <select class="select-modal form-select" name="fk_tipo_usuario" ><!--Aca hacer el read de Categorias-->
-               <option value="no_select">Seleccione Tipo de usuario</option>
+            <select class="select-modal form-select" name="fk_tipo_usuario" required ><!--Aca hacer el read de Categorias-->
+               <option value="">Seleccione Tipo de usuario</option>
                <?php
                   $data_tipousuario = $tipousuarioControl->read();
                   foreach ($data_tipousuario as $key => $value) {
@@ -82,11 +82,6 @@ $tipousuarioControl = new TipoUsuarioControl();
          </form>
       </div>
    </div>
-     <script type="text/javascript">
-         document.getElementById('btnG').onclick = function(){
-         alert('Usuario registrado con éxito'); 
-      }
-      </script>
    <div id="table">
       <table class="content-table">
          <thead>

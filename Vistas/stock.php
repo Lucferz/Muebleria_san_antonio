@@ -72,8 +72,8 @@ if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
             value="<?php echo isset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>" hidden>
 
             <span>CATEGORIA:</span>
-            <select class="select-modal form-select" name="fk_categoria" ><!--Aca hacer el read de Categorias-->
-               <option value="no_select">Seleccione una Categoria</option>
+            <select class="select-modal form-select" name="fk_categoria" required><!--Aca hacer el read de Categorias-->
+               <option value="">Seleccione una Categoria</option>
                <?php
                   $data_categorias = $categoriasControl->read();
                   foreach ($data_categorias as $key => $value) {
@@ -88,8 +88,8 @@ if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
             </select>
             <br/><br/>
             <span>TIPO DE IVA:</span>
-            <select class="select-modal form-select" name="fk_tax" ><!--Aca hacer el read de taxes-->
-               <option value="no_select">Seleccione un tipo de IVA</option>
+            <select class="select-modal form-select" name="fk_tax" required><!--Aca hacer el read de taxes-->
+               <option value="">Seleccione un tipo de IVA</option>
                <?php
                   $data_tax = $taxControl->read();
                   foreach ($data_tax as $key => $value) {

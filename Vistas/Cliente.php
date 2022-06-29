@@ -31,7 +31,7 @@ $clientes_control = new ClientesControl();
 		<div id="myModal" class="modal">
   			<!-- Modal content -->
   			<div class="modal-content"> 
-					<form method="POST" class= "modal-form" action="../acciones/clientes_acciones.php" id="dataform">
+					<form method="POST" class= "modal-form" action="../acciones/clientes_acciones.php" id="formClient">
             <?php 
                $dataToMod;
                if (isset($_POST) && isset($_POST['id_cliente'])){
@@ -71,11 +71,6 @@ $clientes_control = new ClientesControl();
 					</form>
   			</div>
 		</div>
-      <script type="text/javascript">
-         document.getElementById('btnG').onclick = function(){
-         alert('Cliente registrado con éxito'); 
-      }
-      </script>
 <div id="table">
       <table class="content-table">
          <thead>

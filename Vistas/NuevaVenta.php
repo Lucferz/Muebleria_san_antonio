@@ -140,8 +140,8 @@
                <label for="cuotas">Tipo De Venta</label>
             </div>
             <div class="col-75">
-               <select id="cuotas" name="fk_tipo_venta">
-                  <!--<option value="no_select">Seleccione Tipo De Venta</option>-->
+               <select id="cuotas" name="fk_tipo_venta" required>
+                  <option value="">Seleccione Tipo De Venta</option>
                   <?php
                     $data_tpv = $tvc->read();
                     foreach ($data_tpv as $key => $value) {
