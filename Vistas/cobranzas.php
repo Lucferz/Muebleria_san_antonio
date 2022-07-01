@@ -50,9 +50,11 @@ $cobranzas_control = new CobranzasControl();
          <thead>
             <tr>
                <th>Cliente</th>
+               <th>Cuota Nro</th>
                <th>Monto</th>
                <th>Direccion</th>
-               <th>DIas de Mora</th>
+               <th>Fecha de Cobro</th>
+               <th>Dias de Mora</th>
                <th>Acciones</th>
             </tr>
          </thead>
@@ -67,10 +69,12 @@ $cobranzas_control = new CobranzasControl();
                      echo "<tr>
                               <div id='row-content'>
                                  <td>$cliente</td>
+                                 <td>$cuota_nro</td>
                                  <td>$monto</td>
                                  <td>$direccion</td>
+                                 <td>$fecha_cobro</td>
                                  <td>$mora</td>
-                                 <td><button id=\"addNew\">Cobrar</button></td>
+                                 <td><button class=\"addNew\" onclick=\"prepare_modal($id_cobranza,$cuota_nro,$monto, $fk_venta)\">Cobrar</button></td>
                               </div>
                            </tr>
                      ";
@@ -86,35 +90,38 @@ $cobranzas_control = new CobranzasControl();
     <div id="myModal" class="modal">
          <!-- Modal content -->
          <div class="modal-content"> 
-               <form method="POST" >
+               <form id="cob_form" method="POST" action="../acciones/cobranzas_acciones.php" >
                   <span class="close"><ion-icon name="close-outline"></ion-icon></span>
                   <h1 class="titulo-modal">Traer nombre del cliente</h1>
                   
                   <p>Saldo:</p>
-                  <input type="text" readonly="readonly" 
-                  class="field"> <br/>
+                  <input type="text" id="fsaldo" readonly="readonly" class="field"> <br/>
 
                   <p>Cuota Nro:</p>
-                  <input type="text" class="field"name="cuotaNro" readonly="readonly" 
-                  > <br/>
+                  <input type="text" id="fcuota" class="field" readonly="readonly" > <br/>
+
+                  <p>Monto a Cobrar:</p>
+                  <input type="text" id="fmonto" class="field" readonly="readonly" > <br/>
 
                   <p>Entrega:</p>
-                  <input type="text" name="entrega"  
-                  class="field"> <br/>
+                  <input type="text" name="monto_cobrado" class="field"> <br/>
 
+                  <input type="text" id="fid" name="id_cobranza" hidden/>
+                  <input type="text" name="fk_cobrador" value="<?php echo $_SESSION['id_usuario'] ?>" hidden/>
                   <br>
                   <div class="btns">
                   <p>
                   <input type="submit" class="btn-azul" value="COBRAR">
                   </p>
                   <p>
-                  <input type="submit" class="btn-azul2" value="NO PAGÓ">
+                  <input type="submit" id="btn-aplazo-cobro" class="btn-azul2" value="NO PAGÓ">
                   </p>
                   </div>
                   
                </form>
          </div>
       </div>
+      <script type="text/javascript" src="../public/assets/js/cobranzas.js"></script>
 <?php
    include("includes/footer.html");
 ?>

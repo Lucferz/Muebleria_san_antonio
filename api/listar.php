@@ -59,6 +59,10 @@
                 $datos_busqueda = $controlador->buscar($_GET['search_key']);
                 echo $datos_busqueda;
             }
+            if (array_key_exists('saldo_ven',$_GET)) {
+                $datos_busqueda = $controlador->getSaldo($_GET['saldo_ven']);
+                echo $datos_busqueda;
+            }
             break;
         case'ventas':
             include_once("../Controlador/ventasControl.php");

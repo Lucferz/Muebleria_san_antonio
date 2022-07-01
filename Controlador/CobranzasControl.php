@@ -34,6 +34,9 @@
 		public function listarInicio(){
 			return $this->cobranzaDAO->listarInicio();
 		}
+		public function getSaldo($id_ven){
+			return $this->cobranzaDAO->getSaldo($id_ven);
+		}
 		public function reactivar($cobranza = array()){
 			return $this->cobranzaDAO->reactivar($cobranza);
 		}

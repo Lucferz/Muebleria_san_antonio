@@ -51,6 +51,7 @@ $cobControl = new CobranzasControl();
                   }
                   $cobrado = ($fecha_cobrado == null)? '----':$fecha_cobrado;
                   $monto_c = ($monto_cobrado == null)? '----':$monto_cobrado;
+                  $status = ($estado)? 'ACTIVO':'ANULADO';
                   echo "<tr>
                   <div id='row-content'>
                   <td>$id_cobranza</td>
@@ -60,6 +61,7 @@ $cobControl = new CobranzasControl();
                   <td>$fecha_cobro</td>
                   <td>$cobrado</td>
                   <td>$monto_c</td>
+                  <td>$status</td>
                   </div>
                   <div id='row-actions'>
                      <td>

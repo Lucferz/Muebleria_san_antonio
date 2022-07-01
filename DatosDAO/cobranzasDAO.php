@@ -20,18 +20,22 @@
             $this->set_query();
         }
         
-        //No se usa la tabla cobranzas porque le queda mejor para ver la tabla de estado_cobranza, pero solo cambia el sql
+        
         public function read($id_cobranza = ''){
             $this->query = ($id_cobranza == '')?
             "SELECT
                 cli.cliente,
                 cli.direccion,
                 c.monto,
+                c.fecha_cobro ,
+                c.cuota_nro,
+                c.id_cobranza,
+                c.fk_venta,
                 CASE
                     WHEN c.fecha_cobro_mora IS NULL THEN
                         0
                     ELSE
-                        DATEDIFF(c.fecha_cobro_mora, c.fecha_cobro)
+                        DATEDIFF(NOW(), c.fecha_cobro)
                 END AS 'mora'
             FROM
                 cobranzas c
@@ -40,13 +44,14 @@
             JOIN clientes cli ON
                 (v.fk_cliente = cli.id_cliente)
             WHERE
-                (c.fecha_cobro = CURDATE()
-                OR
-                c.fecha_cobro_mora = CURDATE())
+                c.estado = 1
                 AND
                 c.fecha_cobrado IS NULL 
                 AND 
-                c.monto_cobrado IS NULL " 
+                c.monto_cobrado IS NULL 
+            ORDER BY 
+                c.id_cobranza asc
+            LIMIT 15" 
             :"SELECT * FROM cobranzas c 
             WHERE 
                 id_cobranza NOT IN (SELECT ec.fk_cobranza  from estado_cobranza ec) AND
@@ -69,7 +74,8 @@
             c.monto,
             c.fecha_cobro,
             c.fecha_cobrado,
-            c.monto_cobrado
+            c.monto_cobrado,
+            c.estado
         FROM 
             cobranzas c JOIN ventas v ON (c.fk_venta = v.id_venta)
             JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)
@@ -86,7 +92,7 @@
         }
 
         public function listarInicio(){
-            $this->query = "SELECT * FROM cobranza_view cv ORDER BY estado_cobranza desc, fecha_cobro asc, mora desc limit 25" ;
+            $this->query = "SELECT * FROM cobranza_view cv ORDER BY estado_cobranza desc, fecha_cobro asc, mora desc limit 25";
             $this->get_query();
            
             $data = array();
@@ -138,12 +144,37 @@
             return json_encode($data);
         }
 
+        public function getSaldo($id_ven){
+            $this->query = <<<query
+            SELECT 
+                SUM(c.monto) as saldo
+            FROM 
+                cobranzas c 
+            WHERE 
+                c.monto_cobrado IS NULL  
+                AND 
+                c.estado = 1
+                AND 
+                c.fk_venta = $id_ven
+            query;
+            $this->get_query();
+           
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return json_encode($data);
+        }
+
         public function update( $cobranza = array()){
             foreach ($cobranza as $key => $value) {
                 $$key = $value;
             }
 
-            $this->query = "UPDATE cobranzas SET  monto = $monto, fecha_modificado = CURRENT_TIMESTAMP, monto_cobrado = $monto_cobrado WHERE id_cobranza =$id_cobranza";
+            $this->query = "CALL cobrar_cuota($monto_cobrado, $id_cobranza)";
+            $this->set_query();
+            $this->query = "INSERT INTO estado_cobranza(fk_cobrador, fk_cobranza, estado_cobranza) VALUES ($fk_cobrador, $id_cobranza, 'COBRADO')";
             $this->set_query();
         }
 
