@@ -19,7 +19,7 @@
                     if($data['id_categoria']== null || $data['id_categoria'] == ''){
                         $catControl->create($data);
                     }else{
-                        header("Location: categorias.php?error=true");
+                        header("Location: ../Vistas/categorias.php?error=true");
                         die();
                     }
                 }

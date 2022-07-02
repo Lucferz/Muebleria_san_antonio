@@ -17,7 +17,7 @@
                     if($data['id_cliente']== null || $data['id_cliente'] == ''){
                         $clientes_control->create($data);
                     }else{
-                        header("Location: Cliente.php?error=true");
+                        header("Location: ../Vistas/Cliente.php?error=true");
                         die();
                     }
                 }

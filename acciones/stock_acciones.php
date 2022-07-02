@@ -19,7 +19,7 @@
                     if($data['id_articulo']== null || $data['id_articulo'] == ''){
                         $articulos_control->create($data);
                     }else{
-                        header("Location: stock.php?error=true");
+                        header("Location: ../Vistas/stock.php?error=true");
                         die();
                     }
                 }

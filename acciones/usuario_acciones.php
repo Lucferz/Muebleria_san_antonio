@@ -20,7 +20,7 @@ var_dump($_POST);
                     if($data['id_usuario']== null || $data['id_usuario'] == ''){
                         $usuarios_control->create($data);
                     }else{
-                        header("Location: usuario.php?error=true");
+                        header("Location: ../Vistas/usuario.php?error=true");
                         die();
                     }
                 }
