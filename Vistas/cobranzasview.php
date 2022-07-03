@@ -15,16 +15,14 @@ $cobControl = new CobranzasControl();
                <div class="flexsearch--wrapper">
                   <div class="flexsearch--form" >
                      <div class="flexsearch--input-wrapper">
-                        <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar" autocomplete="off">
+                        <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar" autocomplete="off" hidden>
                      </div>
                   </div>
                </div>
          </div>
          <div id="articulos-buttons-container">
-         <a href="cobranzas.php"><button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Realizar Nueva Cobranza</button></a>
+            <a href="cobranzas.php"><button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Realizar Nueva Cobranza</button></a>
          </div>
-      </div>
-      <div id="tabla">
       </div>
    </div>
 		
@@ -39,7 +37,6 @@ $cobControl = new CobranzasControl();
                <th>FECHA A COBRAR</th>
                <th>COBRADO EL</th>
                <th>MONTO COBRADO</th>
-               <th>ACCIONES</th>
             </tr>
          </thead>
          <tbody align="center"id="tablaDatos">
@@ -62,14 +59,6 @@ $cobControl = new CobranzasControl();
                   <td>$cobrado</td>
                   <td>$monto_c</td>
                   <td>$status</td>
-                  </div>
-                  <div id='row-actions'>
-                     <td>
-                        <form method='POST' id='editForm'>
-                           <input type='text' name='id_categoria' value='$id_cobranza' hidden>
-                           <input type='submit' class='btn-table' value='Editar' id='btn-editar'>
-                        </form>
-                     </td>
                   </div>
                   </tr>";
                }

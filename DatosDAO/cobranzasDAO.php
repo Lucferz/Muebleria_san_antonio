@@ -28,7 +28,7 @@
                 cli.direccion,
                 c.monto,
                 c.fecha_cobro ,
-                c.cuota_nro,
+                MIN(c.cuota_nro) AS cuota_nro,
                 c.id_cobranza,
                 c.fk_venta,
                 CASE
@@ -106,33 +106,37 @@
         public function buscar($search_key){
             $this->query = <<<query
             SELECT
-                c.id_cobranza,
                 cli.cliente,
                 cli.direccion,
                 c.monto,
-                c.fecha_cobro,
-                c.fecha_cobrado,
-                c.monto_cobrado,
-                u.Nombre as Cobrador,
-                ec.estado_cobranza
-            FROM 
-                estado_cobranza ec JOIN cobranzas c ON (ec.id_estado_cobranza = c.id_cobranza)
-                JOIN usuarios u ON (ec.fk_cobrador = u.id_usuario)
-                JOIN ventas v ON (c.fk_venta = v.id_venta)
-                JOIN clientes cli ON (v.fk_cliente = cli.id_cliente)
+                c.fecha_cobro ,
+                MIN(c.cuota_nro) AS cuota_nro,
+                c.id_cobranza,
+                c.fk_venta,
+                CASE
+                    WHEN c.fecha_cobro_mora IS NULL THEN
+                        0
+                    ELSE
+                        DATEDIFF(NOW(), c.fecha_cobro)
+                END AS 'mora'
+            FROM
+                cobranzas c
+            JOIN ventas v ON
+                (c.fk_venta = v.id_venta)
+            JOIN clientes cli ON
+                (v.fk_cliente = cli.id_cliente)
             WHERE
-                c.id_cobranza LIKE '%$search_key%' OR
-                cli.cliente LIKE '%$search_key%' OR
+                c.estado = 1
+                AND
+                c.fecha_cobrado IS NULL 
+                AND 
+                c.monto_cobrado IS NULL 
+                AND
+                (cli.cliente LIKE '%$search_key%' OR
                 cli.direccion LIKE '%$search_key%' OR
-                c.monto LIKE '%$search_key%' OR
-                c.fecha_cobro LIKE '%$search_key%' OR
-                c.fecha_cobro_mora LIKE '%$search_key%' OR
-                c.fecha_cobrado LIKE '%$search_key%' OR
-                c.monto_cobrado LIKE '%$search_key%' OR
-                u.Nombre LIKE '%$search_key%' OR
-                ec.estado_cobranza LIKE '%$search_key%'
-            ORDER BY
-                c.id_cobranza
+                c.fecha_cobro LIKE '%$search_key%')
+            ORDER BY 
+                c.id_cobranza asc
             query;
             $this->get_query();
            

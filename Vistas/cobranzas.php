@@ -43,6 +43,18 @@ $cobranzas_control = new CobranzasControl();
         <h2>Muebleria San Antonio</h2> 
       </div>
   </header>
+  <br/><br/><br/>
+  <div id="cabecera-botones">
+         <div class="flexsearch">
+               <div class="flexsearch--wrapper">
+                  <div class="flexsearch--form" >
+                     <div class="flexsearch--input-wrapper">
+                        <input class="flexsearch--input" type="text" id="search-box" placeholder="Buscar" autocomplete="off" >
+                     </div>
+                  </div>
+               </div>
+         </div>
+   </div>
 
   <h3>Clientes por cobrar</h3>
  <div class="table_cob">
@@ -58,7 +70,7 @@ $cobranzas_control = new CobranzasControl();
                <th>Acciones</th>
             </tr>
          </thead>
-         <tbody>
+         <tbody id="tablaDatos">
             <?php
             $data_cobranzas = $cobranzas_control->read();
                if ($data_cobranzas != null) {
