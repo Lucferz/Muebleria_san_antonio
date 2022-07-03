@@ -1,3 +1,10 @@
+//Busqueda de Cobranzas
+if (document.querySelector("#search-box") != null) {
+    console.log("Funciona");
+    document.querySelector('#search-box').addEventListener('keyup', buscarAjaxTable, true);
+}
+
+
 
 let modal = document.getElementById("myModal");
 //Cargando los datos de la cobranza a la venta
@@ -31,6 +38,39 @@ function getSaldoVen(id_ven) {
 
 }
 
+//Busqueda de los datos
+function buscarAjaxTable() {
+    var xhttp = new XMLHttpRequest();
+    let barraBusqueda = document.querySelector('#search-box');
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            let datos = JSON.parse(this.responseText);
+            let tabla = document.querySelector('#tablaDatos');
+            console.log(datos);
+            tabla.innerHTML = '';
+            let c = 0;
+            for (let item of datos) {
+                tabla.innerHTML += `
+                <tr>
+                    <div id='row-content'>
+                        <td>${datos[c].cliente}</td>
+                        <td>${datos[c].cuota_nro}</td>
+                        <td>${datos[c].monto}</td>
+                        <td>${datos[c].direccion}</td>
+                        <td>${datos[c].fecha_cobro}</td>
+                        <td>${datos[c].mora}</td>
+                        <td><button class=\"addNew\" onclick=\"prepare_modal(${datos[c].id_cobranza},${datos[c].cuota_nro},${datos[c].monto}, ${datos[c].fk_venta})\">Cobrar</button></td>
+                    </div>
+                </tr>`;
+                c++;
+            }
+        }
+    }
+    xhttp.open('GET', '../api/listar.php?table=cobranzas&search_key=' + barraBusqueda.value, true);
+    xhttp.send();
+
+}
 
 if (document.getElementById("btn-aplazo-cobro")){
     let btn_aplazo = document.getElementById("btn-aplazo-cobro");
