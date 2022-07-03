@@ -28,7 +28,7 @@
                 cli.direccion,
                 c.monto,
                 c.fecha_cobro ,
-                MIN(c.cuota_nro) AS cuota_nro,
+                CONCAT(MIN(c.cuota_nro),'/', tv.cuotas) AS cuota_nro,
                 c.id_cobranza,
                 c.fk_venta,
                 CASE
@@ -43,6 +43,8 @@
                 (c.fk_venta = v.id_venta)
             JOIN clientes cli ON
                 (v.fk_cliente = cli.id_cliente)
+            JOIN tipo_venta tv ON
+                (v.fk_tipo_venta = tv.id)
             WHERE
                 c.estado = 1
                 AND
