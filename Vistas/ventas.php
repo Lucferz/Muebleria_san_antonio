@@ -76,8 +76,8 @@ $ventas_control = new VentasControl();
                   </div>
                   <div id='row-actions'>
                   <td>
-                     <form method='POST' id='editForm'>
-                        <input type='text' name='id_articulo' value='$id_venta' hidden>
+                     <form method='POST' action='NuevaVenta.php' id='editForm'>
+                        <input type='text' name='id_venta' value='$id_venta' hidden>
                         <input type='submit' class='btn-table' value='Modificar' id='btn-editar'>
                      </form>
                   </td>
