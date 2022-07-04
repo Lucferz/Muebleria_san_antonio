@@ -11,7 +11,9 @@
     die();
   }
   require_once("../Controlador/TipoVentaControl.php");
+  require_once("../Controlador/ventasControl.php");
   $tvc = new TipoVentaControl();
+  $venControl = new ventasControl();
 ?>
 <!DOCTYPE html>
 <htmllang="es"> 
@@ -83,9 +85,10 @@
 
           <?php 
                $dataToMod;
-               if (isset($_POST) && isset($_POST['id_articulo'])){
-                  $dataToMod = $articulos_control->read($_POST['id_articulo']);
-                  echo '<script type="text/javascript"> document.all.myModal.style.display = "block"</script>';
+               var_dump($_POST);
+               if (isset($_POST) && isset($_POST['id_venta'])){
+                  $dataToMod = $venControl->read($_POST['id_venta']);
+                  var_dump($dataToMod);
                }
             ?> <!-- document.all.myModal.style.display = "block" esa parte hay que ver que poner -->
 
@@ -96,8 +99,8 @@
             </div>
             <div class="col-75">
               <div class="autocomplete">
-                <input type="text" id="autocomplete-input-cliente" class="flexsearch--input" placeholder="Buscar cliente..." autocomplete="off" value="<?php echo isset($dataToMod[0]['id_cliente'])? $dataToMod[0]['id_cliente']:'' ?>" >
-                <input type="text" id="id_cliente" name="fk_cliente" hidden>
+                <input type="text" id="autocomplete-input-cliente" class="flexsearch--input" placeholder="Buscar cliente..." autocomplete="off" value="<?php echo isset($dataToMod[0]['cliente'])? $dataToMod[0]['cliente']:'' ?>" >
+                <input type="text" id="id_cliente" name="fk_cliente" hidden value="<?php echoisset($dataToMod[0]['id_cliente'])? $dataToMod[0]['id_cliente']:'' ?>" >
                 <ul id="autocomplete-results-cliente" class="autocomplete-results">
                 </ul>
               </div>
@@ -112,8 +115,8 @@
             </div>
             <div class="col-75">
             <div class="autocomplete">
-                <input type="text" id="autocomplete-input-articulo" class="flexsearch--input" placeholder="Buscar articulo..." autocomplete="off" value="<?php echo isset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>">
-                <input type="text" id="id_articulo" name="fk_articulo" hidden>
+                <input type="text" id="autocomplete-input-articulo" class="flexsearch--input" placeholder="Buscar articulo..." autocomplete="off" value="<?php echo isset($dataToMod[0]['articulo'])? $dataToMod[0]['articulo']:'' ?>">
+                <input type="text" id="id_articulo" name="fk_articulo" hidden value="<?php echoisset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>">
                 <ul id="autocomplete-results-articulo" class="autocomplete-results">
                 </ul>
               </div>
@@ -124,7 +127,7 @@
                <label for="fcant">Cantidad</label>
             </div>
             <div class="col-75">
-               <input type="number" id="fcant" class="input-field" name="cantidad" placeholder="Cantidad a vender"><em id="stock" value="<?php echo isset($dataToMod[0]['existencias'])? $dataToMod[0]['existencias']:'' ?>" ></em>
+               <input type="number" id="fcant" class="input-field" name="cantidad" placeholder="Cantidad a vender"><em id="stock" value="<?php echo isset($dataToMod[0]['cantidad'])? $dataToMod[0]['cantidad']:'' ?>" ></em>
             </div>
          </div>
          <div class="row">
@@ -141,7 +144,7 @@
                <label for="fname">Entrega</label>
             </div>
             <div class="col-75">
-               <input type="number" id="fname" class="input-field" name="entrega" placeholder="Entrega" value="0" autocomplete="off" value="<?php echo isset($dataToMod[0]['entrega'])? $dataToMod[0]['entrega']:'' ?>"> 
+               <input type="number" id="fname" class="input-field" name="entrega" placeholder="Entrega" autocomplete="off" value="<?php echo isset($dataToMod[0]['entrega'])? $dataToMod[0]['entrega']:'0' ?>"> 
             </div>
          </div>
          <div class="row">
@@ -157,9 +160,9 @@
                       foreach ($value as $key2 => $value2) {
                          $$key2 = $value2;
                       }
-                     $selected = (isset($dataToMod[0]['tipo']) && 
-                     $tipo == $dataToMod[0]['tipo'])? 'selected':'';
-                      echo "<option value='$id'>$tipo</option>";
+                      $selected = (isset($dataToMod[0]['tipo_venta']) && 
+                      $categoria == $dataToMod[0]['tipo_venta'])? 'selected':'';
+                      echo "<option value='$id' $selected>$tipo</option>";
                     }
                   ?>
                </select>
@@ -170,7 +173,7 @@
                <label for="aname">Descuento</label>
             </div>
             <div class="col-75">
-               <input type="number" id="aname" class="input-field" name="descuento" value="0" placeholder="Descuento" value="<?php echo isset($dataToMod[0]['descuento'])? $dataToMod[0]['descuento']:'' ?>"> 
+               <input type="number" value="<?php echo isset($dataToMod[0]['descuento'])? $dataToMod[0]['descuento']:'0' ?>" id="aname" class="input-field" name="descuento" placeholder="Descuento" > 
             </div>
          </div>
          <br>
@@ -179,7 +182,7 @@
           <span class="checkmark"></span>
          </label>
          <br>
-         <input type="number" name="id_venta" readonly="readonly" hidden />
+         <input type="number" name="id_venta" value="<?php echo isset($dataToMod[0]['id_venta'])? $dataToMod[0]['id_venta']:'' ?>" readonly="readonly" hidden />
          <div class="row">
             <button type="submit" class="confirmar">Confirmar</button>
          </div>
