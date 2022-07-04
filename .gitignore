@@ -7,6 +7,13 @@ Base de datos
 #Ignora la carpeta pruebas
 pruebas
 
+#Ignora la carpeta tests
+tests
+
+#Ignora el archivo phpunit.xml y el cache
+phpunit.xml
+.phpunit.result.cache
+
 #ignora la carpeta vendor de composer
 vendor
 
