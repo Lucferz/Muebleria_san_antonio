@@ -73,21 +73,28 @@ $ventas_control = new VentasControl();
                   <td>$total</td>
                   <td>$fecha_emision</td>
                   <td>$status</td>
-                  </div>
-                  <div id='row-actions'>
-                  <td>
-                     <form method='POST' action='NuevaVenta.php' id='editForm'>
-                        <input type='text' name='id_venta' value='$id_venta' hidden>
-                        <input type='submit' class='btn-table' value='Modificar' id='btn-editar'>
-                     </form>
-                  </td>
-                  <td>
-                     <form method='POST' action='../acciones/ventas_acciones.php' id='deleteForm$id_venta' >
-                        <input type='text' name='id_venta' value='$id_venta' hidden>
-                     </form>
-                     <button id='btn-desactivar' class='btn-table' onclick=\"anular($id_venta);\" >Anular</button>
-                  </td>
                   </div>";
+                  if($estado){
+                     echo "<div id='row-actions'>
+                              <td>  
+                                 <form method='POST' action='NuevaVenta.php' id='editForm'>
+                                    <input type='text' name='id_venta' value='$id_venta' hidden>
+                                    <input type='submit' class='btn-table' value='Modificar' id='btn-editar'>
+                                 </form>
+                              </td>
+                              <td>
+                                 <form method='POST' action='../acciones/ventas_acciones.php' id='deleteForm$id_venta' >
+                                    <input type='text' name='id_venta' value='$id_venta' hidden>
+                                 </form>
+                                 <button id='btn-desactivar' class='btn-table' onclick=\"anular($id_venta);\" >Anular</button>
+                              </td>
+                           </div>";
+                  }else{
+                     echo "<div id='row-actions'>
+                              <td>---</td>
+                              <td>---</td>
+                           </div>";
+                  }
                   echo "</tr>";
                }
             ?>

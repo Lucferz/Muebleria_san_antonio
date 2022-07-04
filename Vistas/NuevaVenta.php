@@ -85,12 +85,10 @@
 
           <?php 
                $dataToMod;
-               var_dump($_POST);
                if (isset($_POST) && isset($_POST['id_venta'])){
                   $dataToMod = $venControl->read($_POST['id_venta']);
-                  var_dump($dataToMod);
                }
-            ?> <!-- document.all.myModal.style.display = "block" esa parte hay que ver que poner -->
+            ?>
 
         <input type="text" name="fk_usuario" value="<?php echo $_SESSION['id_usuario'] ?>" hidden />
          <div class="row">
@@ -100,7 +98,7 @@
             <div class="col-75">
               <div class="autocomplete">
                 <input type="text" id="autocomplete-input-cliente" class="flexsearch--input" placeholder="Buscar cliente..." autocomplete="off" value="<?php echo isset($dataToMod[0]['cliente'])? $dataToMod[0]['cliente']:'' ?>" >
-                <input type="text" id="id_cliente" name="fk_cliente" hidden value="<?php echoisset($dataToMod[0]['id_cliente'])? $dataToMod[0]['id_cliente']:'' ?>" >
+                <input type="text" id="id_cliente" name="fk_cliente"  value="<?php echo isset($dataToMod[0]['fk_cliente'])? $dataToMod[0]['fk_cliente']:'' ?>"  hidden>
                 <ul id="autocomplete-results-cliente" class="autocomplete-results">
                 </ul>
               </div>
@@ -116,7 +114,7 @@
             <div class="col-75">
             <div class="autocomplete">
                 <input type="text" id="autocomplete-input-articulo" class="flexsearch--input" placeholder="Buscar articulo..." autocomplete="off" value="<?php echo isset($dataToMod[0]['articulo'])? $dataToMod[0]['articulo']:'' ?>">
-                <input type="text" id="id_articulo" name="fk_articulo" hidden value="<?php echoisset($dataToMod[0]['id_articulo'])? $dataToMod[0]['id_articulo']:'' ?>">
+                <input type="text" id="id_articulo" name="fk_articulo"  value="<?php echo isset($dataToMod[0]['fk_articulo'])? $dataToMod[0]['fk_articulo']:'' ?>" hidden>
                 <ul id="autocomplete-results-articulo" class="autocomplete-results">
                 </ul>
               </div>
@@ -127,7 +125,7 @@
                <label for="fcant">Cantidad</label>
             </div>
             <div class="col-75">
-               <input type="number" id="fcant" class="input-field" name="cantidad" placeholder="Cantidad a vender"><em id="stock" value="<?php echo isset($dataToMod[0]['cantidad'])? $dataToMod[0]['cantidad']:'' ?>" ></em>
+               <input type="number" id="fcant" class="input-field" value="<?php echo isset($dataToMod[0]['cantidad'])? $dataToMod[0]['cantidad']:'' ?>" name="cantidad" placeholder="Cantidad a vender"><em id="stock"><?php echo isset($dataToMod[0]['existencias'])? 'En stock: '.$dataToMod[0]['existencias']:'' ?></em>
             </div>
          </div>
          <div class="row">
@@ -135,8 +133,8 @@
                <label for="fprecio">Precio</label>
             </div>
             <div class="col-75">
-               <input type="number" id="fprecio" class="input-field" name="total" readonly="readonly">
-               <input type="text" id="fprecio_h" readonly="readonly" hidden>
+               <input type="number" value="<?php echo isset($dataToMod[0]['total'])? $dataToMod[0]['total']:'' ?>" id="fprecio" class="input-field" name="total" readonly="readonly">
+               <input type="text"  value="<?php echo isset($dataToMod[0]['precio_venta'])? $dataToMod[0]['precio_venta']:'' ?>" id="fprecio_h" readonly="readonly" hidden>
             </div>
          </div>
          <div class="row">
@@ -161,7 +159,7 @@
                          $$key2 = $value2;
                       }
                       $selected = (isset($dataToMod[0]['tipo_venta']) && 
-                      $categoria == $dataToMod[0]['tipo_venta'])? 'selected':'';
+                      $tipo == $dataToMod[0]['tipo_venta'])? 'selected':'';
                       echo "<option value='$id' $selected>$tipo</option>";
                     }
                   ?>
@@ -177,11 +175,15 @@
             </div>
          </div>
          <br>
-         <label class="container">Generar Factura
-          <input type="checkbox" name="fk_tipo_comprobante">
-          <span class="checkmark"></span>
-         </label>
-         <br>
+         <?php 
+            if(!isset($_POST['id_venta'])){
+               echo '<label class="container">Generar Factura
+               <input type="checkbox" name="fk_tipo_comprobante">
+               <span class="checkmark"></span>
+               </label>
+               <br>';
+            }
+         ?>
          <input type="number" name="id_venta" value="<?php echo isset($dataToMod[0]['id_venta'])? $dataToMod[0]['id_venta']:'' ?>" readonly="readonly" hidden />
          <div class="row">
             <button type="submit" class="confirmar">Confirmar</button>

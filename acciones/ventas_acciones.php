@@ -7,22 +7,15 @@
     try{
         if(isset($_POST)&& array_key_exists('id_venta', $_POST)){
             $data = $_POST;
-            echo "<br>Entro en el primer if";
             if ($data['id_venta']!= null && $data['id_venta'] != '' && !isset($data['del'])){
-                // echo "<br>Entro en editar";
-                // $venCon->update($data);
-                // echo "<br>Edito";
-                echo "Aqui ver para actualizar";
+                $venCon->update($data);
             } else{
                 echo "<br>Entro en el else principal";
                 if($data['id_venta']!= null && $data['id_venta'] != '' && isset($data['del']) && $data['del']=='si'){
-                    echo "<br>Entro en eliminar";
                     $venCon->delete($data);
-                    echo "<br>Elimino";
                     header("Location: ../Vistas/ventas.php");
                     die();
                 } else{
-                    echo "<br>Entro en el else secundario";
                     if($data['id_venta']== null || $data['id_venta'] == ''){
                         if ( array_key_exists("fk_tipo_comprobante", $data)){
                             $data['fk_tipo_comprobante']= 1;

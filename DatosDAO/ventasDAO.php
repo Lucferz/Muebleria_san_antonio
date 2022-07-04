@@ -50,16 +50,18 @@
             :"SELECT 
                 v.id_venta,
                 c.cliente, 
-                c.id_cliente,
+                v.fk_cliente,
                 u.Nombre as vendedor,
                 tv.tipo as tipo_venta, 
                 tc.comprobante,
                 v.num_factura,
                 v.num_ticket, 
-                a.descripcion as articulo,
-                a.id_articulo, 
+                a.descripcion as articulo, 
+                v.fk_articulo,
+                a.precio_venta,
+                a.existencias,
                 v.cantidad, 
-                v.descuento,
+                v.descuento, 
                 v.entrega,
                 v.total, 
                 v.fecha_emision, 
@@ -69,7 +71,7 @@
                 join tipo_venta tv on v.fk_tipo_venta = tv.id 
                 join clientes c on v.fk_cliente = c.id_cliente 
                 join usuarios u on v.fk_usuario = u.id_usuario 
-                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante 
+                join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante
             WHERE 
                 v.id_venta = $id_venta";
             $this->get_query();
@@ -129,14 +131,13 @@
         }
 
         public function update( $venta = array()){
-            foreach ($articulo as $key => $value) {
+            foreach ($venta as $key => $value) {
                 $$key = $value;
             }
 
-            $this->query = "UPDATE ventas SET fk_articulo = $fk_articulo, fk_tipo_venta=$fk_tipo_venta,
-            fk_cliente = $fk_cliente,fk_usuario = $fk_usuario, fk_tipo_comprobante = $fk_tipo_comprobante,
-            descuento = $descuento, cantidad = $cantidad, entrega = $entrega, total = $total, fecha_mod = CURRENT_TIMESTAMP,
-            num_factura = $num_factura, num_ticket = $num_ticket WHERE id_venta =$id_venta";
+            $this->query = "UPDATE ventas SET fk_articulo = $fk_articulo, fk_cliente = $fk_cliente, descuento = $descuento, 
+            cantidad = $cantidad, entrega = $entrega, total = $total, fecha_mod = CURRENT_TIMESTAMP 
+            WHERE id_venta = $id_venta";
             $this->set_query();
         }
 
