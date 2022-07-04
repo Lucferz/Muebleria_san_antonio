@@ -31,7 +31,7 @@ var_dump($_POST);
         header("Location: ../Vistas/usuario.php");
         die();
     }catch(Exception $e){
-        header("Location: ../Vistas/usuario.php?error=$e->getMessage()");
+        header("Location: ../Vistas/usuario.php?error=".$e->getMessage());
         die();
     }
 ?>

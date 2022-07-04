@@ -20,6 +20,7 @@ function buscarAjaxTable() {
                     <div id='row-content'>
                         <td>${datos[c].id_usuario}</td>
                         <td>${datos[c].Nombre}</td>
+                        <td>${datos[c].ci}</td>
                         <td>${datos[c].usuario}</td>
                         <td>${datos[c].tipo}</td>
                         <td>${(datos[c].estado)?'Activo':'Inactivo'}</td>

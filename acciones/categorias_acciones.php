@@ -32,7 +32,7 @@
         header("Location: ../Vistas/categorias.php");
         die();
     }catch(Exception $e){
-        header("Location: ../Vistas/categorias.php?error=$e->getMessage()");
+        header("Location: ../Vistas/categorias.php?error=".$e->getMessage());
         die();
     }
 ?>

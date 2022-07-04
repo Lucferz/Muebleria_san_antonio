@@ -48,6 +48,10 @@ $tipousuarioControl = new TipoUsuarioControl();
             <input type="text" name="Nombre" value="<?php echo isset($dataToMod[0]['Nombre'])? $dataToMod[0]['Nombre']:'' ?>" 
             class="field" autocomplete="off" required> <br/>
 
+            <p>CEDULA:</p>
+            <input type="text" name="ci" value="<?php echo isset($dataToMod[0]['ci'])? $dataToMod[0]['ci']:'' ?>" 
+            class="field" autocomplete="off" required> <br/>
+
             <p>USUARIO:</p>
             <input type="text" name="usuario" value="<?php echo isset($dataToMod[0]['usuario'])? $dataToMod[0]['usuario']:'' ?>"
             class="field" autocomplete="off" required> <br/>
@@ -88,6 +92,7 @@ $tipousuarioControl = new TipoUsuarioControl();
             <tr>
                <th>ID</th>
                <th>NOMBRE</th>
+               <th>CI</th>
                <th>USUARIO</th>
                <th>TIPO USUARIO</th>
                <th>ESTADO</th>
@@ -112,6 +117,7 @@ $tipousuarioControl = new TipoUsuarioControl();
                   echo "<div id='row-content'>
                   <td>$id_usuario</td>
                   <td>$Nombre</td>
+                  <td>$ci</td>
                   <td>$usuario</td>
                   <td>$tipo</td>
                   <td>$status</td>

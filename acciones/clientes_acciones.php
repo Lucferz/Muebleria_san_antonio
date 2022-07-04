@@ -34,9 +34,9 @@
         die();
     }catch(Exception $e){
         if(array_key_exists('venta', $_POST)){
-            header("Location: ../Vistas/NuevaVenta.php?error=$e->getMessage()");
+            header("Location: ../Vistas/NuevaVenta.php?error=".$e->getMessage());
         }else{
-            header("Location: ../Vistas/Cliente.php?error=$e->getMessage()");
+            header("Location: ../Vistas/Cliente.php?error=".$e->getMessage());
         }
         die();
     }

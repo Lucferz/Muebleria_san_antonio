@@ -30,7 +30,7 @@
         header("Location: ../Vistas/stock.php");
         die();
     }catch(Exception $e){
-        header("Location: ../Vistas/stock.php?error=$e->getMessage()");
+        header("Location: ../Vistas/stock.php?error=".$e->getMessage());
         die();
     }
 ?>

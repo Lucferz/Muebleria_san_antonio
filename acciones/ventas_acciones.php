@@ -39,7 +39,7 @@
         header("Location: ../Vistas/NuevaVenta.php");
         die();
     }catch(Exception $e){
-        header("Location: ../Vistas/NuevaVenta.php?error=$e->getMessage()");
+        header("Location: ../Vistas/NuevaVenta.php?error=".$e->getMessage());
         die();
     }
 ?>

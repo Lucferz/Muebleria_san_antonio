@@ -24,7 +24,7 @@
         // header("Location: ../Vistas/cobranzas.php");
         // die();
     }catch(Exception $e){
-        header("Location: ../Vistas/cobranzas.php?error=$e->getMessage()");
+        header("Location: ../Vistas/cobranzas.php?error=".$e->getMessage());
         die();
     }
 ?>

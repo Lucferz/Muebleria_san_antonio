@@ -17,16 +17,16 @@
             }
             
             $pass = hash('sha256', $password);
-            $this->query = "INSERT INTO usuarios (Nombre,usuario,password,estado,fecha_alta, fecha_mod,fk_tipo_usuario) VALUES (    '$Nombre', '$usuario', 
+            $this->query = "INSERT INTO usuarios (Nombre,ci, usuario,password,estado,fecha_alta, fecha_mod,fk_tipo_usuario) VALUES ('$Nombre','$ci', '$usuario', 
             '$pass', true, CURRENT_TIMESTAMP, null, $fk_tipo_usuario)";
             $this->set_query();
             unset($pass);
         }
 
         public function read($id_usuario = ''){
-            $this->query = ($id_usuario == '')? "SELECT u.id_usuario, u.Nombre,u.usuario,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
+            $this->query = ($id_usuario == '')? "SELECT u.id_usuario, u.Nombre, u.ci, u.usuario,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
             on u.fk_tipo_usuario  = t.id_tipo_usuario"
-            :"SELECT u.id_usuario, u.Nombre,u.usuario,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
+            :"SELECT u.id_usuario, u.Nombre, u.ci, u.usuario,u.estado,u.fecha_alta, u.fecha_mod, t.tipo FROM usuarios u join tipo_usuario t
             on u.fk_tipo_usuario  = t.id_tipo_usuario WHERE u.id_usuario = $id_usuario";
             $this->get_query();
             //$num_rows = count($this->rows);
@@ -43,6 +43,7 @@
             SELECT 
                 u.id_usuario, 
                 u.Nombre,u.usuario,
+                u.ci,
                 u.estado,
                 u.fecha_alta, 
                 u.fecha_mod, 
@@ -50,12 +51,9 @@
             FROM 
                 usuarios u join tipo_usuario t on u.fk_tipo_usuario  = t.id_tipo_usuario
             WHERE
-                u.id_usuario LIKE '%$search_key%' OR 
                 u.Nombre LIKE '%$search_key%' OR
                 u.usuario LIKE '%$search_key%' OR
-                u.estado LIKE '%$search_key%' OR
-                u.fecha_alta LIKE '%$search_key%' OR 
-                u.fecha_mod LIKE '%$search_key%' OR 
+                u.ci LIKE '%$search_key%' OR
                 t.tipo LIKE '%$search_key%' 
             query;
 
