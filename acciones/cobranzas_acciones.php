@@ -19,10 +19,10 @@
             
         }
 
-        echo "<br><br><br><a href='../Vistas/cobranzas.php'>Cobranzas</a>";
+        ///echo "<br><br><br><a href='../Vistas/cobranzas.php'>Cobranzas</a>";
 
-        // header("Location: ../Vistas/cobranzas.php");
-        // die();
+        header("Location: ../Vistas/cobranzas.php");
+        die();
     }catch(Exception $e){
         header("Location: ../Vistas/cobranzas.php?error=".$e->getMessage());
         die();
