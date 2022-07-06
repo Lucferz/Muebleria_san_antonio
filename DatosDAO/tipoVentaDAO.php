@@ -16,8 +16,8 @@
                 $$key = $value;
             }
 
-            $this->query = "INSERT INTO tipo_venta (tipo, cuotas, estado) 
-                            VALUES ('$tipo',$cuotas, true)";
+            $this->query = "INSERT INTO tipo_venta (tipo, cuotas, recargo, estado) 
+                            VALUES ('$tipo',$cuotas, $recargo, true)";
             $this->set_query();
         }
 
@@ -39,7 +39,7 @@
                 $$key = $value;
             }
 
-            $this->query = "UPDATE tipo_venta SET tipo_venta ='$tipo', cuotas = '$cuotas'
+            $this->query = "UPDATE tipo_venta SET tipo ='$tipo', cuotas = $cuotas, recargo = $recargo
             WHERE id =$id";
             $this->set_query();
         }

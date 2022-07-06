@@ -9,6 +9,7 @@ if($_SESSION['rol'] != 'Admin'){
 ?>
    <div id="cabecera-botones-user">
             <a href="usuario.php"><button id="addNew" class="btn-pretty">Gestionar usuarios</button></a>
+            <a href="tipo_venta.php"><button id="addNew" class="btn-pretty">Tipo de Venta</button></a>
    </div>
 <?php
 	include("includes/footer.html");
