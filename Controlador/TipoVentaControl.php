@@ -28,5 +28,8 @@
 		public function reactivar( $tipo = array()){
 			return $this->tipoVentaDAO->reactivar($tipo);
 		}
+		public function listarVenta(){
+			return $this->tipoVentaDAO->listarVenta();
+		}
 	}
 ?>

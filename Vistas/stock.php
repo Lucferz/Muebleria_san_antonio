@@ -29,7 +29,7 @@ if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
             <button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Articulo</button>
             <?php
                if($_SESSION['rol'] == 'Admin'){
-                  echo '<a href="categorias.php" ><button class="btn-informe"><ion-icon name="add-outline"></ion-icon> Nueva Categoria</button></a>';
+                  echo '<a href="categorias.php" ><button class="btn-informe">Categorias</button></a>';
                }
             ?>
          </div>
@@ -75,7 +75,7 @@ if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
             <select class="select-modal form-select" name="fk_categoria" required><!--Aca hacer el read de Categorias-->
                <option value="">Seleccione una Categoria</option>
                <?php
-                  $data_categorias = $categoriasControl->read();
+                  $data_categorias = $categoriasControl->listarActivos();
                   foreach ($data_categorias as $key => $value) {
                      foreach ($value as $key2 => $value2) {
                         $$key2 = $value2;

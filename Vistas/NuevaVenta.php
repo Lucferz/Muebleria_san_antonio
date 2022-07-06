@@ -153,7 +153,7 @@
                <select id="cuotas" name="fk_tipo_venta" required>
                   <option value="">Seleccione Tipo De Venta</option>
                   <?php
-                    $data_tpv = $tvc->read();
+                    $data_tpv = $tvc->listarVenta();
                     foreach ($data_tpv as $key => $value) {
                       foreach ($value as $key2 => $value2) {
                          $$key2 = $value2;

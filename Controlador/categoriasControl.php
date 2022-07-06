@@ -30,7 +30,9 @@
 		public function reactivar($cat = array()){
 			return $this->catDAO->reactivar($cat);
 		}
-
+		public function listarActivos(){
+			return $this->catDAO->listarActivos();
+		}
 		public function buscar($search_key){
 			return $this->catDAO->buscar($search_key);
 		}

@@ -34,6 +34,17 @@
             return $data;
         }
         
+        public function listarActivos(){
+            $this->query =  "SELECT * FROM categorias WHERE estado = 1 ORDER BY id_categoria desc ";
+            $this->get_query();
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return $data;
+        }
+
         public function findById($id_categoria){
             $this->query = "SELECT * FROM categorias c WHERE c.id_categoria = $id_categoria";
             $this->get_query();

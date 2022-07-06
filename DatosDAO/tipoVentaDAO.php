@@ -34,6 +34,18 @@
             return $data;
         }
 
+        public function listarVenta(){
+            $this->query = "SELECT * FROM tipo_venta t WHERE t.estado = 1";
+            $this->get_query();
+
+            $data = array();
+            foreach ($this->rows as $key => $value) {
+                array_push($data, $value);
+            }
+
+            return $data;
+        }
+
         public function update( $tipo = array()){
             foreach ($tipo as $key => $value) {
                 $$key = $value;
