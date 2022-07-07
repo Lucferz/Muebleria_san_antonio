@@ -16,7 +16,7 @@
 }
 
 .dropbtn{
-	background-color: #4C48EB /*#04AA6D*/;
+	background-color: transparent;
 	color: white;
 	font-size: 20px;
 	border: none;
@@ -393,14 +393,14 @@ td{
 
 .informes-content{
 	display: none;
-/*	position: absolute; */
+	position: absolute; 
 	background-color: #f1f1f1;
 	min-width: 160px;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
-	position: relative;
-	left: 50px;
+	left: 65px;
 	padding-top: 5px;
+	margin-top: -50px;
 }
 
 .informes-content a {

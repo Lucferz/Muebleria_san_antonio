@@ -24,36 +24,39 @@
         public function read($id_cobranza = ''){
             $this->query = ($id_cobranza == '')?
             "SELECT
-                cli.cliente,
-                cli.direccion,
-                c.monto,
-                c.fecha_cobro ,
-                CONCAT(MIN(c.cuota_nro),'/', tv.cuotas) AS cuota_nro,
-                c.id_cobranza,
-                c.fk_venta,
-                CASE
-                    WHEN c.fecha_cobro_mora IS NULL THEN
-                        0
-                    ELSE
-                        DATEDIFF(NOW(), c.fecha_cobro)
-                END AS 'mora'
-            FROM
-                cobranzas c
-            JOIN ventas v ON
-                (c.fk_venta = v.id_venta)
-            JOIN clientes cli ON
-                (v.fk_cliente = cli.id_cliente)
+            cli.cliente,
+            cli.direccion,
+            c.monto,
+            CASE WHEN c.fecha_cobro_mora IS NULL THEN
+                c.fecha_cobro 
+            ELSE 
+                c.fecha_cobro_mora 
+               END as fecha_cobro,
+            CONCAT(c.cuota_nro,'/', tv.cuotas) AS cuota_nro,
+            c.id_cobranza,
+            c.fk_venta,
+            CASE
+                WHEN c.fecha_cobro >= CURDATE()  THEN
+                    0
+                ELSE
+                    DATEDIFF(CURDATE(), c.fecha_cobro)
+            END AS 'mora'
+        FROM
+            cobranzas c, ventas v
             JOIN tipo_venta tv ON
-                (v.fk_tipo_venta = tv.id)
-            WHERE
-                c.estado = 1
-                AND
-                c.fecha_cobrado IS NULL 
-                AND 
-                c.monto_cobrado IS NULL 
-            ORDER BY 
-                c.id_cobranza asc
-            LIMIT 15" 
+            (v.fk_tipo_venta = tv.id), clientes cli
+        WHERE
+            c.fk_venta = v.id_venta
+            AND 
+            v.fk_cliente = cli.id_cliente
+            AND
+            c.estado = 1
+            AND
+            c.fecha_cobrado IS NULL 
+            AND 
+            c.monto_cobrado IS NULL 
+        ORDER BY 
+            c.cuota_nro asc, c.id_cobranza asc" 
             :"SELECT * FROM cobranzas c 
             WHERE 
                 id_cobranza NOT IN (SELECT ec.fk_cobranza  from estado_cobranza ec) AND
