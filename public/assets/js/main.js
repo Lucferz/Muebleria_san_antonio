@@ -4,7 +4,7 @@
 //De momento no sirven como lo esperado, asi que dejar asi por ahora
 
 
-/*Modal*/
+/*Modal General*/
 document.addEventListener("DOMContentLoaded", function(event) {
     // Get the modal
     var modal = document.getElementById("myModal");
@@ -39,16 +39,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         }
     }
 });
-
-/* Ver si es necesario. Funcion para ir a una pagina dsp de
-determinados segundos
-
-function reloadPage(identifier){
-    setTimeout(function(){
-
-        window.location.href = "Vistas/"+ +".php"
-    }, 2000)
-}*/
 
 /*Limpiar campos del formulario*/
 document.addEventListener('unload', function(){

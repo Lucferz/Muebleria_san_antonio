@@ -4,7 +4,7 @@ require_once("../Controlador/app_base.php");
 if (!$_SESSION['autenticado']){
    header("Location: Login.php");
    die();
-}else if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Cobrador'){
+}else if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Cobrador' && $_SESSION['rol'] != 'Gerente'){
    require_once("../Controlador/sessionControl.php");
    $user_session = new sessionControl();
    $location = $user_session->redireccion($_SESSION['rol']);
@@ -26,7 +26,7 @@ $cobranzas_control = new CobranzasControl();
 </head>
 <body>
    <?php
-      if($_SESSION['rol'] == 'Admin'){
+      if($_SESSION['rol'] == 'Admin' || $_SESSION['rol'] == 'Gerente'){
          echo "<button onclick=\"location.href= 'cobranzasview.php'\" class=\"volver\"><ion-icon name=\"arrow-undo-outline\"></ion-icon></button>";
       }
    ?>

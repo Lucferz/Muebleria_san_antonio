@@ -40,6 +40,9 @@
                 case 'Stock':
                     $location = "stock.php";
                     break;
+                case 'Gerente':
+                    $location = "stock.php";
+                    break;
                 default:
                     $location = "Login.php";
             }

@@ -3,7 +3,7 @@
   if (!$_SESSION['autenticado']){
     header("Location: Login.php");
     die();
-  }else if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Vendedor'){
+  }else if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Vendedor' && $_SESSION['rol'] != 'Gerente'){
     require_once("../Controlador/sessionControl.php");
     $user_session = new sessionControl();
     $location = $user_session->redireccion($_SESSION['rol']);
@@ -26,7 +26,7 @@
 </head>
 <body>
    <?php
-      if($_SESSION['rol'] == 'Admin'){
+      if($_SESSION['rol'] == 'Admin' || $_SESSION['rol'] == 'Gerente'){
          echo "<button onclick=\"location.href= 'ventas.php'\" class=\"volver\"><ion-icon name=\"arrow-undo-outline\"></ion-icon></button>";
       }
    ?>

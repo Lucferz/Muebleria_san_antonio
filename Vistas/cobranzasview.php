@@ -1,5 +1,5 @@
 <?php include("includes/header.php");
-if($_SESSION['rol'] != 'Admin'){
+if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Gerente'){
    require_once("../Controlador/sessionControl.php");
    $user_session = new sessionControl();
    $location = $user_session->redireccion($_SESSION['rol']);
