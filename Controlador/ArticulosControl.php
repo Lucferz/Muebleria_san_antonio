@@ -39,5 +39,9 @@
 		public function informeStock(){
 			return $this->artiDAO->informeStock();
 		}
+
+		public function entrada($articulo = array()){
+			return $this->artiDAO->entrada($articulo);
+		}
 	}
 ?>

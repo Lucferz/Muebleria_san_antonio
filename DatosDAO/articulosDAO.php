@@ -151,5 +151,19 @@
             return $data;
         }
 
+        public function entrada($articulo = array()){
+            foreach ($articulo as $key => $value) {
+                $$key = $value;
+            }
+            $this->query = "SELECT * from articulos WHERE id_articulo = $id_articulo";
+            $this->get_query();
+            $data = array();
+            foreach ($this->rows[0] as $key => $value) {
+                $data += [$key => $value];
+            }
+            $data['existencias'] += $entrada;
+            $this->update($data);
+        }
+
     }
 ?>

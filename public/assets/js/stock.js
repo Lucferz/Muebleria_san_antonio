@@ -21,12 +21,14 @@ if (document.getElementById("autocomplete-input-articulo") != null){
             hallar_datos(event.target.id);
         }
     });
-    document.getElementById("fcant").addEventListener("keyup", function (event) {
-        let precio_u = document.getElementById("fprecio_h").value;
-        console.log(precio_u);
-        console.log(event.target.value);
-        fprecio.value = event.target.value * precio_u;
-    });
+    if(document.getElementById("fcant")){
+        document.getElementById("fcant").addEventListener("keyup", function (event) {
+            let precio_u = document.getElementById("fprecio_h").value;
+            console.log(precio_u);
+            console.log(event.target.value);
+            fprecio.value = event.target.value * precio_u;
+        });
+    }
 }
 
 
@@ -149,7 +151,21 @@ function hallar_datos(id) {
         xhttp.open('GET', '../api/listar.php?table=stock&id='+id, true);
         xhttp.send();
     }
-    
+}
 
+let modalEntrada = document.getElementById("ModalEntrada");
+    //Cargando los datos de la cobranza a la venta
+if(modalEntrada){
+    console.log("Existe el modal");
+    let btn = document.getElementById("EntradaArt");
+    let span = document.getElementById("close");
+
+    btn.addEventListener('click', function(){
+        modalEntrada.style.display = "block";
+    });
     
+    span.addEventListener('click',function() {
+        modalEntrada.style.display = "none";
+        location.replace(window.location.href);
+    });
 }

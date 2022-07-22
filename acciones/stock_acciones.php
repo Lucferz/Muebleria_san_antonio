@@ -16,21 +16,26 @@
                         $articulos_control->reactivar($data);
                     }
                 } else{
-                    if($data['id_articulo']== null || $data['id_articulo'] == ''){
-                        $articulos_control->create($data);
+                    if($data['id_articulo']!= null && $data['id_articulo'] != '' && isset($data['entrada'])){
+                        echo "Se activo el metodo entrada";
+                        $articulos_control->entrada($data);
                     }else{
-                        header("Location: ../Vistas/stock.php?error=true");
-                        die();
+                        if($data['id_articulo']== null || $data['id_articulo'] == ''){
+                            $articulos_control->create($data);
+                        }else{
+                            header("Location: ../Vistas/stock.php?error=true&errormsg=unknown_error");
+                            die();
+                        }
                     }
                 }
             } 
             
         } 
-
+        //echo "<br/><br/><br/><a href='../Vistas/stock.php'>Ir a Nueva Venta</a>";
         header("Location: ../Vistas/stock.php");
         die();
     }catch(Exception $e){
-        header("Location: ../Vistas/stock.php?error=".$e->getMessage());
+        header("Location: ../Vistas/stock.php?error=true&errormsg=".$e->getMessage());
         die();
     }
 ?>

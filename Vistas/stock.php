@@ -5,12 +5,25 @@ include("../Controlador/taxesControl.php") ;
 $articulos_control = new ArticulosControl();
 $categoriasControl = new CategoriasControl();
 $taxControl = new taxesControl();
-if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
+if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock' && $_SESSION['rol'] != 'Gerente'){
    require_once("../Controlador/sessionControl.php");
    $user_session = new sessionControl();
    $location = $user_session->redireccion($_SESSION['rol']);
    header("Location: ../Vistas/$location");
    die();
+}
+if($_GET["error"]=="true"){
+   echo "<div id=\"ModalError\" class=\"modal\">
+            <script type=\"text/javascript\"> document.all.ModalError.style.display = \"block\"</script>
+            <div class=\"modal-content\">
+               <div class='modal-form'>
+                  <p style='font-size:25px; color:black;' class='titulo-modal'>ERROR</p>
+                  <p style='color: red; font-size:20px;'>".$_GET['errormsg']."</p>
+                  <p class='center-content'><button class=\"btn-pretty\" onclick=\"location.replace('stock.php');\">Aceptar</button></p>
+               </div>
+            </div>
+         </div>
+         ";
 }
 ?>
    <div id="cuerpo">
@@ -26,6 +39,7 @@ if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
          </div>
          
          <div id="articulos-buttons-container">
+            <button id="EntradaArt" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Entrada de Articulos</button>
             <button id="addNew" class="btn-pretty"><ion-icon name="add-outline"></ion-icon> Nuevo Articulo</button>
             <?php
                if($_SESSION['rol'] == 'Admin'){
@@ -35,6 +49,29 @@ if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Stock'){
          </div>
       </div>
       <div id="tabla">
+      </div>
+   </div>
+   <?php /*Modal de Entrada */ ?>
+	<div id="ModalEntrada" class="modal">
+      <div class="modal-content">
+         <form method="POST" class="modal-form" action="../acciones/stock_acciones.php" id="dataform">
+            
+            <span id="close" style="color: #aaaaaa;float: right;font-size: 28px;font-weight: bold;"><ion-icon name="close-outline"></ion-icon></span>
+            <h1 class="titulo-modal">Entrada De Articulos</h1>            
+            <p>PRODUCTO:</p>
+            <div class="autocomplete">
+                <input type="text" id="autocomplete-input-articulo" class="field" placeholder="Buscar articulo..." autocomplete="off" required>
+                <input type="text" id="id_articulo" name="id_articulo" hidden>
+                <ul id="autocomplete-results-articulo" class="autocomplete-results">
+                </ul>
+            </div>
+            <p>CANTIDAD:</p>
+            <input type="number" name="entrada" class="field" autocomplete="off" required> <br/>
+            
+            <p class="center-content">
+            <input type="submit" class="btn-azul" value="GUARDAR"/>
+            </p>
+         </form>
       </div>
    </div>
    <!-- The Modal -->
