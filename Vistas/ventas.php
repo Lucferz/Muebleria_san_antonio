@@ -8,6 +8,20 @@ if($_SESSION['rol'] != 'Admin' && $_SESSION['rol'] != 'Gerente'){
 }
 include("../Controlador/ventasControl.php");
 $ventas_control = new VentasControl();
+
+if($_GET["error"]=="true"){
+   echo "<div id=\"ModalError\" class=\"modal\">
+            <script type=\"text/javascript\"> document.all.ModalError.style.display = \"block\"</script>
+            <div class=\"modal-content\">
+               <div class='modal-form'>
+                  <p style='font-size:25px; color:black;' class='titulo-modal'>ERROR</p>
+                  <p style='color: red; font-size:20px;'>".$_GET['errormsg']."</p>
+                  <p class='center-content'><button class=\"btn-pretty\" onclick=\"location.replace('ventas.php');\">Aceptar</button></p>
+               </div>
+            </div>
+         </div>
+         ";
+}
 ?>
    <div id="cuerpo">
       <div id="cabecera-botones">

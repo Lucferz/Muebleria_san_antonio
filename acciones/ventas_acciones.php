@@ -3,7 +3,7 @@
     require_once("../Controlador/ventasControl.php");
     $venCon = new ventasControl();
     $data = isset($_POST)? $_POST:'';
-
+    $anulado = false;
     try{
         if(isset($_POST)&& array_key_exists('id_venta', $_POST)){
             $data = $_POST;
@@ -12,6 +12,7 @@
             } else{
                 echo "<br>Entro en el else principal";
                 if($data['id_venta']!= null && $data['id_venta'] != '' && isset($data['del']) && $data['del']=='si'){
+                    $anulado = true;
                     $venCon->delete($data);
                     header("Location: ../Vistas/ventas.php");
                     die();
@@ -32,7 +33,12 @@
         header("Location: ../Vistas/NuevaVenta.php");
         die();
     }catch(Exception $e){
-        header("Location: ../Vistas/NuevaVenta.php?error=".$e->getMessage());
+        if ($anulado){
+            header("Location: ../Vistas/ventas.php?error=true&errormsg=".$e->getMessage());
+        }else{
+            header("Location: ../Vistas/NuevaVenta.php?error=true&errormsg=".$e->getMessage());
+        }
+        
         die();
     }
 ?>
