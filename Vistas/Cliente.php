@@ -48,7 +48,7 @@ $clientes_control = new ClientesControl();
 
 						<p>CI:</p>
 						<input type="number" name="ci" value="<?php echo isset($dataToMod[0]['ci'])? $dataToMod[0]['ci']:'' ?>" 
-                  class="field" autocomplete="off" required> <br/>
+                  class="field" autocomplete="off" > <br/>
 
 						<p>RUC:</p>
 						<input type="text" name="ruc" value="<?php echo isset($dataToMod[0]['ruc'])? $dataToMod[0]['ruc']:'' ?>" 

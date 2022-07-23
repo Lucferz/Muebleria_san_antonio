@@ -60,7 +60,7 @@
                <input type="text" name="cliente" class="field" autocomplete="off" required> <br/>
 
                <p>CI:</p>
-               <input type="text" name="ci" class="field" autocomplete="off" required> <br/>
+               <input type="text" name="ci" class="field" autocomplete="off" > <br/>
 
                <p>RUC:</p>
                <input type="text" name="ruc" class="field" autocomplete="off"> <br/>
