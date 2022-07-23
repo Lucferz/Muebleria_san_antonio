@@ -56,7 +56,7 @@ $clientes_control = new ClientesControl();
 
 						<p>Telefono:</p>
 						<input type="text" name="telefono" value="<?php echo isset($dataToMod[0]['telefono'])? $dataToMod[0]['telefono']:'' ?>" 
-                  class="field" autocomplete="off" required> <br/>
+                  class="field" autocomplete="off" > <br/>
 		
 						<p>Direccion:</p>
 						<input type="text" name="direccion" value="<?php echo isset($dataToMod[0]['direccion'])? $dataToMod[0]['direccion']:'' ?>" 

@@ -66,7 +66,7 @@
                <input type="text" name="ruc" class="field" autocomplete="off"> <br/>
 
                <p>Telefono:</p>
-               <input type="text" name="telefono" class="field" autocomplete="off" required> <br/>
+               <input type="text" name="telefono" class="field" autocomplete="off"> <br/>
    
                <p>Direccion:</p>
                <input type="text" name="direccion" class="field" autocomplete="off" required> <br/>
