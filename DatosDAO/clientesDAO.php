@@ -15,9 +15,8 @@
             foreach ($cliente as $key => $value) {
                 $$key = $value;
             }
-
-            $this->query = "INSERT INTO clientes (cliente, telefono, direccion, ci, ruc, estado, fecha_alta, fecha_modificacion) 
-                            VALUES ('$cliente', '$telefono', '$direccion', '$ci', '$ruc', true, CURRENT_TIMESTAMP, null)";
+            $this->query = 'INSERT INTO clientes (cliente, telefono, direccion, ci, ruc, estado, fecha_alta, fecha_modificacion) 
+                            VALUES ("'.$cliente.'", "'.$telefono.'","'.$direccion.'", "'.$ci.'", "'.$ruc.'", true, CURRENT_TIMESTAMP, null)';
             $this->set_query();
         }
 
@@ -40,7 +39,7 @@
             }
 
             $this->query = "UPDATE clientes SET cliente ='$cliente', telefono = '$telefono',
-            direccion = '$direccion', ci = '$ci', ruc = '$ruc', fecha_modificacion = CURRENT_TIMESTAMP
+            direccion = \"$direccion\", ci = '$ci', ruc = '$ruc', fecha_modificacion = CURRENT_TIMESTAMP
             WHERE id_cliente =$id_cliente";
             $this->set_query();
         }

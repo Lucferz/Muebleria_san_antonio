@@ -31,8 +31,8 @@
                 c.fecha_cobro 
             ELSE 
                 c.fecha_cobro_mora 
-               END as fecha_cobro,
-            CONCAT(c.cuota_nro,'/', tv.cuotas) AS cuota_nro,
+            END as fecha_cobro,
+            c.cuota_nro,
             c.id_cobranza,
             c.fk_venta,
             CASE

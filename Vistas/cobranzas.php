@@ -92,7 +92,7 @@ $cobranzas_control = new CobranzasControl();
                      ";
                   }
                }else{
-                  echo "<tr><td colspan=\"4\"> No hay cobranzas por realizar</td></tr>";
+                  echo "<tr><td colspan=\"7\"> No hay cobranzas por realizar</td></tr>";
                }
             ?>
          </tbody>
