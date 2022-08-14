@@ -14,6 +14,19 @@
   require_once("../Controlador/ventasControl.php");
   $tvc = new TipoVentaControl();
   $venControl = new ventasControl();
+  if($_GET["error"]=="true"){
+   echo "<div id=\"ModalError\" class=\"modal\">
+            <script type=\"text/javascript\"> document.all.ModalError.style.display = \"block\"</script>
+            <div class=\"modal-content\">
+               <div class='modal-form'>
+                  <p style='font-size:25px; color:black;' class='titulo-modal'>ERROR</p>
+                  <p style='color: red; font-size:20px;'>".$_GET['errormsg']."</p>
+                  <p class='center-content'><button class=\"btn-pretty\" onclick=\"location.replace('NuevaVenta.php');\"> Aceptar</button></p>
+               </div>
+            </div>
+         </div>
+         ";
+}
 ?>
 <!DOCTYPE html>
 <htmllang="es"> 
@@ -174,10 +187,20 @@
                <input type="number" value="<?php echo isset($dataToMod[0]['descuento'])? $dataToMod[0]['descuento']:'0' ?>" id="aname" class="input-field" name="descuento" placeholder="Descuento" > 
             </div>
          </div>
-         <br>
          <?php 
             if(!isset($_POST['id_venta'])){
-               echo '<label class="container">Generar Factura
+               echo '
+               <div class="row">
+                  <div class="col-25">
+                     <label for="aname">Fecha</label>
+                  </div>
+                  <div class="col-75">
+                     <input type="date" id="aname" class="input-field" name="date" > 
+                  </div>
+               </div>
+               <br/>
+
+               <label class="container">Generar Factura
                <input type="checkbox" name="fk_tipo_comprobante">
                <span class="checkmark"></span>
                </label>
