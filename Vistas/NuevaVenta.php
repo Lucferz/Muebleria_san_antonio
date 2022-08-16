@@ -146,8 +146,8 @@
                <label for="fprecio">Precio</label>
             </div>
             <div class="col-75">
-               <input type="number" value="<?php echo isset($dataToMod[0]['total'])? $dataToMod[0]['total']:'' ?>" id="fprecio" class="input-field" name="total" readonly="readonly">
-               <input type="text"  value="<?php echo isset($dataToMod[0]['precio_venta'])? $dataToMod[0]['precio_venta']:'' ?>" id="fprecio_h" readonly="readonly" hidden>
+               <input type="number" value="<?php echo isset($dataToMod[0]['total'])? $dataToMod[0]['total']:'' ?>" id="fprecio" class="input-field" name="total" >
+               <input type="text"  value="<?php echo isset($dataToMod[0]['precio_venta'])? $dataToMod[0]['precio_venta']:'' ?>" id="fprecio_h" readonly="true" hidden>
             </div>
          </div>
          <div class="row">
@@ -207,7 +207,7 @@
                <br>';
             }
          ?>
-         <input type="number" name="id_venta" value="<?php echo isset($dataToMod[0]['id_venta'])? $dataToMod[0]['id_venta']:'' ?>" readonly="readonly" hidden />
+         <input type="number" name="id_venta" value="<?php echo isset($dataToMod[0]['id_venta'])? $dataToMod[0]['id_venta']:'' ?>" readonly="true" hidden />
          <div class="row">
             <button type="submit" class="confirmar">Confirmar</button>
          </div>

@@ -15,11 +15,11 @@
             foreach ($venta as $key => $value) {
                 $$key = $value;
             }
-
+            $fechaFinal = ($date == null)? 'CURRENT_TIMESTAMP()':"CONCAT('$date', ' ', CURRENT_TIME())";
             $this->query = "INSERT INTO ventas(fk_articulo, fk_tipo_venta, fk_cliente, fk_usuario, fk_tipo_comprobante, descuento, cantidad, entrega, total, 
             fecha_emision, fecha_mod, num_factura, num_ticket, estado) 
             VALUES ($fk_articulo, $fk_tipo_venta, $fk_cliente, $fk_usuario, $fk_tipo_comprobante, $descuento, $cantidad, $entrega, $total, 
-            CONCAT('$date', ' ', CURRENT_TIME()),null, null, get_seq_value('ticket_ven_seq'), true)";
+            $fechaFinal,null, null, get_seq_value('ticket_ven_seq'), true)";
             $this->set_query();
         }
 
