@@ -22,8 +22,8 @@
         }
 
         public function read($id = ''){
-            $this->query = ($id == '')? "SELECT * FROM tipo_venta t"
-            :"SELECT * FROM tipo_venta t WHERE t.id = $id";
+            $this->query = ($id == '')? "SELECT * FROM tipo_venta t ORDER BY t.cuotas desc"
+            :"SELECT * FROM tipo_venta t WHERE t.id = $id ORDER BY t.cuotas desc";
             $this->get_query();
 
             $data = array();

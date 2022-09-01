@@ -46,7 +46,7 @@
                 join usuarios u on v.fk_usuario = u.id_usuario 
                 join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante
             ORDER BY
-                v.id_venta"
+                v.fecha_emision desc"
             :"SELECT 
                 v.id_venta,
                 c.cliente, 
@@ -73,7 +73,9 @@
                 join usuarios u on v.fk_usuario = u.id_usuario 
                 join tipo_comprobante tc on v.fk_tipo_comprobante= tc.id_tipo_comprobante
             WHERE 
-                v.id_venta = $id_venta";
+                v.id_venta = $id_venta
+            ORDER BY
+                v.fecha_emision desc";
             $this->get_query();
             $data = array();
             foreach ($this->rows as $key => $value) {
