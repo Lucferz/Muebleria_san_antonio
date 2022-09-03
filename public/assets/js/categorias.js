@@ -19,7 +19,7 @@ function buscarAjaxTable(){
                     <div id='row-content'>
                         <td>${datos[c].id_categoria}</td>
                         <td>${datos[c].categoria}</td>
-                        <td>${(datos[c].estado)?'Activo':'Inactivo' }</td>
+                        <td>${Number(datos[c].estado)?'Activo':'Inactivo' }</td>
                     </div>
                     <div id='row-actions'>
                         <td>
@@ -29,10 +29,10 @@ function buscarAjaxTable(){
                             </form>
                         </td>
                         <td>
-                            <form method='POST' action='categorias_acciones.php' id='deleteForm${datos[c].id_categoria}' >
+                            <form method='POST' action='../acciones/categorias_acciones.php' id='deleteForm${datos[c].id_categoria}' >
                                 <input type='text' name='id_categoria' value='${datos[c].id_categoria}' hidden>
                             </form>
-                            <button id='btn-desactivar' class='btn-table' onclick=\"desactivar(${datos[c].id_categoria}, ${datos[c].estado});\" >${(datos[c].estado)?'Desactivar':'Reactivar'}</button>
+                            <button id='btn-desactivar' class='btn-table' onclick=\"desactivar(${datos[c].id_categoria}, ${datos[c].estado});\" >${Number(datos[c].estado)?'Desactivar':'Reactivar'}</button>
                         </td>
                   </div>
                 </tr>

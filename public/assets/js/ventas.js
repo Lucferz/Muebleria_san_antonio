@@ -30,24 +30,25 @@ function buscarAjaxTable() {
                         <td>${(datos[c].descuento != "")?datos[c].descuento:"-"}</td>
                         <td>${datos[c].total}</td>
                         <td>${datos[c].fecha_emision}</td>
-                        <td>${(datos[c].estado)?'Activo':'Inactivo'}</td>
+                        <td>${Number(datos[c].estado)?'Activo':'ANULADO'}</td>
                     </div>
                     <div id='row-actions'>
-                        <td>
-                            <form method='POST' id='editForm'>
-                                <input type='text' name='id_articulo' value='${datos[c].id_venta}' hidden>
-                                <input type='submit' class='btn-table' value='Modificar' id='btn-editar'>
-                            </form>
+                        ${Number(datos[c].estado)?`<td>  
+                           <form method='POST' action='NuevaVenta.php' id='editForm'>
+                              <input type='text' name='id_venta' value='$id_venta' hidden>
+                              <input type='submit' class='btn-table' value='Modificar' id='btn-editar'>
+                           </form>
                         </td>
                         <td>
-                            <form method='POST' action='stock_acciones.php' id='deleteForm${datos[c].id_venta}' >
-                                <input type='text' name='id_articulo' value='${datos[c].id_venta}' hidden>
-                            </form>
-                            <button id='btn-desactivar' class='btn-table' onclick=\"desactivar(${datos[c].id_venta});\" >Anular</button>
+                           <form method='POST' action='../acciones/ventas_acciones.php' id='deleteForm$id_venta' >
+                              <input type='text' name='id_venta' value='$id_venta' hidden>
+                           </form>
+                           <button id='btn-desactivar' class='btn-table' onclick=\"anular($id_venta);\" >Anular</button>
                         </td>
-                    </div>
-                </tr>
-                  `;
+                     </div>`:`<div id='row-actions'>
+                        <td>---</td>
+                        <td>---</td>
+                     </div>`}`;
                 c++;
             }
         }

@@ -44,6 +44,7 @@ function buscarAjaxTable(){
             tabla.innerHTML = '';
             let c = 0;
             for(let item of datos){
+                console.log(c);
                 tabla.innerHTML += `
                 <tr>
                     <div>
@@ -54,7 +55,7 @@ function buscarAjaxTable(){
                         <td>${datos[c].existencias}</td>
                         <td>${datos[c].categoria}</td>
                         <td>${datos[c].tipo_iva}</td>
-                        <td>${(datos[c].estado)?'Activo':'Inactivo'}</td>
+                        <td>${Number(datos[c].estado)?'Activo':'Inactivo'}</td>
                     </div>
                     <div id='row-actions'>
                         <td>
@@ -64,11 +65,11 @@ function buscarAjaxTable(){
                             </form>
                         </td>
                         <td>
-                            <form method='POST' action='stock_acciones.php' id='deleteForm${datos[c].id_articulo}' >
+                            <form method='POST' action='../acciones/stock_acciones.php' id='deleteForm${datos[c].id_articulo}' >
                             <input type='text' name='id_articulo' value='${datos[c].id_articulo}' hidden>
                             <input type='text' name='estado' value='${datos[c].estado}' hidden>
                             </form>
-                            <button id='btn-desactivar' class='btn-table' onclick=\"desactivar(${datos[c].id_articulo}, ${datos[c].estado});\" >${(datos[c].estado)?'Desactivar':'Reactivar'}</button>
+                            <button id='btn-desactivar' class='btn-table' onclick=\"desactivar(${datos[c].id_articulo}, ${datos[c].estado});\" >${Number(datos[c].estado)?'Desactivar':'Reactivar'}</button>
                         </td>
                   </div>
                 </tr>
