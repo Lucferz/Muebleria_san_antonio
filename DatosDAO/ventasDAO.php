@@ -98,7 +98,7 @@
                 a.descripcion as articulo, 
                 v.cantidad, 
                 v.descuento, 
-                v.entrega
+                v.entrega,
                 v.total, 
                 v.fecha_emision, 
                 v.fecha_mod,  
@@ -119,9 +119,9 @@
                 a.descripcion LIKE '%$search_key%' OR
                 v.fecha_emision LIKE '%$search_key%' OR 
                 v.fecha_mod LIKE '%$search_key%' OR  
-                v.estado LIKE '%$search_key%
+                v.estado LIKE '%$search_key%'
             ORDER BY
-                v.id_vent'
+                v.id_venta desc
             query;
             $this->get_query();
             $data = array();

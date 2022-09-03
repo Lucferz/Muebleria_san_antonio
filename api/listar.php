@@ -48,7 +48,8 @@
             include_once("../Controlador/TipoUsuarioControl.php");
             $controlador = new TipoUsuarioControl();
             if(array_key_exists('search_key',$_GET)){
-                $datos_busqueda = $controlador->buscar($_GET['search_key']);
+                //Hacer a futuro 31/08/2022
+                //$datos_busqueda = $controlador->buscar($_GET['search_key']);
                 echo $datos_busqueda;
             }
             break;
