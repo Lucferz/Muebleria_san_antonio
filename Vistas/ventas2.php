@@ -40,7 +40,7 @@ if ($_GET["error"] == "true") {
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
       <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
-      
+
    </head>
 
    <body>
@@ -53,6 +53,17 @@ if ($_GET["error"] == "true") {
       <?php $fecha = date("Y-m-d"); ?>
 
       <h1 class="text-primary text-center">Nueva Venta</h1>
+
+      <div class="container-fluid">
+         <div class="row justify-content-between">
+            <div class="col-sm-2 ">
+               <a class="btn btn-primary pull-right" href="#" class="btn btn-success" data-toggle="modal" data-target="#crudModal" data-c="cliente">Nuevo cliente</a>
+            </div>
+            <div class="col-sm-10 ">
+               <a class="btn btn-primary pull-right" href="#" class="btn btn-success" data-toggle="modal" data-target="#crudModal" data-c="articulo">Nuevo articulo</a>
+            </div>
+         </div>
+      </div>
 
       <br>
 
