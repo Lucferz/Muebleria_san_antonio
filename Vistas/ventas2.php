@@ -40,6 +40,8 @@ if ($_GET["error"] == "true") {
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
       <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" href="../public/assets/css/jquery-ui.min.css">
+      <link rel="stylesheet" href="../public/assets/css/jquery-ui.structure.min.css">
 
    </head>
 
@@ -69,27 +71,24 @@ if ($_GET["error"] == "true") {
 
 
 
-      <div class="container">
+      <div class="container-fluid">
 
          <div class="row justify-content-center justify-content-md-start">
 
-            <div class="col-sm-6">
-               <label>
+            <div class="col-sm-5">
+               <label for="cliente">
                   <dt>Cliente</dt>
                </label>
-               <select name="cliente" id="cliente" class="form-control selectpicker" data-show-subtext="true" data-live-search="true" data-style="form-control" title="-- Seleccione el Cliente --" autofocus>
-                  <option style="font-size: 18px" value="">Seleccionar Cliente</option>
-               </select>
+               <input type="text" class="form-control selectpicker" id="cliente" autofocus/>
             </div>
-
+            <button id="newClientBtn" class="nuevo-cliente" >
+              <ion-icon name="add-outline"></ion-icon>
+            </button>
             <div class="col-sm-6">
-               <label>
+               <label for="producto">
                   <dt>Producto</dt>
                </label>
-               <select name="producto" id="producto" class="form-control selectpicker" data-show-subtext="true" data-live-search="true" data-style="form-control" title="-- Seleccione el Procedimiento --" autofocus>
-
-                  <option style="font-size: 18px" value=" ">Seleccionar producto</option>
-               </select>
+               <input type="text" class="form-control selectpicker" id="producto" autofocus/>
             </div>
          </div>
          <p> </p>
@@ -105,7 +104,7 @@ if ($_GET["error"] == "true") {
                <label>
                   <dt>Precio</dt>
                </label>
-               <input type="number" name="precio_venta" class="form-control" id="precio_venta" value="" readonly>
+               <input type="number" name="precio_venta" class="form-control" id="precio_venta" value="" >
             </div>
 
             <div class="col-sm-3">
@@ -130,7 +129,18 @@ if ($_GET["error"] == "true") {
                   <dt>Tipo de Venta</dt>
                </label>
                <select name="producto" id="producto" class="form-control selectpicker" data-show-subtext="true" data-live-search="true" data-style="form-control" title="-- Seleccione el Procedimiento --" autofocus>
-                  <option style="font-size: 18px" value=" ">Seleccionar tipo de venta</option>
+                  <?php
+                     #<option style="font-size: 18px" value=" ">Seleccionar tipo de venta</option>
+                     $data_tpv = $tvc->listarVenta();
+                     foreach ($data_tpv as $key => $value) {
+                        foreach ($value as $key2 => $value2) {
+                           $$key2 = $value2;
+                        }
+                        $selected = (isset($dataToMod[0]['tipo_venta']) && 
+                        $tipo == $dataToMod[0]['tipo_venta'])? 'selected':'';
+                        echo "<option style='font-size: 18px' value='$id' $selected>$tipo</option>";
+                     }
+                  ?>
                </select>
             </div>
 
@@ -155,80 +165,84 @@ if ($_GET["error"] == "true") {
          </div>
 
 
-      </div>
+      
 
-      <p> </p>
+         <p> </p>
 
-      <div>
-         <div class="card-body">
+         <div>
+            <div class="card-body">
             <table id="example" class="table table-striped table-bordered" style="width:100%">
-               <thead>
-                  <tr>
-                     <th>Rendering engine</th>
-                     <th>Browser</th>
-                     <th>Platform(s)</th>
-                     <th>Engine version</th>
-                     <th>CSS grade</th>
-                  </tr>
-               </thead>
-               <tbody>
-                  <tr>
-                     <td>Trident</td>
-                     <td>Internet
-                        Explorer 4.0
-                     </td>
-                     <td>Win 95+</td>
-                     <td> 4</td>
-                     <td>X</td>
-                  </tr>
-                  <tr>
-                     <td>Trident</td>
-                     <td>Internet
-                        Explorer 5.0
-                     </td>
-                     <td>Win 95+</td>
-                     <td>5</td>
-                     <td>C</td>
-                  </tr>
-                  <tr>
-                     <td>Trident</td>
-                     <td>Internet
-                        Explorer 5.5
-                     </td>
-                     <td>Win 95+</td>
-                     <td>5.5</td>
-                     <td>A</td>
-                  </tr>
-                  <tr>
-                     <td>Trident</td>
-                     <td>Internet
-                        Explorer 6
-                     </td>
-                     <td>Win 98+</td>
-                     <td>6</td>
-                     <td>A</td>
-                  </tr>
+                  <thead>
+                     <tr>
+                        <th>Rendering engine</th>
+                        <th>Browser</th>
+                        <th>Platform(s)</th>
+                        <th>Engine version</th>
+                        <th>CSS grade</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                        <td>Trident</td>
+                        <td>Internet
+                           Explorer 4.0
+                        </td>
+                        <td>Win 95+</td>
+                        <td> 4</td>
+                        <td>X</td>
+                     </tr>
+                     <tr>
+                        <td>Trident</td>
+                        <td>Internet
+                           Explorer 5.0
+                        </td>
+                        <td>Win 95+</td>
+                        <td>5</td>
+                        <td>C</td>
+                     </tr>
+                     <tr>
+                        <td>Trident</td>
+                        <td>Internet
+                           Explorer 5.5
+                        </td>
+                        <td>Win 95+</td>
+                        <td>5.5</td>
+                        <td>A</td>
+                     </tr>
+                     <tr>
+                        <td>Trident</td>
+                        <td>Internet
+                           Explorer 6
+                        </td>
+                        <td>Win 98+</td>
+                        <td>6</td>
+                        <td>A</td>
+                     </tr>
 
-                  </tfoot>
-            </table>
+                     </tfoot>
+               </table>
+            </div>
+            <!-- /.card-body -->
          </div>
-         <!-- /.card-body -->
+         <!-- /.card -->
+
+         
+         <div align="center">
+            <a class="btn btn-lg btn-primary " href="" class="btn btn-success">Confirmar</a>
+            
+            <a class="btn btn-lg btn-danger" onclick="javascript:return confirm('¿Seguro de que desea cancelar esta venta?');" href="">Cancelar</a>
+            
+         </div>
+         
       </div>
-      <!-- /.card -->
 
-      </div>
-
-      <div align="center">
-         <a class="btn btn-lg btn-primary " href="" class="btn btn-success">Confirmar</a>
-
-         <a class="btn btn-lg btn-danger" onclick="javascript:return confirm('¿Seguro de eliminar este presupuesto?');" href="">Cancelar</a>
-
-      </div>
-
-
-
-      <script>
-         $('#cliente').picker();
+      <script src="../public/assets/js/jquery-3.6.1.min.js"></script>
+      <script src="../public/assets/js/jquery-ui.min.js"></script>
+      <script src="../app/js/Controllers/ventaController.js"></script>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+     <!-- <script>
+         /*$('#cliente').picker();
          $('#producto').picker();
 
 
@@ -254,8 +268,8 @@ if ($_GET["error"] == "true") {
 
          $(document).ready(function() {
             $('#example').DataTable();
-         });
-      </script>
+         });*/
+      </script> -->
 
 
    </body>

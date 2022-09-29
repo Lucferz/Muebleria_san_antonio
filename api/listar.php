@@ -73,6 +73,12 @@
                 echo $datos_busqueda;
             }
             break;
+        case'tipo_venta':
+            include_once("../Controlador/TipoVentaControl.php");
+            $controlador = new TipoVentaControl();
+            $datos_busqueda = $controlador->read();
+            echo $datos_busqueda;
+            break;
         default:
             echo '{"error": "la peticion no se hizo de manera correcta",
                 "cod" : "TABLE_NOT_FOUND"}';
